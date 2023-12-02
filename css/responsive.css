@@ -1,0 +1,279 @@
+@media (min-width: 1920px){
+	.container{
+		max-width: 1675px;
+	}
+}
+@media (min-width: 1600px) and (max-width: 1919.98px) { 
+	html{
+		font-size: 53.50%;
+	}
+	.container{
+		max-width: 1450px;
+	}
+}
+@media (min-width: 1440px) and (max-width: 1599.98px) { 
+	html{
+		font-size: 48%;
+	}
+	.container{
+		max-width: 1300px;
+	}
+}
+@media (min-width: 1366px) and (max-width: 1439.98px) { 
+	html{
+		font-size: 46%;
+	}
+	.container{
+		max-width: 1255px;
+	}
+}
+@media (min-width: 1200px) and (max-width: 1365.98px) { 
+	html{
+		font-size: 40%;
+	}
+	.container{
+		max-width: 1150px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+	html{
+		font-size: 34.5%;
+	}
+}
+@media (min-width: 992px){
+	header.sticky .head_bottom{
+		margin-top: 0;
+		height: 0;
+		overflow: hidden;
+	}
+}
+@media (max-width: 991.98px) {
+	html{
+		font-size: 49%;
+	}
+	#menu{
+		position: fixed;
+		top: 0;
+		left: -100%;
+		background-color: #fff;
+		text-align: center;
+		z-index: -1;
+		-webkit-transition: 0.3s;
+		-o-transition: 0.3s;
+		transition: 0.3s;
+		overflow: auto;
+		padding-top: 17rem;
+		padding-bottom: 3rem;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+	}
+	#menu.current{
+		left: 0;
+	}
+	.hamburger-menu {
+	    display: block;
+	    margin-top: -3.5rem;
+	}
+	html[dir="rtl"] .hamburger-menu {
+	    margin-left: 0;
+	    margin-right: auto;
+	}
+	#menu li{
+		display: block;
+		margin-top: 2.5rem;
+	}
+	#menu li:last-child a{
+		padding-left: 0;
+	}
+	.mang_pic {
+	    margin-top: 4rem;
+	}
+	footer .container {
+	    max-width: 89rem;
+	}
+	.shape_1 {
+		display: none;
+	}
+	.head_bottom {
+	    margin-top: -5rem;
+	}
+	.head_bottom .button {
+	    display: none;
+	}
+	.logo img {
+	    width: 15.7rem;
+	}
+	main {
+	    padding-top: 19.8rem;
+	}
+	.alert {
+	    width: 100%;
+	}
+	.lang_flag{
+		display: block!important;
+	}
+	.header_wapper .lang_flag .dropdown-toggle::before {
+	    right: 0rem;
+	}	
+	html[dir="rtl"] .header_wapper .lang_flag .dropdown-toggle::before {
+	    left: 0rem;
+	    right: auto;
+	}
+	.insight_home {
+	    margin-top: -14rem;
+	}
+	.over_custom {
+	    padding-top: 15rem;
+	}
+	.succesful_area h3,
+	.succesful_area p {
+	    font-size: 1.5rem;
+	}
+	.teb_left h2 {
+	    padding: 4rem 0 7rem;
+	}
+	.tab_right {
+	    margin-top: 5rem;
+	}
+	.tab_right input {
+	    margin-bottom: 2rem;
+	}
+	.term_cond {
+	    max-width: 71.6rem!important;
+	}
+	.check_inp .check_btn {
+	    height: 6rem;
+	}
+	.sign_wapper {
+	    padding: 7.2rem 3rem 8.5rem;
+	}
+	.custom_full{
+		text-align: center;
+	}
+	.succesful_area h2::before {
+	    left: 27.5rem;
+	}	
+	html[dir="rtl"] .succesful_area h2::before {
+	    left: auto;
+	    right: 27.5rem;
+	}
+	.owl-nav button {
+	    top: 47%;
+	}
+	.owl-nav button.owl-prev {
+	    top: 20%;
+	}
+	.owl-nav button.owl-next {
+	    right: 0;
+	    top: 20%;
+	}
+	html[dir="rtl"] .owl-nav button.owl-next {
+	    right: 0;
+	}
+	.step_control {
+	    margin-top: 3rem;
+	}
+	html[dir="rtl"] .management_box .row>div:first-child {
+	    padding-right: 4.1rem;
+	    padding-left: 4.1rem;
+	}
+	.slider1, html[dir="rtl"] .slider2 {
+	    padding-left: 0rem;
+	    padding-right: 0;
+	}
+	.management_box .row>div:first-child,
+	html[dir="rtl"] .management_box .row>div:first-child {
+	    padding-right: 9rem;
+	    padding-left: 9rem;
+	}
+	html[dir="rtl"] .owl-nav button.owl-prev {
+	    left: 0;
+	}
+}
+
+/*Medium devices (tablets, 767px and down)*/
+@media (max-width: 767.98px) {
+	html{
+		font-size: 36%;
+	}
+}
+
+/*Small devices (landscape phones, 575px and down)*/
+@media (max-width: 575.98px) {
+	html{
+		font-size: 1.6vw;
+	}
+	.home_wapper h2 {
+	    font-size: 3.7rem;
+	}
+	.home_wapper h3 {
+	    font-size: 2.2rem;
+	}
+	.title h2 {
+	    font-size: 3.8rem;
+	}
+	.management_box {
+	    padding: 7.3rem 3.6rem 5.9rem;
+	}
+	.slider1, .slider2 {
+	    padding-left: 1rem;
+	    padding-right: 1rem;
+	}
+	.time_box {
+	    padding: 3.6rem 3rem;
+	}
+	.header_wapper .button {
+	    padding: 1.3rem 2.1rem 1.3rem 1.2rem;
+	}
+	.header_wapper .logo img {
+	    width: 11.7rem;
+	}
+	.personal_item p {
+	    font-size: 2rem;
+	}
+	.personal_wapper {
+	    padding: 2.3rem 2.1rem 4.7rem 2rem;
+	}
+	.size_radio label {
+	    width: 21rem;
+	    height: 9rem;
+	}
+	.size_radio label::before {
+		width: 21rem;
+	    height: 9rem;
+	}
+	.style_radio_2 .size_radio label {
+	    width: 13rem;
+	}
+	.style_radio_2 .size_radio label::before {
+	    width: 13rem;
+	}
+	.tab_right {
+	    padding: 3.3rem 5rem 5rem 4.5rem;
+	}
+	.tab_title h4 {
+	    font-size: 2.5rem;
+	  
+	}
+	.sign_form input {
+	    width: 6.5rem;
+	    height: 8rem;
+	}
+	.sign_wapper h3 {
+	    font-size: 1.8rem;
+	}
+	.succesful_area h2::before {
+	    left: 12.5rem;
+	}	
+	html[dir="rtl"] .succesful_area h2::before {
+	    left: auto;
+	    right: 12.5rem;
+	}
+	.owl-nav button.owl-next {
+	    right: -1rem;
+	}
+	.management_box .row>div:first-child {
+	    padding-right: 8rem;
+	}
+}
