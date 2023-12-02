@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "u671249433_myAcadUser";
+$username = "u409066344_projectTarUSER";
 $password = "N@b$90949089";
-$dbname = "u671249433_myAcadDB";
+$dbname = "u409066344_projectTarDB";
 $dbconnect = new MySQLi($servername,$username,$password,$dbname);
 if ( $dbconnect->connect_error ){
 	die("Connection Failed: " .$dbconnect->connect_error );
