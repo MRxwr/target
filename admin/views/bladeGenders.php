@@ -94,6 +94,8 @@
 		</td>
 		<td id="enTitle<?php echo $sports[$i]["id"]?>" ><?php echo $sports[$i]["enTitle"] ?></td>
 		<td id="arTitle<?php echo $sports[$i]["id"]?>" ><?php echo $sports[$i]["arTitle"] ?></td>
+		<td id="enSubTitle<?php echo $sports[$i]["id"]?>" ><?php echo $sports[$i]["enSubTitle"] ?></td>
+		<td id="arSubTitle<?php echo $sports[$i]["id"]?>" ><?php echo $sports[$i]["arSubTitle"] ?></td>
 		<td class="text-nowrap">
 		
 		<a id="<?php echo $sports[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل")  ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
