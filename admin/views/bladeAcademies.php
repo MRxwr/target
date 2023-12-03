@@ -237,7 +237,8 @@
 		})
 		function setSelectedOptions(array, selectName) {
 			for (var i = 0; i < array.length; i++) {
-				$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true).trigger('change');
+				//$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true).trigger('change');
+				$("select[name=sport]").val(array[i]).trigger('change');
 			}
 		}
 	</script>
