@@ -240,11 +240,7 @@
 		function setSelectedOptions(ids, selectId) {
 			for (var i = 0; i < ids.length; i++) {
 				var id = ids[i];
-
-				// Create an option element with the selected ID
 				var newOption = new Option(id, id, true, true);
-
-				// Append the option to the Select2 dropdown
 				$('#' + selectId).append(newOption).trigger('change');
 			}
 		}
