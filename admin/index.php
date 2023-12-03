@@ -72,7 +72,7 @@ if ( isset($_GET["hide"]) || isset($_GET["show"]) || isset($_GET["delId"]) || is
 				$_POST["password"] = sha1($_POST["password"]);
 			}
 			
-			if( insertDB2("{$table}", $_POST) ){
+			if( insertDB("{$table}", $_POST) ){
 			}else{
 			?>
 			<script>
@@ -170,7 +170,7 @@ if ( isset($_GET["hide"]) || isset($_GET["show"]) || isset($_GET["delId"]) || is
 	}
 	?>
 	<script>
-		window.location.replace("<?php echo "?v={$_GET["v"]}{$countryCode}" ?>");
+		//window.location.replace("<?php echo "?v={$_GET["v"]}{$countryCode}" ?>");
 	</script>
 	<?php
 }

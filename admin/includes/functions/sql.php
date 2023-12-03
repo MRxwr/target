@@ -155,11 +155,11 @@ function insertDB2($table, $data){
 			$sql .= ", ";
 		}
 	}		
-	echo $sql .= ")";
+	$sql .= ")";
 	if($dbconnect->query($sql)){
 		return 1;
 	}else{
-		return 1;
+		return 0;
 	}
 }
 
