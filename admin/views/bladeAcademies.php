@@ -231,8 +231,8 @@
 			var sportArray = JSON.parse(sport);
 			$('#mySelect').val(null).trigger('change');
 			$('#mySelect3').val(null).trigger('change');
-			setSelectedOptions(genderArray, "mySelect");
-			setSelectedOptions(sportArray, "mySelect3");
+			setSelectedOptions(genderArray, "gender");
+			setSelectedOptions(sportArray, "sport");
 			//$("select[name=sport]").val(sport).trigger('change');
 			console.log("genderArray:", genderArray);
 			console.log("sportArray:", sportArray);
