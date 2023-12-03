@@ -12,7 +12,7 @@
 		<div class="row m-0">
 			<div class="col-md-12">
 			<label><?php echo direction("Sports","الرياضات") ?></label>
-			<select id="mySelect3" name="sport" class="form-control" required>
+			<select id="mySelect3" name="sport" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
 				if( $sportsList = selectDB("sports","`status` = '0' AND `hidden` = '0' ORDER BY `enTitle` ASC") ){
 					for( $i =0; $i < sizeof($sportsList); $i++ ){
