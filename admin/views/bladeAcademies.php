@@ -160,7 +160,7 @@
 					<a href="?v=Sessions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-default"><?php echo direction("Sessions","المحاضرات") ?></a>
 					<a id="<?php echo $academies[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل")  ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
-					<a href="<?php echo $link . "&v={$_GET["v"]}" ?>" class="btn btn-dark" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>
+					<a href="<?php echo $link . "&v={$_GET["v"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>
 					<a href="?delId=<?php echo $academies[$i]["id"] . "&v={$_GET["v"]}" ?>" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف")  ?>" class="btn btn-danger"><i class="fa fa-close text-inverse"></i>
 					</a>
 					<div style="display:none"><label id="logo<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["imageurl"] ?></label></div>
