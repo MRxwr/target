@@ -77,11 +77,16 @@
 			</div>
 			
 			<div class="col-md-6">
-			<label><?php echo direction("Alert","التنبيه") ?></label>
-			<input type="text" step="alert" name="clothesPrice" class="form-control" required>
+			<label><?php echo direction("Alert English","التنبيه بالإنجليزي") ?></label>
+			<input type="text" name="enAlert" class="form-control" required>
 			</div>
 
 			<div class="col-md-6">
+			<label><?php echo direction("Alert Arabic","التنبيه بالعربي") ?></label>
+			<input type="text" name="arAlert" class="form-control" required>
+			</div>
+
+			<div class="col-md-12">
 			<label><?php echo direction("IBAN","الأيبان") ?></label>
 			<input type="text" name="iban" class="form-control" required>
 			</div>
