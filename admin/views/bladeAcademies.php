@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="col-md-6">
-			<label><?php echo direction("Gender","النوع") ?></label>
+			<label><?php echo direction("Gender","الجنس") ?></label>
 			<select id="mySelect" name="genders" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
 				if( $genders = selectDB("genders","`id` != '0' ORDER BY `id` ASC") ){
@@ -216,8 +216,14 @@
 			$("input[name=snapchat]").val(snapchat);
 			$("input[name=youtube]").val(youtube);
 			$("input[name=alert]").val(alert);
-			$("select[name=genders]").val(gender);
-			$("select[name=sport]").val(sport).trigger('change');
+			//$("select[name=genders]").val(gender);
+			for (var i = 0; i < gender.length; i++) {
+				$("select[name=genders] option[value='" + gender[i] + "']").prop("selected", true);
+			}
+			for (var i = 0; i < sport.length; i++) {
+				$("select[name=sport] option[value='" + sport[i] + "']").prop("selected", true);
+			}
+			//$("select[name=sport]").val(sport).trigger('change');
 			$("input[name=iban]").val(iban);
 			$("#logoImg").attr("src","../logos/"+logo);
 			$("#images").attr("style","margin-top:10px;display:block");
