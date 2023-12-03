@@ -126,10 +126,6 @@
 		<tr>
 		<th>#</th>
 		<th><?php echo direction("Title","العنوان") ?></th>
-		<th><?php echo direction("Country","البلد") ?></th>
-		<th><?php echo direction("Gender","الجنس") ?></th>
-		<th><?php echo direction("Promotion","العرض") ?></th>
-		<th><?php echo direction("Clothes? ","ملابس؟") ?></th>
 		<th class="text-nowrap"><?php echo direction("Actions","الخيارات") ?></th>
 		</tr>
 		</thead>
@@ -139,11 +135,6 @@
 		if( $academies = selectDB("academies","`status` = '0'") ){
 			for( $i = 0; $i < sizeof($academies); $i++ ){
 				$academyTitle = direction($academies[$i]["enTitle"],$academies[$i]["arTitle"]);
-				$videoText = ( !empty($academies[$i]["video"]) ) ? direction("Watch","شاهد") : "";
-				$locationText = ( !empty($academies[$i]["location"]) ) ? direction("View","إعرض") : "";
-				$isClothesText = ( empty($academies[$i]["isClothes"]) )? direction("No","لا") : direction("Yes","نعم");
-				$isPromotionText = ( empty($academies[$i]["isPromotion"]) )? direction("No","لا") : direction("Yes","نعم");
-				$genderText = ( $academies[$i]["gender"] == 1 ) ? direction("Man","رجل") : ( ( $academies[$i]["gender"] == 2 ) ? direction("Woman","إمرأه") : ( ( $academies[$i]["gender"] == 3 ) ? direction("Boy","ولد") : direction("Girl","بنت") ) ) ;
 				if ( $academies[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
 					$link = "?show={$academies[$i]["id"]}";
@@ -157,10 +148,6 @@
 				<tr>
 				<td><?php echo $counter = 1 + $i ?></td>
 				<td><?php echo $academyTitle ?></td>
-				<td id="country<?php echo $academies[$i]["id"]?>" ><?php echo $academies[$i]["country"] ?></td>
-				<td><?php echo $genderText ?><label style="display:none" id="gender<?php echo $academies[$i]["id"]?>"  ><?php echo $academies[$i]["gender"] ?></label></td>
-				<td><?php echo $isPromotionText ?><label style="display:none" id="isPromotion<?php echo $academies[$i]["id"]?>"  ><?php echo $academies[$i]["isPromotion"] ?></label></td>
-				<td><?php echo $isClothesText ?><label style="display:none" id="isClothes<?php echo $academies[$i]["id"]?>"  ><?php echo $academies[$i]["isClothes"] ?></label></td>
 				<td class="text-nowrap">
 					<a href="?v=Sessions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-primary"><?php echo direction("Sessions","المحاضرات") ?></a>
 					<a href="?v=Subscriptions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-success"><?php echo direction("Subscriptions","الإشتراكات") ?></a>
