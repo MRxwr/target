@@ -12,7 +12,7 @@
 		<div class="row m-0">
 			<div class="col-md-6">
 			<label><?php echo direction("Sports","الرياضات") ?></label>
-			<select id="" name="sport[]" class="form-control" multiple required>
+			<select id="mySelect3" name="sport[]" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
 				if( $sportsList = selectDB("sports","`status` = '0' AND `hidden` = '0' ORDER BY `enTitle` ASC") ){
 					for( $i =0; $i < sizeof($sportsList); $i++ ){
@@ -194,6 +194,7 @@
 		$(document).ready(function() {
 			$('#mySelect').select2();
 			$('#mySelect3').select2();
+		});
 
 		$(document).on("click",".edit", function(){
 			var id = $(this).attr("id");
@@ -228,13 +229,12 @@
 			//$("select[name=genders]").val(gender);
 			var genderArray = JSON.parse(gender);
 			var sportArray = JSON.parse(sport);
-			setSelectedOptions(genderArray, "gender");
-			setSelectedOptions(sportArray, "sport");
+			setSelectedOptions(genderArray, "gender").trigger('change');
+			setSelectedOptions(sportArray, "sport").trigger('change');
 			//$("select[name=sport]").val(sport).trigger('change');
 			console.log("genderArray:", genderArray);
 			console.log("sportArray:", sportArray);
 		})
-	});
 		function setSelectedOptions(array, selectName) {
 			for (var i = 0; i < array.length; i++) {
 				$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true);
