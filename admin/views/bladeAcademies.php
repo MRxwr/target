@@ -193,8 +193,6 @@
 	<script>
 		$(document).ready(function() {
 			$('#mySelect').select2();
-			$('#mySelect1').select2();
-			$('#mySelect2').select2();
 			$('#mySelect3').select2();
 		});
 
@@ -234,8 +232,9 @@
 			setSelectedOptions(genderArray, "gender");
 			setSelectedOptions(sportArray, "sport");
 			//$("select[name=sport]").val(sport).trigger('change');
+			console.log("genderArray:", genderArray);
+			console.log("sportArray:", sportArray);
 		})
-
 		function setSelectedOptions(array, selectName) {
 			for (var i = 0; i < array.length; i++) {
 				$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true);
