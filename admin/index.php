@@ -149,7 +149,7 @@ if ( isset($_GET["hide"]) || isset($_GET["show"]) || isset($_GET["delId"]) || is
 				}
 			}
 			
-			if( updateDB("{$table}", $_POST, "`id` = '{$id}'") ){
+			if( updateDB2("{$table}", $_POST, "`id` = '{$id}'") ){
 			}else{
 			?>
 			<script>
