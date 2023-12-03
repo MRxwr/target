@@ -29,7 +29,7 @@
 				<?php
 				if( $genders = selectDB("genders","`id` != '0' ORDER BY `id` ASC") ){
 					for( $i =0; $i < sizeof($genders); $i++ ){
-						echo "<option value='{$genders[$i]["id"]}'>".direction($genders[$i]["enTitle"],$genders[$i]["arTitle"]) ."</option>";
+						echo "<option value='{$genders[$i]["id"]}'>".direction("{$genders[$i]["enTitle"]} - {$genders[$i]["enSubTitle"]}","{$genders[$i]["arTitle"]} - {$genders[$i]["arSubTitle"]}") ."</option>";
 					}
 				}
 				?>
