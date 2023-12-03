@@ -25,7 +25,7 @@
 
 			<div class="col-md-6">
 			<label><?php echo direction("Gender","الجنس") ?></label>
-			<select id="mySelect" name="genders" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
+			<select id="mySelect" name="gender" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
 				if( $genders = selectDB("genders","`id` != '0' ORDER BY `id` ASC") ){
 					for( $i =0; $i < sizeof($genders); $i++ ){
