@@ -229,12 +229,16 @@
 			$("#logoImg").attr("src","../logos/"+logo);
 			$("#images").attr("style","margin-top:10px;display:block");
 			//$("select[name=genders]").val(gender);
-			for (var i = 0; i < gender.length; i++) {
-				$("select[name=gender] option[value='" + gender[i] + "']").prop("selected", true);
-			}
-			for (var i = 0; i < sport.length; i++) {
-				$("select[name=sport] option[value='" + sport[i] + "']").prop("selected", true);
-			}
+			var genderArray = JSON.parse(gender);
+			var sportArray = JSON.parse(sport);
+			setSelectedOptions(genderArray, "gender");
+			setSelectedOptions(sportArray, "sport");
 			//$("select[name=sport]").val(sport).trigger('change');
 		})
+
+		function setSelectedOptions(array, selectName) {
+			for (var i = 0; i < array.length; i++) {
+				$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true);
+			}
+		}
 	</script>
