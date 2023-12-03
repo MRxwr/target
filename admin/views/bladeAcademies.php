@@ -207,7 +207,8 @@
 			var instagram = $("#instagram"+id).html();
 			var snapchat = $("#snapchat"+id).html();
 			var youtube = $("#youtube"+id).html();
-			var alert = $("#alert"+id).html();
+			var enAlert = $("#enAlert"+id).html();
+			var arAlert = $("#arAlert"+id).html();
 			var gender = $("#gender"+id).html();
 			var sport = $("#sport"+id).html();
 			var logo = $("#logo"+id).html();
@@ -220,7 +221,8 @@
 			$("input[name=instagram]").val(instagram);
 			$("input[name=snapchat]").val(snapchat);
 			$("input[name=youtube]").val(youtube);
-			$("input[name=alert]").val(alert);
+			$("input[name=arAlert]").val(arAlert);
+			$("input[name=enAlert]").val(enAlert);
 			//$("select[name=genders]").val(gender);
 			for (var i = 0; i < gender.length; i++) {
 				$("select[name=genders] option[value='" + gender[i] + "']").prop("selected", true);
