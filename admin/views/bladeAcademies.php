@@ -194,7 +194,6 @@
 		$(document).ready(function() {
 			$('#mySelect').select2();
 			$('#mySelect3').select2();
-		});
 
 		$(document).on("click",".edit", function(){
 			var id = $(this).attr("id");
@@ -235,6 +234,7 @@
 			console.log("genderArray:", genderArray);
 			console.log("sportArray:", sportArray);
 		})
+	});
 		function setSelectedOptions(array, selectName) {
 			for (var i = 0; i < array.length; i++) {
 				$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true);
