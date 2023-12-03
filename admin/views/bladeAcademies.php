@@ -231,8 +231,8 @@
 			var sportArray = JSON.parse(sport);
 			$('#mySelect').val(null).trigger('change');
 			$('#mySelect3').val(null).trigger('change');
-			setSelectedOptions(genderArray, "gender");
-			setSelectedOptions(sportArray, "sport");
+			setSelectedOptions(genderArray, "mySelect");
+			setSelectedOptions(sportArray, "mySelect3");
 			//$("select[name=sport]").val(sport).trigger('change');
 			console.log("genderArray:", genderArray);
 			console.log("sportArray:", sportArray);
@@ -246,8 +246,8 @@
 			}
 		}
 		*/
-		function setSelectedOptions(ids, selectName) {
-			var $select = $("select[name=" + selectName + "]");
+		function setSelectedOptions(ids, selectId) {
+			var $select = $('#' + selectId);
 			$select.val(null).trigger('change');
 			for (var i = 0; i < ids.length; i++) {
 				var id = ids[i];
