@@ -30,11 +30,6 @@
 			<label><?php echo direction("Arabic Sub-Title","العنوان بالعربي الفرعي") ?></label>
 			<input type="text" name="arSubTitle" class="form-control" required>
 			</div>
-			
-			<div class="col-md-6">
-			<label><?php echo direction("Logo","الشعار") ?></label>
-			<input type="file" name="imageurl" class="form-control" required>
-			</div>
 
 			<div class="col-md-6" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
