@@ -229,15 +229,15 @@
 			//$("select[name=genders]").val(gender);
 			var genderArray = JSON.parse(gender);
 			var sportArray = JSON.parse(sport);
-			setSelectedOptions(genderArray, "gender").trigger('change');
-			setSelectedOptions(sportArray, "sport").trigger('change');
+			setSelectedOptions(genderArray, "gender");
+			setSelectedOptions(sportArray, "sport");
 			//$("select[name=sport]").val(sport).trigger('change');
 			console.log("genderArray:", genderArray);
 			console.log("sportArray:", sportArray);
 		})
 		function setSelectedOptions(array, selectName) {
 			for (var i = 0; i < array.length; i++) {
-				$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true);
+				$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true).trigger('change');
 			}
 		}
 	</script>
