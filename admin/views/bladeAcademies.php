@@ -162,7 +162,8 @@
 					<a href="?delId=<?php echo $academies[$i]["id"] . "&v={$_GET["v"]}" ?>" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف")  ?>" class="btn btn-danger"><i class="fa fa-close text-inverse"></i>
 					</a>
 					<div style="display:none"><label id="logo<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["imageurl"] ?></label></div>
-					<div style="display:none"><label id="sport<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["sport"] ?></label></div>
+					<div style="display:none"><label id="sport<?php echo $academies[$i]["id"]?>"><?php print_r($academies[$i]["sport"]) ?></label></div>
+					<div style="display:none"><label id="gender<?php echo $academies[$i]["id"]?>"><?php print_r($academies[$i]["gender"]) ?></label></div>
 					<div style="display:none"><label id="enTitle<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["enTitle"] ?></label></div>
 					<div style="display:none"><label id="arTitle<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["arTitle"] ?></label></div>
 					<div style="display:none"><label id="tiktok<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["tiktok"] ?></label></div>
