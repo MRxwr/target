@@ -12,7 +12,7 @@
 		<div class="row m-0">
 			<div class="col-md-6">
 			<label><?php echo direction("Sports","الرياضات") ?></label>
-			<select id="mySelect3" name="sport" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
+			<select id="mySelect3" name="sport[]" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
 				if( $sportsList = selectDB("sports","`status` = '0' AND `hidden` = '0' ORDER BY `enTitle` ASC") ){
 					for( $i =0; $i < sizeof($sportsList); $i++ ){
@@ -25,7 +25,7 @@
 
 			<div class="col-md-6">
 			<label><?php echo direction("Gender","الجنس") ?></label>
-			<select id="mySelect" name="gender" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
+			<select id="mySelect" name="gender[]" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
 				if( $genders = selectDB("genders","`id` != '0' ORDER BY `id` ASC") ){
 					for( $i =0; $i < sizeof($genders); $i++ ){
