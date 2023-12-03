@@ -237,12 +237,26 @@
 			console.log("genderArray:", genderArray);
 			console.log("sportArray:", sportArray);
 		})
+		/*
 		function setSelectedOptions(ids, selectId) {
 			for (var i = 0; i < ids.length; i++) {
 				var id = ids[i];
 				var newOption = new Option(id, id, true, true);
 				$('#' + selectId).append(newOption).trigger('change');
 			}
+		}
+		*/
+		function setSelectedOptions(ids, selectName) {
+			var $select = $("select[name=" + selectName + "]");
+			$select.val(null).trigger('change');
+			for (var i = 0; i < ids.length; i++) {
+				var id = ids[i];
+				var $option = $select.find('option[value="' + id + '"]');
+				if ($option.length > 0) {
+					$option.prop('selected', true);
+				}
+			}
+			$select.trigger('change');
 		}
 
 	</script>
