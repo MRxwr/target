@@ -10,7 +10,7 @@
 <div class="panel-body">
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
-			<div class="col-md-12">
+			<div class="col-md-6">
 			<label><?php echo direction("Sports","الرياضات") ?></label>
 			<select id="mySelect3" name="sport" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
@@ -23,27 +23,7 @@
 			</select>
 			</div>
 
-			<div class="col-md-4">
-			<label><?php echo direction("English Title","الإسم الإنجليزي") ?></label>
-			<input type="text" name="enTitle" class="form-control" required>
-			</div>
-			
-			<div class="col-md-4">
-			<label><?php echo direction("Arabic Title","الإسم العربي") ?></label>
-			<input type="text" name="arTitle" class="form-control" required>
-			</div>
-
-			<div class="col-md-4">
-			<label><?php echo direction("English Details","التفاصيل الإنجليزي") ?></label>
-			<input type="text" name="enDetails" class="form-control" required>
-			</div>
-			
-			<div class="col-md-4">
-			<label><?php echo direction("Arabic Details","التفاصيل العربي") ?></label>
-			<input type="text" name="arDetails" class="form-control" required>
-			</div>
-
-			<div class="col-md-3">
+			<div class="col-md-6">
 			<label><?php echo direction("Gender","النوع") ?></label>
 			<select id="mySelect" name="genders" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
@@ -56,12 +36,32 @@
 			</select>
 			</div>
 
+			<div class="col-md-6">
+			<label><?php echo direction("English Title","الإسم الإنجليزي") ?></label>
+			<input type="text" name="enTitle" class="form-control" required>
+			</div>
+			
+			<div class="col-md-6">
+			<label><?php echo direction("Arabic Title","الإسم العربي") ?></label>
+			<input type="text" name="arTitle" class="form-control" required>
+			</div>
+
+			<div class="col-md-6">
+			<label><?php echo direction("English Details","التفاصيل الإنجليزي") ?></label>
+			<textarea name="enDetails" class="form-control" style="width:100%;height:250px" required></textarea>
+			</div>
+			
+			<div class="col-md-6">
+			<label><?php echo direction("Arabic Details","التفاصيل العربي") ?></label>
+			<textarea name="arDetails" class="form-control" style="width:100%;height:250px" required></textarea>
+			</div>
+
 			<div class="col-md-3">
 			<label><?php echo direction("TikTok","التيك توك") ?></label>
 			<input type="text" name="tiktok" class="form-control" required>
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-md-3">
 			<label><?php echo direction("Instagram","الإنستجرام") ?></label>
 			<input type="text" name="instagram" class="form-control" required>
 			</div>
@@ -71,7 +71,7 @@
 			<input type="text" name="snapchat" class="form-control" required>
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-md-3">
 			<label><?php echo direction("Youtube","يوتيوب") ?></label>
 			<input type="text" name="youtube" class="form-control" required>
 			</div>
@@ -81,18 +81,18 @@
 			<input type="text" step="alert" name="clothesPrice" class="form-control" required>
 			</div>
 
-			<div class="col-md-12">
+			<div class="col-md-6">
 			<label><?php echo direction("IBAN","الأيبان") ?></label>
 			<input type="text" name="iban" class="form-control" required>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-12">
 			<label><?php echo direction("Logo","الشعار") ?></label>
 			<input type="file" name="imageurl" class="form-control" >
 			</div>
 
 			<div id="images" style="margin-top: 10px; display:none">
-				<div class="col-md-3">
+				<div class="col-md-12">
 				<img id="logoImg" src="" style="width:250px;height:250px">
 				</div>
 			</div>
@@ -209,8 +209,8 @@
 			var iban = $("#iban"+id).html();
 			$("input[name=enTitle]").val(enTitle).focus();
 			$("input[name=arTitle]").val(arTitle);
-			$("input[name=enDetails]").val(enDetails);
-			$("input[name=arDetails]").val(arDetails);
+			$("textarea[name=enDetails]").html(enDetails);
+			$("textarea[name=arDetails]").html(arDetails);
 			$("input[name=tiktok]").val(tiktok);
 			$("input[name=instagram]").val(instagram);
 			$("input[name=snapchat]").val(snapchat);
