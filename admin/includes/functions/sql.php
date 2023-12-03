@@ -190,6 +190,28 @@ function updateDB($table, $data, $where) {
     }
 }
 
+// Update any table
+function updateDB2($table ,$data, $where){
+	GLOBAL $dbconnect;
+	$check = [';','"',"'"];
+	$data = str_replace($check,"",$data);
+	$where = str_replace($check,"",$where);
+	$keys = array_keys($data);
+	$sql = "UPDATE `".$table."` SET ";
+	for($i = 0 ; $i < sizeof($data) ; $i++ ){
+		$sql .= "`".$keys[$i]."` = '".$data[$keys[$i]]."'";
+		if ( isset($keys[$i+1]) ){
+			$sql .= ", ";
+		}
+	}		
+	$sql .= " WHERE " . $where;
+	if($dbconnect->query($sql)){
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
 function escapeString($data){
 	GLOBAL $dbconnect;
 	$keys = array_keys($data);
