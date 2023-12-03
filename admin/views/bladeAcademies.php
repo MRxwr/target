@@ -171,8 +171,8 @@
 					<div style="display:none"><label id="youtube<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["youtube"] ?></label></div>
 					<div style="display:none"><label id="enDetails<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["enDetails"] ?></label></div>
 					<div style="display:none"><label id="arDetails<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["arDetails"] ?></label></div>
-					<div style="display:none"><label id="alert<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["alert"] ?></label></div>
-					<div style="display:none"><label id="email<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["email"] ?></label></div>
+					<div style="display:none"><label id="enAlert<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["enAlert"] ?></label></div>
+					<div style="display:none"><label id="arAlert<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["arAlert"] ?></label></div>
 					<div style="display:none"><label id="iban<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["iban"] ?></label></div>
 				</td>
 				</tr>
