@@ -213,6 +213,7 @@
 			var sport = $("#sport"+id).html();
 			var logo = $("#logo"+id).html();
 			var iban = $("#iban"+id).html();
+			$("input[name=update]").val(id);
 			$("input[name=enTitle]").val(enTitle).focus();
 			$("input[name=arTitle]").val(arTitle);
 			$("textarea[name=enDetails]").html(enDetails);
@@ -223,6 +224,9 @@
 			$("input[name=youtube]").val(youtube);
 			$("input[name=arAlert]").val(arAlert);
 			$("input[name=enAlert]").val(enAlert);
+			$("input[name=iban]").val(iban);
+			$("#logoImg").attr("src","../logos/"+logo);
+			$("#images").attr("style","margin-top:10px;display:block");
 			//$("select[name=genders]").val(gender);
 			for (var i = 0; i < gender.length; i++) {
 				$("select[name=genders] option[value='" + gender[i] + "']").prop("selected", true);
@@ -231,9 +235,5 @@
 				$("select[name=sport] option[value='" + sport[i] + "']").prop("selected", true);
 			}
 			//$("select[name=sport]").val(sport).trigger('change');
-			$("input[name=iban]").val(iban);
-			$("#logoImg").attr("src","../logos/"+logo);
-			$("#images").attr("style","margin-top:10px;display:block");
-			$("input[name=update]").val(id);
 		})
 	</script>
