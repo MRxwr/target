@@ -229,7 +229,7 @@
 			$("#images").attr("style","margin-top:10px;display:block");
 			//$("select[name=genders]").val(gender);
 			for (var i = 0; i < gender.length; i++) {
-				$("select[name=genders] option[value='" + gender[i] + "']").prop("selected", true);
+				$("select[name=gender] option[value='" + gender[i] + "']").prop("selected", true);
 			}
 			for (var i = 0; i < sport.length; i++) {
 				$("select[name=sport] option[value='" + sport[i] + "']").prop("selected", true);
