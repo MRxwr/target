@@ -229,16 +229,24 @@
 			//$("select[name=genders]").val(gender);
 			var genderArray = JSON.parse(gender);
 			var sportArray = JSON.parse(sport);
-			setSelectedOptions(genderArray, "gender");
-			setSelectedOptions(sportArray, "sport");
+			$('#mySelect').val(null).trigger('change');
+			$('#mySelect3').val(null).trigger('change');
+			setSelectedOptions(genderArray, "mySelect");
+			setSelectedOptions(sportArray, "mySelect3");
 			//$("select[name=sport]").val(sport).trigger('change');
 			console.log("genderArray:", genderArray);
 			console.log("sportArray:", sportArray);
 		})
-		function setSelectedOptions(array, selectName) {
-			for (var i = 0; i < array.length; i++) {
-				//$("select[name=" + selectName + "] option[value='" + array[i] + "']").prop("selected", true).trigger('change');
-				$("select[name=sport]").val(array[i]).trigger('change');
+		function setSelectedOptions(ids, selectId) {
+			for (var i = 0; i < ids.length; i++) {
+				var id = ids[i];
+
+				// Create an option element with the selected ID
+				var newOption = new Option(id, id, true, true);
+
+				// Append the option to the Select2 dropdown
+				$('#' + selectId).append(newOption).trigger('change');
 			}
 		}
+
 	</script>
