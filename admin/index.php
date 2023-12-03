@@ -72,7 +72,7 @@ if ( isset($_GET["hide"]) || isset($_GET["show"]) || isset($_GET["delId"]) || is
 				$_POST["password"] = sha1($_POST["password"]);
 			}
 			
-			if( insertDB("{$table}", $_POST) ){
+			if( insertDB2("{$table}", $_POST) ){
 			}else{
 			?>
 			<script>
