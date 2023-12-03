@@ -74,10 +74,9 @@ if ( isset($_GET["hide"]) || isset($_GET["show"]) || isset($_GET["delId"]) || is
 			
 			if( insertDB2("{$table}", $_POST) ){
 			}else{
-                
 			?>
 			<script>
-				alert("<?php var_dump(insertDB2("{$table}", $_POST)); ?>Could not process your request, Please try again.");
+				alert("Could not process your request, Please try again.");
 			</script>
 			<?php
 			}

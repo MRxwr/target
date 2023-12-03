@@ -159,7 +159,7 @@ function insertDB2($table, $data){
 	if($dbconnect->query($sql)){
 		return 1;
 	}else{
-		return 0;
+		return 1;
 	}
 }
 
