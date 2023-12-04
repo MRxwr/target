@@ -3,8 +3,8 @@ if( !isset($_POST) ){
     $response["msg"] = "Please make sure you send post data before submitting.";
 	echo outputError($response);die();
 }else{
-    $data = $_GET;
-    unset($_GET);
+    $data = $_POST;
+    unset($_POST);
     
     //checking voucher
     $numberOfTimesAvalability = false;
