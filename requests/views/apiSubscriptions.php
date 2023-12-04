@@ -7,7 +7,7 @@ if( $subscription = selectDB2("`id`,`enTitle`,`arTitle`,`enSubTitle`,`arSubTitle
     $response = $subscription[0];
     $subscriptionSp = selectDB2("`academyId`,`sportId`,`days`,`branches`,`sessions`","subscriptions","`id` = '{$_GET["id"]}' AND `status` = '0' AND `hidden` = '0'");
 
-    $academy = selectDB2("`id`, `imageurl`, `arTitle`, `enDetails`, `arDetails`, `tiktok`, `instagram`, `snapchat`, `youtube`, `enAlert`, `arAlert`, `sport`","academies","`hidden` = '0' AND `status` = '0' AND `enTitle` LIKE '{$subscriptionSp[0]["academyId"]}'");
+    $academy = selectDB2("`id`, `imageurl`, `arTitle`, `enDetails`, `arDetails`, `tiktok`, `instagram`, `snapchat`, `youtube`, `enAlert`, `arAlert`, `sport`","academies","`hidden` = '0' AND `status` = '0' AND `id` = '{$subscriptionSp[0]["academyId"]}'");
     $response["academy"] = $academy[0];
 
     $sportDetails = selectDB2("`id`, `imageurl`, `arTitle`, `enTitle`","sports","`id` = '{$subscriptionSp[0]["sportId"]}'");
