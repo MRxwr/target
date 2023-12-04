@@ -4,8 +4,8 @@ if( !isset($_GET["academy"]) || empty($_GET["academy"]) ){
 	echo outputError($response);die();
 }else{
 	if( $academy = selectDB2("`id`, `imageurl`, `arTitle`, `enDetails`, `arDetails`, `tiktok`, `instagram`, `snapchat`, `youtube`, `enAlert`, `arAlert`, `sport`","academies","`hidden` = '0' AND `status` = '0' AND `enTitle` LIKE '{$_GET["academy"]}'") ){
-		$listOfSports = json_decode($academy[0]["sport"],true);
-		$response["academy"] = $academy[0];
+		$listOfSports = json_decode($academy["sport"],true);
+		$response["academy"] = $academy;
 		if( !empty($listOfSports) && sizeof($listOfSports) > 0  ){
 			for( $i = 0; $i < sizeof($listOfSports); $i++ ){
 				$sportDetails = selectDB2("`id`, `imageurl`, `arTitle`, `enTitle`","sports","`id` = '{$listOfSports[$i]}'");
