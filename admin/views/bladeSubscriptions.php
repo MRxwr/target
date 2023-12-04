@@ -15,9 +15,10 @@
 			<label><?php echo direction("Sports","الرياضات") ?></label>
 			<select id="mySelect3" name="sportId" class="form-control"required>
 				<?php
-				if( $sportsList = selectDB("sports","`status` = '0' AND `hidden` = '0' ORDER BY `enTitle` ASC") ){
-					for( $i =0; $i < sizeof($sportsList); $i++ ){
-						echo "<option value='{$sportsList[$i]["id"]}'>".direction("{$sportsList[$i]["enTitle"]}","{$sportsList[$i]["arTitle"]}")."</option>";
+				if( $academySport = selectDB("academies","`id` = '{$_GET["code"]}'") ){
+					$academySport = json_decode($academySport[0]["sport"],true);
+					for( $i =0; $i < sizeof($academySport); $i++ ){
+						echo "<option value='{$academySport[$i]["id"]}'>".direction("{$academySport[$i]["enTitle"]}","{$academySport[$i]["arTitle"]}")."</option>";
 					}
 				}
 				?>
@@ -92,7 +93,7 @@
 		<?php 
 		$orderBy = direction("enTitle","arTitle");
 		if( $subscriptions = selectDB("subscriptions","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
-			if( $sportTitle = selectDB("sports","`id` = '{$subscriptions["sportId"]}'") ){
+			if( $sportTitle = selectDB("sports","`id` = '{$subscriptions[$i]["sportId"]}'") ){
 				$sportTitle = direction($sportTitle[0]["enTitle"],$sportTitle[0]["arTitle"]);
 			}else{
 				$sportTitle = "";
