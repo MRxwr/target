@@ -23,6 +23,7 @@ if( $subscription = selectDB2("`id`,`enTitle`,`arTitle`,`enSubTitle`,`arSubTitle
     }else{
         $response["genders"] = array();
     }
+    unset($response["academy"]["gender"]);
 
     $listOfDays = json_decode($subscriptionSp[0]["days"],true);
     $response["days"] = array();
