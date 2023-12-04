@@ -94,11 +94,6 @@
 		<?php 
 		$orderBy = direction("enTitle","arTitle");
 		if( $subscriptions = selectDB("subscriptions","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
-			if( $sportTitle = selectDB("sports","`id` = '{$subscriptions[$i]["sportId"]}'") ){
-				$sportTitle = direction($sportTitle[0]["enTitle"],$sportTitle[0]["arTitle"]);
-			}else{
-				$sportTitle = "";
-			}
 			for( $i = 0; $i < sizeof($subscriptions); $i++ ){
 				if ( $subscriptions[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
@@ -108,6 +103,11 @@
 					$icon = "fa fa-eye-slash";
 					$link = "?hide={$subscriptions[$i]["id"]}";
 					$hide = direction("Hide","إخفاء");
+				}
+				if( $sportTitle = selectDB("sports","`id` = '{$subscriptions[$i]["sportId"]}'") ){
+					$sportTitle = direction($sportTitle[0]["enTitle"],$sportTitle[0]["arTitle"]);
+				}else{
+					$sportTitle = "";
 				}
 				?>
 				<tr>
