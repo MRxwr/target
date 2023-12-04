@@ -11,10 +11,11 @@ if( !isset($_GET["academy"]) || empty($_GET["academy"]) ){
 			for( $i = 0; $i < sizeof($listOfSports); $i++ ){
 				$sportDetails = selectDB2("`id`, `imageurl`, `arTitle`, `enTitle`","sports","`id` = '{$listOfSports[$i]}'");
 				array_push($response["academy"]["sport"],$sportDetails[0]);
+				$lastIndex = key(array_slice($response["academy"]["sport"], -1, 1, true));
 				if( $subscriptions = selectDB2("`id`, `enTitle`, `arTitle`, `price`, `priceAfterDiscount`","subscriptions","`academyId` = '{$academy[0]["id"]}' AND `sportId` = '{$listOfSports[$i]}' AND `status` = '0' ORDER BY `price` ASC") ){
-					$response["academy"]["sport"]["subscriptions"] = $subscriptions;
+					$response["academy"]["sport"][$lastIndex]["subscriptions"] = $subscriptions;
 				}else{
-					$response["academy"]["sport"]["subscriptions"] = array();
+					$response["academy"]["sport"][$lastIndex]["subscriptions"] = array();
 				}
 			}
 		}else{
