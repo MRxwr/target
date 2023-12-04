@@ -23,15 +23,7 @@
 			<div class="col-md-12" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
 			<input type="hidden" name="update" value="0">
-            <input type="hidden" name="subscriptionId" value="<?php echo $_GET["code"] ?>">
-            <?php 
-            if( $subscription = selectDB("subscriptions","`id` = '{$_GET["v"]}'") ){
-                $academyId = $subscription[0]["academyId"];
-            }else{
-                $academyId = 0;
-            }
-            ?>
-            <input type="hidden" name="academyId" value="<?php echo $academyId ?>">
+            <input type="hidden" name="academyId" value="<?php echo $_GET["code"] ?>">
 			</div>
 		</div>
 	</form>
@@ -66,7 +58,7 @@
 		<tbody>
 		<?php 
 		$orderBy = direction("enTitle","arTitle");
-		if( $sessions = selectDB("days","`status` = '0' AND `subscriptionId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
+		if( $sessions = selectDB("days","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($sessions); $i++ ){
 				if ( $sessions[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
