@@ -3,37 +3,51 @@
 // 2 cancelled 
 // 3 refunded
 // 4 ended
-if( !isset($_GET["userId"]) || empty($_GET["userId"]) ){
-	$response = array("msg"=>"Please set user id");
-	echo outputError($response);die();
-}else{
-    if( !isset($_GET["type"]) || empty($_GET["type"]) ){
-        $_GET["type"] = 1;
-    }else{
-        $_GET["type"] = $_GET["type"];
-    }
-	if( $orders = selectDB2("`id`,`date`,`academyId`,`gatewayId`","orders","`userId` = '{$_GET["userId"]}' AND `status` = '{$_GET["type"]}'") ){
-        for( $i = 0; $i < sizeof($orders); $i++ ){
-            $academy = selectDB2("`area`,`enTitle`,`arTitle`,`imageurl`,`location`,`sport`","academies","`id` = '{$orders[$i]["academyId"]}'");
-            $sport = selectDB2("`imageurl`","sports","`id` = '{$academy[0]["sport"]}'");
-            $area = selectDB2("`areaEnTitle`, `areaArTitle`","countries","`id` = '{$academy[0]["area"]}'");
-            $response[] = array(
-                "id" => $orders[$i]["id"],
-                "date" => $orders[$i]["date"],
-                "orderId" => $orders[$i]["gatewayId"],
-                "enTitle" => $academy[0]["enTitle"],
-                "arTitle" => $academy[0]["arTitle"],
-                "location" => $academy[0]["location"],
-                "enArea" => $area[0]["areaEnTitle"],
-                "arArea" => $area[0]["areaArTitle"],
-                "academyLogo" => $academy[0]["imageurl"],
-                "sportLogo" => $sport[0]["imageurl"],
-            );
+if( $subscription = selectDB2("`id`,`enTitle`,`arTitle`,`enSubTitle`,`arSubTitle`,`enDetails`,`arDetails`,`numberOfDays`,`price`,`priceAfterDiscount`","subscriptions","`id` = '{$_GET["id"]}' AND `status` = '0' AND `hidden` = '0'") ){
+    $response = $subscription[0];
+    $subscriptionSp = selectDB2("`academyId`,`sportId`,`days`,`branches`,`sessions`","subscriptions","`id` = '{$_GET["id"]}' AND `status` = '0' AND `hidden` = '0'");
+
+    $academy = selectDB2("`id`, `imageurl`, `arTitle`, `enDetails`, `arDetails`, `tiktok`, `instagram`, `snapchat`, `youtube`, `enAlert`, `arAlert`, `sport`","academies","`hidden` = '0' AND `status` = '0' AND `enTitle` LIKE '{$subscriptionSp[0]["academyId"]}'");
+    $response["academy"] = $academy[0];
+
+    $sportDetails = selectDB2("`id`, `imageurl`, `arTitle`, `enTitle`","sports","`id` = '{$subscriptionSp[0]["sportId"]}'");
+    $response["sport"] = $sportDetails[0];
+
+    $listOfDays = json_decode($subscriptionSp[0]["days"],true);
+    $response["days"] = array();
+    if( is_array($listOfDays) && sizeof($listOfDays) > 0  ){
+        for( $i = 0; $i < sizeof($listOfDays); $i++ ){
+            $daysDetails = selectDB2("`id`, `academyId`, `arTitle`, `enTitle`","days","`id` = '{$listOfDays[$i]}' AND `status` = '0' AND `hidden` = '0'");
+            array_push($response["days"],$daysDetails[0]);
         }
     }else{
-        $response = array("msg"=>"we could not find any order for this user id.");
-	    echo outputError($response);die();
+        $response["days"] = array();
     }
+
+    $listOfBranches = json_decode($subscriptionSp[0]["branches"],true);
+    $response["branches"] = array();
+    if( is_array($listOfBranches) && sizeof($listOfBranches) > 0  ){
+        for( $i = 0; $i < sizeof($listOfBranches); $i++ ){
+            $branchDetails = selectDB2("`id`, `academyId`, `arTitle`, `enTitle`","branches","`id` = '{$listOfBranches[$i]}' AND `status` = '0' AND `hidden` = '0'");
+            array_push($response["branches"],$branchDetails[0]);
+        }
+    }else{
+        $response["branches"] = array();
+    }
+
+    $listOfSessions = json_decode($subscriptionSp[0]["sessions"],true);
+    $response["sessions"] = array();
+    if( is_array($listOfSessions) && sizeof($listOfSessions) > 0  ){
+        for( $i = 0; $i < sizeof($listOfSessions); $i++ ){
+            $sessionDetails = selectDB2("`id`, `academyId`, `arTitle`, `enTitle`, `quantity`","sessions","`id` = '{$listOfSessions[$i]}' AND `status` = '0' AND `hidden` = '0'");
+            array_push($response["sessions"],$sessionDetails[0]);
+        }
+    }else{
+        $response["sessions"] = array();
+    }
+}else{
+    $response = array("msg"=>"we could not find any subscription for this id.");
+    echo outputError($response);die();
 }
 echo outputData($response);
 ?>
