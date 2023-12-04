@@ -85,7 +85,7 @@ if( !isset($_POST) ){
     $_POST["fName"] = "{$data["fName"]}}";
     $_POST["mName"] = "{$data["mName"]}}";
     $_POST["lName"] = "{$data["lName"]}}";
-    $_POST["mobile"] = "{$data["mobile"]}";
+    $_POST["phone"] = "{$data["mobile"]}";
     $_POST["email"] = "{$AdminSettings[0]["email"]}";
     $_POST["academyId"] = $data["academyId"];
     $_POST["enAcademy"] = $academyData[0]["enTitle"];
