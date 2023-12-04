@@ -7,11 +7,22 @@ if( $subscription = selectDB2("`id`,`enTitle`,`arTitle`,`enSubTitle`,`arSubTitle
     $response = $subscription[0];
     $subscriptionSp = selectDB2("`academyId`,`sportId`,`days`,`branches`,`sessions`","subscriptions","`id` = '{$_GET["id"]}' AND `status` = '0' AND `hidden` = '0'");
 
-    $academy = selectDB2("`id`, `imageurl`, `arTitle`, `enDetails`, `arDetails`, `tiktok`, `instagram`, `snapchat`, `youtube`, `enAlert`, `arAlert`, `sport`","academies","`hidden` = '0' AND `status` = '0' AND `id` = '{$subscriptionSp[0]["academyId"]}'");
+    $academy = selectDB2("`id`, `imageurl`, `arTitle`, `enDetails`, `arDetails`, `tiktok`, `instagram`, `snapchat`, `youtube`, `enAlert`, `arAlert`, `gender`","academies","`hidden` = '0' AND `status` = '0' AND `id` = '{$subscriptionSp[0]["academyId"]}'");
     $response["academy"] = $academy[0];
 
     $sportDetails = selectDB2("`id`, `imageurl`, `arTitle`, `enTitle`","sports","`id` = '{$subscriptionSp[0]["sportId"]}'");
     $response["sport"] = $sportDetails[0];
+
+    $listOfGenders = json_decode($academy[0]["gender"],true);
+    $response["genders"] = array();
+    if( is_array($listOfGenders) && sizeof($listOfGenders) > 0  ){
+        for( $i = 0; $i < sizeof($listOfGenders); $i++ ){
+            $genderDetails = selectDB2("`id`, `arTitle`, `enTitle`, `enSubTitle`, `arSubTitle`","genders","`id` = '{$listOfGenders[$i]}' AND `status` = '0' AND `hidden` = '0' ORDER BY `order` ASC");
+            array_push($response["genders"],$genderDetails[0]);
+        }
+    }else{
+        $response["genders"] = array();
+    }
 
     $listOfDays = json_decode($subscriptionSp[0]["days"],true);
     $response["days"] = array();
