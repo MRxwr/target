@@ -11,6 +11,19 @@
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
 			
+			<div class="col-md-12">
+			<label><?php echo direction("Sports","الرياضات") ?></label>
+			<select id="mySelect3" name="sportId" class="form-control"required>
+				<?php
+				if( $sportsList = selectDB("sports","`status` = '0' AND `hidden` = '0' ORDER BY `enTitle` ASC") ){
+					for( $i =0; $i < sizeof($sportsList); $i++ ){
+						echo "<option value='{$sportsList[$i]["id"]}'>".direction("{$sportsList[$i]["enTitle"]}","{$sportsList[$i]["arTitle"]}")."</option>";
+					}
+				}
+				?>
+			</select>
+			</div>
+
 			<div class="col-md-6">
 			<label><?php echo direction("English Title","العنوان بالإنجليزي") ?></label>
 			<input type="text" name="enTitle" class="form-control" required>
@@ -65,7 +78,8 @@
 		<thead>
 		<tr>
 		<th>#</th>
-		<th><?php echo direction("English Title","العنوان بالإنجليزي") ?></th>
+		<th><?php echo direction("Sport","الرياضات") ?></th>
+		<th><?php echo direction("Arabic Title","العنوان بالعربي") ?></th>
 		<th><?php echo direction("Arabic Title","العنوان بالعربي") ?></th>
 		<th><?php echo direction("Days","الأيام") ?></th>
 		<th><?php echo direction("Price","السعر") ?></th>
@@ -78,6 +92,11 @@
 		<?php 
 		$orderBy = direction("enTitle","arTitle");
 		if( $subscriptions = selectDB("subscriptions","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
+			if( $sportTitle = selectDB("sports","`id` = '{$subscriptions["sportId"]}'") ){
+				$sportTitle = direction($sportTitle[0]["enTitle"],$sportTitle[0]["arTitle"]);
+			}else{
+				$sportTitle = "";
+			}
 			for( $i = 0; $i < sizeof($subscriptions); $i++ ){
 				if ( $subscriptions[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
@@ -91,6 +110,7 @@
 				?>
 				<tr>
 				<td><?php echo $counter = $i + 1 ?></td>
+				<td><?php echo $sportTitle ?><label style="display:none" id="sport<?php echo $subscriptions[$i]["id"] ?>"><?php echo $subscriptions[$i]["sportId"] ?></label></td>
 				<td id="enTitle<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["enTitle"] ?></td>
 				<td id="arTitle<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["arTitle"] ?></td>
 				<td id="numberOfDays<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["numberOfDays"] ?></td>
@@ -119,16 +139,21 @@
 	<!-- JavaScript -->
 	
 	<script>
+		$(document).ready(function() {
+			$('#mySelect3').select2();
+		});
 		$(document).on("click",".edit", function(){
 			var id = $(this).attr("id");
 			var enTitle = $("#enTitle"+id).html();
 			var arTitle = $("#arTitle"+id).html();
+			var sport = $("#sport"+id).html();
 			var numberOfDays = $("#numberOfDays"+id).html();
 			var price = $("#price"+id).html();
 			var priceAfterDiscount = $("#priceAfterDiscount"+id).html();
             $("input[name=update]").val(id);
 			$("input[name=enTitle]").val(enTitle).focus();
 			$("input[name=arTitle]").val(arTitle);
+			$("select[name=sport]").val(sport);
 			$("input[name=numberOfDays]").val(numberOfDays);
 			$("input[name=price]").val(price);
 			$("input[name=priceAfterDiscount]").val(priceAfterDiscount);
