@@ -155,7 +155,7 @@
             $("input[name=update]").val(id);
 			$("input[name=enTitle]").val(enTitle).focus();
 			$("input[name=arTitle]").val(arTitle);
-			$("select[name=sport]").val(sport).trigger();
+			$("select[name=sport]").val(sport).trigger('change');
 			$("input[name=numberOfDays]").val(numberOfDays);
 			$("input[name=price]").val(price);
 			$("input[name=priceAfterDiscount]").val(priceAfterDiscount);
