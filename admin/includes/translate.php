@@ -1,6 +1,6 @@
 <?php
-$cookieSession = "myAcad";
-$settingsTitle = "MY ACAD";
+$cookieSession = "ontargt";
+$settingsTitle = "TARGET";
 $settingslogo = "logo.png";
 if ( isset($_GET["Lang"]) ){
 	$arrayLangs = ["EN","AR"];
