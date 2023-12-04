@@ -141,9 +141,9 @@ if( !isset($_POST) ){
         'test_mode'=>0,
         "whitelabled" => 1,
         'CurrencyCode'=>'KWD',			
-        'CstFName'=>"{$_POST["fName"]} {$_POST["mName"]} {$_POST["lName"]}",			
+        'CstFName'=>"{$_POST["fName"]} {$data["mName"]} {$data["lName"]}",			
         'Cstemail'=>"{$AdminSettings[0]["email"]}",
-        'CstMobile'=>"{$_POST["mobile"]}",
+        'CstMobile'=>"{$data["mobile"]}",
         'ExtraMerchantsData'=> json_encode($extraMerchantData),//Optional for multivendor API
     );
     
