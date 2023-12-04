@@ -3,7 +3,7 @@ if( !isset($_GET["academy"]) || empty($_GET["academy"]) ){
 	$response = array("msg"=>"Please set academy id");
 	echo outputError($response);die();
 }else{
-	if( $academy = selectDB2("`id`, `imageurl`, `arTitle`, `enDetails`, `arDetails`, `tiktok`, `instagram`, `snapchat`, `youtube`, `enAlert`, `arAlert`, `sport`","academies","`hidden` = '0' AND `status` = '0' AND `enTitle` = '%{$_GET["academy"]}%'") ){
+	if( $academy = selectDB2("`id`, `imageurl`, `arTitle`, `enDetails`, `arDetails`, `tiktok`, `instagram`, `snapchat`, `youtube`, `enAlert`, `arAlert`, `sport`","academies","`hidden` = '0' AND `status` = '0' AND `enTitle` LIKE '{$_GET["academy"]}'") ){
 		$listOfSports = json_decode($academy[0]["sport"],true);
 		$response["academy"] = $academy[0];
 		if( !empty($listOfSports) && sizeof($listOfSports) > 0  ){
