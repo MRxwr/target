@@ -4,6 +4,7 @@ if( !isset($_POST) ){
 	echo outputError($response);die();
 }else{
     $data = $_POST;
+    print_r($data);
     unset($_POST);
     
     //checking voucher
