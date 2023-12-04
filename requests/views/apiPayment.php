@@ -102,13 +102,13 @@ if( !isset($_POST) ){
     $_POST["genderId"] = $data["genderId"];
     $_POST["enGender"] = "{$genderData[0]["enTitle"]} {$genderData[0]["enSubTitle"]}";
     $_POST["arGender"] = "{$genderData[0]["arTitle"]} {$genderData[0]["arSubTitle"]}";
-    $_POST["subscriptionId"] = $data[0]["subscriptionId"];
+    $_POST["subscriptionId"] = $data["subscriptionId"];
     $_POST["enSubscription"] = $subscriptionData[0]["enTitle"];
     $_POST["arSubscription"] = $subscriptionData[0]["arTitle"];
     $_POST["subscriptionQuantity"] = 1;
     $_POST["subscriptionPrice"] = $price;
     $_POST["total"] = $totalPrice;
-    $_POST["paymentMethod"] = $paymentMethod;
+    $_POST["paymentMethod"] = $data["paymentMethod"];
     $_POST["voucher"] = $data["voucher"];
 
     //calculate totals prices that should be sent to upayments 
