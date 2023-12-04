@@ -155,8 +155,6 @@
 				<td><?php echo $academyTitle ?></td>
 				<td class="text-nowrap">
 					<a href="?v=Subscriptions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-success"><?php echo direction("Subscriptions","الإشتراكات") ?></a>
-					<a href="?v=Branches&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Branches","الأفرع") ?></a>
-					<a href="?v=Days&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-primary"><?php echo direction("Days","الأيام") ?></a>
 					<a href="?v=Sessions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-default"><?php echo direction("Sessions","المحاضرات") ?></a>
 					<a id="<?php echo $academies[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل")  ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
