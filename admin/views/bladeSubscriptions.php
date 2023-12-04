@@ -18,7 +18,8 @@
 				if( $academySport = selectDB("academies","`id` = '{$_GET["code"]}'") ){
 					$academySport = json_decode($academySport[0]["sport"],true);
 					for( $i =0; $i < sizeof($academySport); $i++ ){
-						echo "<option value='{$academySport[$i]["id"]}'>".direction("{$academySport[$i]["enTitle"]}","{$academySport[$i]["arTitle"]}")."</option>";
+						$sport = selectDB("sports","`id` = '{$academySport[$i]}'");
+						echo "<option value='{$sport[0]["id"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}")."</option>";
 					}
 				}
 				?>
