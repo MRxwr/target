@@ -10,6 +10,20 @@
 <div class="panel-body">
 	<form class="" method="POST" action="?v=<?php echo $_GET["v"] ?>" enctype="multipart/form-data">
 		<div class="row m-0">
+
+			<div class="col-md-12">
+			<label><?php echo direction("Sports","الرياضات") ?></label>
+			<select id="mySelect3" name="sport" class="form-control" required>
+				<?php
+				if( $sportsList = selectDB("sports","`status` = '0' AND `hidden` = '0' ORDER BY `enTitle` ASC") ){
+					for( $i =0; $i < sizeof($sportsList); $i++ ){
+						echo "<option value='{$sportsList[$i]["id"]}'>".direction("{$sportsList[$i]["enTitle"]}","{$sportsList[$i]["arTitle"]}")."</option>";
+					}
+				}
+				?>
+			</select>
+			</div>
+
 			<div class="col-md-6">
 			<label><?php echo direction("Name","الإسم") ?></label>
 			<input type="text" name="fullName" class="form-control" required>
