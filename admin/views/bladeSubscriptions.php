@@ -11,7 +11,7 @@
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
 			
-			<div class="col-md-12">
+			<div class="col-md-6">
 			<label><?php echo direction("Sports","الرياضات") ?></label>
 			<select id="mySelect3" name="sportId" class="form-control"required>
 				<?php
@@ -30,7 +30,7 @@
 			<label><?php echo direction("Branches","الأفرع") ?></label>
 			<select id="mySelect" name="branches[]" multiple class="form-control"required>
 				<?php
-				if( $academyBranches = selectDB("branches","`academyId` = '{$_GET["code"]}'") ){
+				if( $academyBranches = selectDB("branches","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyBranches); $i++ ){
 						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
 					}
@@ -43,9 +43,22 @@
 			<label><?php echo direction("Days","الأيام") ?></label>
 			<select id="mySelect2" name="days[]" multiple class="form-control"required>
 				<?php
-				if( $academyDays = selectDB("days","`academyId` = '{$_GET["code"]}'") ){
+				if( $academyDays = selectDB("days","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyDays); $i++ ){
 						echo "<option value='{$academyDays[$i]["id"]}'>".direction("{$academyDays[$i]["enTitle"]}","{$academyDays[$i]["arTitle"]}")."</option>";
+					}
+				}
+				?>
+			</select>
+			</div>
+
+			<div class="col-md-6">
+			<label><?php echo direction("Sessions","الحصص") ?></label>
+			<select id="mySelect1" name="sessions[]" multiple class="form-control"required>
+				<?php
+				if( $academyBranches = selectDB("sessions","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
+					for( $i =0; $i < sizeof($academyBranches); $i++ ){
+						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
 					}
 				}
 				?>
@@ -175,6 +188,7 @@
 					<label id="arSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arSubTitle"] ?></label>
 					<label id="days<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["days"] ?></label>
 					<label id="branches<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["branches"] ?></label>
+					<label id="sessions<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["sessions"] ?></label>
 				</td>
 				</tr>
 				<?php
@@ -195,6 +209,7 @@
 	<script>
 		$(document).ready(function() {
 			$('#mySelect').select2();
+			$('#mySelect1').select2();
 			$('#mySelect2').select2();
 			$('#mySelect3').select2();
 		});
@@ -208,6 +223,7 @@
 			var arDetails = $("#arDetails"+id).html();
 			var sport = $("#sport"+id).html();
 			var branches = $("#branches"+id).html();
+			var sessions = $("#sessions"+id).html();
 			var days = $("#days"+id).html();
 			var numberOfDays = $("#numberOfDays"+id).html();
 			var price = $("#price"+id).html();
@@ -229,10 +245,13 @@
 			$("input[name=priceAfterDiscount]").val(priceAfterDiscount);
 			var daysArray = JSON.parse(days);
 			var branchesArray = JSON.parse(branches);
+			var sessionsArray = JSON.parse(sessions);
 			$('#mySelect').val(null).trigger('change');
+			$('#mySelect1').val(null).trigger('change');
 			$('#mySelect2').val(null).trigger('change');
 			setSelectedOptions(daysArray, "mySelect2");
 			setSelectedOptions(branchesArray, "mySelect");
+			setSelectedOptions(sessionsArray, "mySelect1");
 		})
 		function setSelectedOptions(ids, selectId) {
 			var $select = $('#' + selectId);
