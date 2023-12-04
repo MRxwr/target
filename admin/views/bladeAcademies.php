@@ -16,7 +16,7 @@
 				<?php
 				if( $sportsList = selectDB("sports","`status` = '0' AND `hidden` = '0' ORDER BY `enTitle` ASC") ){
 					for( $i =0; $i < sizeof($sportsList); $i++ ){
-						echo "<option value='{$sportsList[$i]["id"]}'>{$sportsList[$i]["enTitle"]}</option>";
+						echo "<option value='{$sportsList[$i]["id"]}'>".direction("{$sportsList[$i]["enTitle"]}","{$sportsList[$i]["arTitle"]}")."</option>";
 					}
 				}
 				?>
