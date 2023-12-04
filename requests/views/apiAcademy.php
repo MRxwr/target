@@ -9,8 +9,7 @@ if( !isset($_GET["academy"]) || empty($_GET["academy"]) ){
 		if( !empty($listOfSports) && sizeof($listOfSports) > 0  ){
 			for( $i = 0; $i < sizeof($listOfSports); $i++ ){
 				$sportDetails = selectDB2("`id`, `imageurl`, `arTitle`, `enTitle`","sports","`id` = '{$listOfSports[$i]}'");
-				print_r($sportDetails[0]);
-				array_push($response["academy"]["sport"],$sportDetails[0]);
+				$response["academy"]["sport"][] = $sportDetails[0];
 			}
 		}else{
 			$response["academy"]["sport"] = array();
