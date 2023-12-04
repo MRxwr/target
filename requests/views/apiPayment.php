@@ -5,14 +5,6 @@ if( !isset($_POST) ){
 }else{
     $data = $_POST;
     unset($_POST);
-    $user = $data["user"];
-    $academy = $data["academy"];
-    $session = $data["session"];
-    $subscription = $data["subscription"];
-    $subscriptionQuantity = $data["subscriptionQuantity"]; 
-    $jersyQuantity = $data["jersyQuantity"];
-    $paymentMethod = $data["paymentMethod"];
-    $voucher = $data["voucher"];
     
     //checking voucher
     $numberOfTimesAvalability = false;
@@ -56,98 +48,84 @@ if( !isset($_POST) ){
     }
 
     //checking session information
-    if( $sessionData = selectDB("sessions","`id` = '{$session}' AND `quantity` >= '{$subscriptionQuantity}'")){}else{
+    if( $sessionData = selectDB("sessions","`id` = '{$data["sessionId"]}' AND `quantity` > '0'")){}else{
         $response = array(
             "msg" => 'No sessions available anymore.',
         );
         echo outputError($response);die();
     }
 
-    // checking user data
-    if( $userData = selectDB("users","`id` LIKE '{$user}'") ){}
-
     //checking adamin settings for main IBAN
     if( $AdminSettings = selectDB("settings","`id` = '1'") ){}
 
-    //checking jersy Inforamtion
-    if( $academyData = selectDB("academies","`id` = '{$academy}'")){
-        $jersyPrice = ( $jersyQuantity != 0 ) ? (float)$academyData[0]["clothesPrice"]*(float)$data["jersyQuantity"] : 0 ;
-    }
+    //checking academy Inforamtion
+    if( $academyData = selectDB("academies","`id` = '{$data["academyId"]}'")){}
+    if( $dayData = selectDB("days","`id` = '{$data["dayId"]}'")){}
+    if( $branchData = selectDB("branches","`id` = '{$data["branchId"]}'")){}
+    if( $genderData = selectDB("genders","`id` = '{$data["genderId"]}'")){}
 
     //checking subscription information
-    if( $subscriptionData = selectDB("subscriptions","`id` = '{$subscription}'")){
+    if( $subscriptionData = selectDB("subscriptions","`id` = '{$data["subscriptionId"]}'")){
         $price = ($subscriptionData[0]["priceAfterDiscount"] != 0 ) ? $subscriptionData[0]["priceAfterDiscount"] : $subscriptionData[0]["price"] ;
         if( $numberOfTimesAvalability && $academyAprroved ){
             $price = $subscriptionData[0]["price"];
         }
-        $totalPrice = (float)$price*(float)$subscriptionQuantity;
+        $totalPrice = (float)$price;
     }else{
         $totalPrice = 0;
         $price = 0;
     }
 
-    //checking payment method
-    if( $paymentMethod == 3 ){
-        $paymentMethod = 1;
-        $wallet = 1;
-    }else{
-        $wallet = 0;
-    }
-
     //calulation of total prices
     $newTotal = (float)$totalPrice;
-    $fullAmount = (float)$jersyPrice+(float)$totalPrice;
     if( $numberOfTimesAvalability && $academyAprroved ){
         $newTotal = ( $voucherType == 0 ) ? ($newTotal*(1-($voucherAmount/100))) : $newTotal - $voucherAmount;
-        $fullAmount = ( $voucherType == 0 ) ? ($fullAmount*(1-($voucherAmount/100))) : $fullAmount - $voucherAmount;
     }
 
-    $_POST["name"] = "{$userData[0]["firstName"]} {$userData[0]["lastName"]}";
-    $_POST["phone"] = "{$userData[0]["phone"]}";
-    $_POST["email"] = "{$userData[0]["email"]}";
-    $_POST["userId"] = "{$userData[0]["id"]}";
-    $_POST["academyId"] = $academyData[0]["id"];
+    $_POST["fName"] = "{$data["fName"]}}";
+    $_POST["mName"] = "{$data["mName"]}}";
+    $_POST["lName"] = "{$data["lName"]}}";
+    $_POST["mobile"] = "{$data["mobile"]}";
+    $_POST["email"] = "{$AdminSettings["email"]}";
+    $_POST["academyId"] = $data["academyId"];
     $_POST["enAcademy"] = $academyData[0]["enTitle"];
     $_POST["arAcademy"] = $academyData[0]["arTitle"];
-    $_POST["sessionId"] = $sessionData[0]["id"];
+    $_POST["sessionId"] = $data["sessionId"];
     $_POST["enSession"] = $sessionData[0]["enTitle"];
     $_POST["arSession"] = $sessionData[0]["arTitle"];
-    $_POST["subscriptionId"] = $subscriptionData[0]["id"];
+    $_POST["branchId"] = $data["branchId"];
+    $_POST["enBranch"] = $branchData[0]["enTitle"];
+    $_POST["arBranch"] = $branchData[0]["arTitle"];
+    $_POST["dayId"] = $data["dayId"];
+    $_POST["enDay"] = $dayData[0]["enTitle"];
+    $_POST["arDay"] = $dayData[0]["arTitle"];
+    $_POST["genderId"] = $data["genderId"];
+    $_POST["enGender"] = "{$genderData[0]["enTitle"]} {$genderData[0]["enSubTitle"]}";
+    $_POST["arGender"] = "{$genderData[0]["arTitle"]} {$genderData[0]["arSubTitle"]}";
+    $_POST["subscriptionId"] = $data[0]["subscriptionId"];
     $_POST["enSubscription"] = $subscriptionData[0]["enTitle"];
     $_POST["arSubscription"] = $subscriptionData[0]["arTitle"];
-    $_POST["subscriptionQuantity"] = $subscriptionQuantity;
+    $_POST["subscriptionQuantity"] = 1;
     $_POST["subscriptionPrice"] = $price;
-    $_POST["jersyQuantity"] = $jersyQuantity;
-    $_POST["jersyPrice"] = $academyData[0]["clothesPrice"];
-    $_POST["totalSubscriptionPrice"] = $totalPrice;
-    $_POST["totalJersyPrice"] = $jersyPrice;
-    $_POST["total"] = $fullAmount;
+    $_POST["total"] = $totalPrice;
     $_POST["paymentMethod"] = $paymentMethod;
     $_POST["voucher"] = $data["voucher"];
 
     //calculate totals prices that should be sent to upayments 
     if( $data["paymentMethod"] == 1 ){
-        $myacadDeposit = $academyData[0]["charges"];
-        $newTotal = $newTotal - $myacadDeposit;
         $paymentGateway = "Knet";
     }elseif( $data["paymentMethod"] == 2 ){
-        $myacadDeposit = $newTotal * ( $academyData[0]["cc_charge"] / 100 );
-        $newTotal = $newTotal - $myacadDeposit;
         $paymentGateway = "cc";
-    }else{
-        $myacadDeposit = 1;
-        $newTotal = $newTotal - $myacadDeposit;
-        $paymentGateway = "Knet";
     }
 
     //preparing upayment payload
     $extraMerchantData =  array(
-        'amounts' => array($myacadDeposit,$newTotal),
-        'charges' => array(0.250,0),
-        'chargeType' => array('fixed','fixed'),
-        'cc_charges' => array(0.250,0),
-        'cc_chargeType' => array('fixed','percentage'),
-        'ibans' => array("{$AdminSettings[0]["mainIban"]}","{$academyData[0]["iban"]}")
+        'amounts' => array($newTotal),
+        'charges' => array(0.250),
+        'chargeType' => array('fixed'),
+        'cc_charges' => array(3),
+        'cc_chargeType' => array('percentage'),
+        'ibans' => array("{$academyData[0]["iban"]}")
     );
     $comon_array = array(
         "merchant_id"=> "24072",
@@ -156,16 +134,16 @@ if( !isset($_POST) ){
         "api_key"=> password_hash('afmceR6nHQaIehhpOel036LBhC8hihuB8iNh9ACF',PASSWORD_BCRYPT),
         "payment_gateway" => "{$paymentGateway}",
         "order_id"=> time(),
-        'total_price'=>$fullAmount,
-        'success_url'=>'https://myacad.app/index.php',
-        'error_url'=>'https://myacad.app/index.php',
-        'notifyURL'=>'https://myacad.app/index.php',
+        'total_price'=>$newTotal,
+        'success_url'=>'https://createkuwait.com/index.php',
+        'error_url'=>'https://createkuwait.com/index.php',
+        'notifyURL'=>'https://createkuwait.com/index.php',
         'test_mode'=>0,
         "whitelabled" => 1,
         'CurrencyCode'=>'KWD',			
-        'CstFName'=>"{$_POST["name"]}",			
-        'Cstemail'=>"{$_POST["email"]}",
-        'CstMobile'=>"{$_POST["phone"]}",
+        'CstFName'=>"{$_POST["fName"]} {$_POST["mName"]} {$_POST["lName"]}",			
+        'Cstemail'=>"{$AdminSettings["email"]}",
+        'CstMobile'=>"{$_POST["mobile"]}",
         'ExtraMerchantsData'=> json_encode($extraMerchantData),//Optional for multivendor API
     );
     
@@ -189,25 +167,12 @@ if( !isset($_POST) ){
         $_POST["gatewayURL"] = $response["paymentURL"];
         $_POST["apiPayload"] = json_encode($comon_array);
         $_POST["apiResponse"] = json_encode($response);
-        $_POST["paymentMethod"] = ( $wallet == 1 ) ? 3 : $paymentMethod;
         $response["data"] = array(
             "paymentURL" => $response["paymentURL"],
             "InvoiceId"  => $comon_array["order_id"]
         );
         insertDB2("orders",$_POST);
-        if( $wallet == 1 ){
-            $array["data"] = array(
-                "paymentURL" => "index.php?v=Success&OrderID={$_POST["gatewayId"]}",
-                "InvoiceId" => $comon_array["order_id"]
-            );
-            if( $user = selectDB("users","`id` = {$_POST["userId"]}") ){
-                $newWallet = $user[0]["wallet"] - $_POST["total"];
-                updateDB("users",array("wallet" => $newWallet),"`id` = {$_POST["userId"]}");
-            }
-            echo outputData($array);
-        }else{
-            echo outputData($response);
-        }
+        echo outputData($response);
     }else{
         $response = array(
             "msg" => 'Error while proccessing payment',
