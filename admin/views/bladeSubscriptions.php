@@ -48,7 +48,7 @@
 
 			<div class="col-md-6">
 			<label><?php echo direction("English Details","التفاصيل بالإنجليزي") ?></label>
-			<textarea name="enDetails" class="form-control" style="width:100%;height:250px" required></teaxtarea>
+			<textarea name="enDetails" class="form-control" style="width:100%;height:250px" required></textarea>
 			</div>
 			
 			<div class="col-md-6">
