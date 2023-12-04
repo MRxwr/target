@@ -101,7 +101,7 @@
 		<tr>
 		<th>#</th>
 		<th><?php echo direction("Sport","الرياضات") ?></th>
-		<th><?php echo direction("Arabic Title","العنوان بالعربي") ?></th>
+		<th><?php echo direction("English Title","العنوان الإنجليزي") ?></th>
 		<th><?php echo direction("Arabic Title","العنوان بالعربي") ?></th>
 		<th><?php echo direction("Days","الأيام") ?></th>
 		<th><?php echo direction("Price","السعر") ?></th>
@@ -142,7 +142,11 @@
 					<a id="<?php echo $subscriptions[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
 					<a href="<?php echo $link . "&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>			
-					<a href="<?php echo "?delId={$subscriptions[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>			
+					<a href="<?php echo "?delId={$subscriptions[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>
+					<label id="enDetails<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["enDetails"] ?></label>
+					<label id="arDetails<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arDetails"] ?></label>
+					<label id="enSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["enSubTitle"] ?></label>
+					<label id="arSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arSubTitle"] ?></label>
 				</td>
 				</tr>
 				<?php
@@ -168,6 +172,10 @@
 			var id = $(this).attr("id");
 			var enTitle = $("#enTitle"+id).html();
 			var arTitle = $("#arTitle"+id).html();
+			var arSubTitle = $("#arSubTitle"+id).html();
+			var enSubTitle = $("#enSubTitle"+id).html();
+			var enDetails = $("#enDetails"+id).html();
+			var arDetails = $("#arDetails"+id).html();
 			var sport = $("#sport"+id).html();
 			var numberOfDays = $("#numberOfDays"+id).html();
 			var price = $("#price"+id).html();
@@ -175,6 +183,10 @@
             $("input[name=update]").val(id);
 			$("input[name=enTitle]").val(enTitle).focus();
 			$("input[name=arTitle]").val(arTitle);
+			$("input[name=arSubTitle]").val(arSubTitle);
+			$("input[name=enSubTitle]").val(enSubTitle);
+			$("textarea[name=enDetails]").val(enDetails);
+			$("textarea[name=arDetails]").val(arDetails);
 			var $select = $('#mySelect3');
 			$select.val(null).trigger('change');
 			var $option = $select.find('option[value="' + sport + '"]');
