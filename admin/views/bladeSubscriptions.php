@@ -36,6 +36,26 @@
 			<input type="text" name="arTitle" class="form-control" required>
 			</div>
 
+			<div class="col-md-6">
+			<label><?php echo direction("English Sub-Title","العنوان الفرعي بالإنجليزي") ?></label>
+			<input type="text" name="enSubTitle" class="form-control" required>
+			</div>
+			
+			<div class="col-md-6">
+			<label><?php echo direction("Arabic Sub-Title","العنوان الفرعي بالعربي") ?></label>
+			<input type="text" name="arSubTitle" class="form-control" required>
+			</div>
+
+			<div class="col-md-6">
+			<label><?php echo direction("English Details","التفاصيل بالإنجليزي") ?></label>
+			<textarea name="enDetails" class="form-control" style="width:100%;height:250px" required></teaxtarea>
+			</div>
+			
+			<div class="col-md-6">
+			<label><?php echo direction("Arabic Details","التفاصيل بالعربي") ?></label>
+			<textarea name="arDetails" class="form-control" style="width:100%;height:250px"  required></textarea>
+			</div>
+
             <div class="col-md-4">
 			<label><?php echo direction("Number of Days","عدد الأيام") ?></label>
 			<input type="number" name="numberOfDays" class="form-control" value="0" required>
