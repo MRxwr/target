@@ -27,6 +27,32 @@
 			</div>
 
 			<div class="col-md-6">
+			<label><?php echo direction("Branches","الأفرع") ?></label>
+			<select id="mySelect" name="branches[]" multiple class="form-control"required>
+				<?php
+				if( $academyBranches = selectDB("branches","`academyId` = '{$_GET["code"]}'") ){
+					for( $i =0; $i < sizeof($academyBranches); $i++ ){
+						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
+					}
+				}
+				?>
+			</select>
+			</div>
+
+			<div class="col-md-6">
+			<label><?php echo direction("Days","الأيام") ?></label>
+			<select id="mySelect2" name="days[]" multiple class="form-control"required>
+				<?php
+				if( $academyDays = selectDB("days","`academyId` = '{$_GET["code"]}'") ){
+					for( $i =0; $i < sizeof($academyDays); $i++ ){
+						echo "<option value='{$academyDays[$i]["id"]}'>".direction("{$academyDays[$i]["enTitle"]}","{$academyDays[$i]["arTitle"]}")."</option>";
+					}
+				}
+				?>
+			</select>
+			</div>
+
+			<div class="col-md-6">
 			<label><?php echo direction("English Title","العنوان بالإنجليزي") ?></label>
 			<input type="text" name="enTitle" class="form-control" required>
 			</div>
@@ -139,8 +165,6 @@
 				<td id="price<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["price"] ?></td>
 				<td id="priceAfterDiscount<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["priceAfterDiscount"] ?></td>
 				<td class="text-nowrap">
-					<a href="?v=Branches&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Branches","الأفرع") ?></a>
-					<a href="?v=Days&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-primary"><?php echo direction("Days","الأيام") ?></a>
 					<a id="<?php echo $subscriptions[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
 					<a href="<?php echo $link . "&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>			
@@ -149,6 +173,8 @@
 					<label id="arDetails<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arDetails"] ?></label>
 					<label id="enSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["enSubTitle"] ?></label>
 					<label id="arSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arSubTitle"] ?></label>
+					<label id="days<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["days"] ?></label>
+					<label id="branches<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["branches"] ?></label>
 				</td>
 				</tr>
 				<?php
@@ -168,6 +194,8 @@
 	
 	<script>
 		$(document).ready(function() {
+			$('#mySelect').select2();
+			$('#mySelect2').select2();
 			$('#mySelect3').select2();
 		});
 		$(document).on("click",".edit", function(){
@@ -179,6 +207,8 @@
 			var enDetails = $("#enDetails"+id).html();
 			var arDetails = $("#arDetails"+id).html();
 			var sport = $("#sport"+id).html();
+			var branches = $("#branches"+id).html();
+			var days = $("#days"+id).html();
 			var numberOfDays = $("#numberOfDays"+id).html();
 			var price = $("#price"+id).html();
 			var priceAfterDiscount = $("#priceAfterDiscount"+id).html();
@@ -197,5 +227,23 @@
 			$("input[name=numberOfDays]").val(numberOfDays);
 			$("input[name=price]").val(price);
 			$("input[name=priceAfterDiscount]").val(priceAfterDiscount);
+			var daysArray = JSON.parse(days);
+			var branchesArray = JSON.parse(branches);
+			$('#mySelect').val(null).trigger('change');
+			$('#mySelect2').val(null).trigger('change');
+			setSelectedOptions(daysArray, "mySelect2");
+			setSelectedOptions(branchesArray, "mySelect");
 		})
+		function setSelectedOptions(ids, selectId) {
+			var $select = $('#' + selectId);
+			$select.val(null).trigger('change');
+			for (var i = 0; i < ids.length; i++) {
+				var id = ids[i];
+				var $option = $select.find('option[value="' + id + '"]');
+				if ($option.length > 0) {
+					$option.prop('selected', true);
+				}
+			}
+			$select.trigger('change');
+		}
 	</script>
