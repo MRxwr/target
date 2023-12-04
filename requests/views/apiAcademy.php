@@ -1,5 +1,5 @@
 <?php 
-if( !isset($_GET["academyId"]) || empty($_GET["academyId"]) ){
+if( !isset($_GET["academy"]) || empty($_GET["academy"]) ){
 	$response = array("msg"=>"Please set academy id");
 	echo outputError($response);die();
 }else{
