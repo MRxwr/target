@@ -8,7 +8,7 @@ if( isset($_GET["page"]) && $_GET["page"] == "success" ){
 }elseif( isset($_GET["page"]) && $_GET["page"] == "failure" ){
 	die();
 }
-print_r(getallheaders()["targetheader"]);die();
+print_r(getallheaders());die();
 if ( isset(getallheaders()["targetheader"]) ){
 	$headerAPI =  getallheaders()["targetheader"];
 }else{
