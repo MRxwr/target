@@ -82,9 +82,9 @@ if( !isset($_POST) ){
         $newTotal = ( $voucherType == 0 ) ? ($newTotal*(1-($voucherAmount/100))) : $newTotal - $voucherAmount;
     }
 
-    $_POST["fName"] = "{$data["fName"]}}";
-    $_POST["mName"] = "{$data["mName"]}}";
-    $_POST["lName"] = "{$data["lName"]}}";
+    $_POST["fName"] = "{$data["fName"]}";
+    $_POST["mName"] = "{$data["mName"]}";
+    $_POST["lName"] = "{$data["lName"]}";
     $_POST["phone"] = "{$data["mobile"]}";
     $_POST["email"] = "{$AdminSettings[0]["email"]}";
     $_POST["academyId"] = $data["academyId"];
