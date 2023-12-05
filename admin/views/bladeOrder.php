@@ -77,13 +77,13 @@ td{
                 ?>
             </td>
             <td>
-                <span class='Price txt-dark'><?php echo numTo3Float($order[0]["SubscriptionPrice"]) ?>KD</span>
+                <span class='Price txt-dark'><?php echo numTo3Float($order[0]["subscriptionPrice"]) ?>KD</span>
             </td>
         </tr>
             
         <tr class='txt-dark'>
             <td><?php echo direction("Voucher","كود الخصم") ?></td>
-            <td><?php echo $order[0]["voucher"] ?>
+            <td><?php echo $voucher = ( !empty($order[0]["voucher"]) ) ? $order[0]["voucher"] : "" ; ?>
             </td>
         </tr>
 
