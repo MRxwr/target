@@ -64,7 +64,6 @@
 		<option value="0"><?php echo direction("All","الكل") ?></option>
 		<option value="1">KNET</option>
 		<option value="2">VISA</option>
-		<option value="3">WALLET</option>
 	</select>
 	</div>	
 	</div>
