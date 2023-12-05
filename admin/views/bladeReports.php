@@ -144,7 +144,7 @@ if ( isset($_POST["endDate"]) && $orders = selectDB("orders",$where) ){
 	for( $i = 0; $i < sizeof($orders); $i++ ){
 		$status = [direction("Pending","إنتظار"),direction("Successful","ناجحه"),direction("Failed","فاشلة"),direction("Cancelled","ملغية"),direction("Ended","إنتهى")];
         $statusColor = ["default","success","info","danger","warning"];
-		$paymentMethods = ["","KNET","VISA","WALLET"];
+		$paymentMethods = ["","KNET","VISA"];
 		for( $y = 0; $y < sizeof($status); $y++ ){
 			if( $orders[$i]["status"] == $y ){
 				$orderStatus = $status[$y];
@@ -160,7 +160,7 @@ if ( isset($_POST["endDate"]) && $orders = selectDB("orders",$where) ){
 	<tr>
 	<td><?php echo sprintf("%05d", $orders[$i]["id"]) ?></td>
 	<td><?php echo $orders[$i]["date"] ?></td>
-	<td><?php echo $orders[$i]["name"] ?></td>
+	<td><?php echo "{$order[$i]["fName"]} {$order[$i]["mName"]} {$order[$i]["lName"]}" ?></td>
 	<td><?php echo $orders[$i]["phone"] ?></td>
 	<td><?php echo direction($orders[$i]["enAcademy"],$orders[$i]["arAcademy"]) ?></td>
 	<td><?php echo $orders[$i]["voucher"] ?></td>
