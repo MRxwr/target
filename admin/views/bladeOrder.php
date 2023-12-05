@@ -41,7 +41,7 @@ td{
 	</tr>
 	<tr>
 		<td style="text-align: center" class="txt-dark">
-		<?php echo direction("Order","طلب") ?> #<?php echo $order[0]["id"]; ?>
+		<?php echo direction("Subscription","حجز") ?> #<?php echo $order[0]["id"]; ?>
 		</td>
 	</tr>
 </table>
@@ -52,37 +52,32 @@ td{
     <address>
         <span class="txt-dark head-font capitalize-font mb-5"><?php echo direction("Date","التاريخ") ?>: <?php echo $order[0]["date"] ?></span><br>
         <span class="address-head mb-5"><?php echo direction("Phone","الهاتف") ?>: <?php echo $order[0]["phone"] ?></span><br>
-        <span class="address-head mb-5"><?php echo direction("Name","الإسم") ?>: <?php echo $order[0]["name"] ?></span>
+        <span class="address-head mb-5"><?php echo direction("Name","الإسم") ?>: <?php echo "{$order[0]["fName"]} {$order[0]["mName"]} {$order[0]["lName"]}" ?></span>
     </address>
     </td>
 </tr>
-	<tr>
-		<td colspan="2" style="width: 100%;text-align: right;"class="txt-dark"><span class="address-head mb-5"><?php echo direction("Email","البريد الإلكتروني") ?>: <?php echo $order[0]["email"] ?></span></td>
-	</tr>
 </table>
 
 <div class="invoice-bill-table">
 <div class="table-responsive">
 <table class="table table-hover" style="width:100%">
     <tr>
-    <td style="text-align: left;" class="txt-dark"><?php echo direction("Items","المنتجات") ?></td>
+    <td style="text-align: left;" class="txt-dark"><?php echo direction("Subscription","الحجز") ?></td>
     <td style="text-align: left;" class="txt-dark"><?php echo direction("Price","السعر") ?></td>
     </tr>
     <tbody>
         <tr>
             <td class='txt-dark' style='white-space: break-spaces;'>
-                <?php echo "{$order[0]["subscriptionQuantity"]}x " . direction($order[0]["enSession"],$order[0]["arSession"]) . " / " . direction($order[0]["enSubscription"],$order[0]["arSubscription"])?>
+                <?php echo 
+                        direction($order[0]["enAcademy"],$order[0]["arAcademy"]) . " - " .
+                        direction($order[0]["enSubscription"],$order[0]["arSubscription"]) . " - " . 
+                        direction($order[0]["enBranch"],$order[0]["arBranch"]) . " - " . 
+                        direction($order[0]["enDay"],$order[0]["arDay"]) . " - " . 
+                        direction($order[0]["enSession"],$order[0]["arSession"])
+                ?>
             </td>
             <td>
-                <span class='Price txt-dark'><?php echo numTo3Float($order[0]["totalSubscriptionPrice"]) ?>KD</span>
-            </td>
-        </tr>
-        <tr>
-            <td class='txt-dark' style='white-space: break-spaces;'>
-                <?php echo "{$order[0]["jersyQuantity"]}x Jersey of " . direction($order[0]["enAcademy"],$order[0]["arAcademy"]) ?>
-            </td>
-            <td>
-                <span class='Price txt-dark'><?php echo numTo3Float($order[0]["totalJersyPrice"]) ?>KD</span>
+                <span class='Price txt-dark'><?php echo numTo3Float($order[0]["SubscriptionPrice"]) ?>KD</span>
             </td>
         </tr>
             
@@ -99,8 +94,6 @@ td{
                     $paymentMethod = "KNET";
                 }elseif( $order[0]["paymentMethod"] == 2 ){
                     $paymentMethod = "VISA";
-                }else{
-                    $paymentMethod = "Wallet";
                 }
                 echo $paymentMethod ?>
             </td>
