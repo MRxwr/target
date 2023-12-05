@@ -27,7 +27,7 @@
 				<td id="firstName<?php echo $users[$i]["id"]?>" ><?php echo "{$users[$i]["fName"]} {$users[$i]["mName"]} {$users[$i]["lName"]}" ?></td>
 				<td id="mobile<?php echo $users[$i]["id"]?>" ><?php echo $users[$i]["phone"] ?></td>
 				<td class="text-nowrap">
-				<a href="?v=UserInfo&id=<?php echo $users[$i]["id"] ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <?php echo direction("More","المزيد") ?>
+				<a href="?v=UserInfo&id=<?php echo $users[$i]["id"] ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo direction("More","المزيد") ?>"> <?php echo direction("More","المزيد") ?>
 				</a>			
 				</td>
 				</tr>
