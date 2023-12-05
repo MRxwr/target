@@ -159,7 +159,7 @@ if ( isset($_POST["endDate"]) && $orders = selectDB("orders",$where) ){
 	<tr>
 	<td><?php echo sprintf("%05d", $orders[$i]["id"]) ?></td>
 	<td><?php echo $orders[$i]["date"] ?></td>
-	<td><?php echo "{$order[$i]["fName"]} {$order[$i]["mName"]} {$order[$i]["lName"]}" ?></td>
+	<td><?php echo "{$orders[$i]["fName"]} {$orders[$i]["mName"]} {$orders[$i]["lName"]}" ?></td>
 	<td><?php echo $orders[$i]["phone"] ?></td>
 	<td><?php echo direction($orders[$i]["enAcademy"],$orders[$i]["arAcademy"]) ?></td>
 	<td><?php echo $orders[$i]["voucher"] ?></td>
