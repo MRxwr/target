@@ -41,7 +41,7 @@
                 <tr>
                 <td><?php echo sprintf("%05d", $orders[$i]["id"]) ?></td>
                 <td><?php echo $orders[$i]["date"] ?></td>
-                <td><?php echo $orders[$i]["name"] ?></td>
+                <td><?php echo "{$orders[$i]["fName"]} {$orders[$i]["lName"]}" ?></td>
                 <td><?php echo $orders[$i]["phone"] ?></td>
                 <td><?php echo direction($orders[$i]["enAcademy"],$orders[$i]["arAcademy"]) ?></td>
                 <td><?php echo $orders[$i]["total"] ?>KD</td>
