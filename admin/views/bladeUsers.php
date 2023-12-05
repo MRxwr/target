@@ -12,8 +12,7 @@
 	<table class="table display responsive product-overview mb-30" id="myTable">
 		<thead>
 		<tr>
-		<th><?php echo direction("First Name","الإسم الأول") ?></th>
-		<th><?php echo direction("Last Name","الإسم الأخير") ?></th>
+		<th><?php echo direction("Name","الإسم الأول") ?></th>
 		<th><?php echo direction("Mobile","الهاتف") ?></th>
 		<th class="text-nowrap"><?php echo direction("Actions","الخيارات") ?></th>
 		</tr>
@@ -28,14 +27,8 @@
 				<td id="firstName<?php echo $users[$i]["id"]?>" ><?php echo "{$users[$i]["fName"]} {$users[$i]["mName"]} {$users[$i]["lName"]}" ?></td>
 				<td id="mobile<?php echo $users[$i]["id"]?>" ><?php echo $users[$i]["phone"] ?></td>
 				<td class="text-nowrap">
-				<?php
-				if ( $users[$i]["status"] != 2 ){
-				?>		
 				<a href="?v=UserInfo&id=<?php echo $users[$i]["id"] ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <?php echo direction("More","المزيد") ?>
-				</a>
-				<?php
-					}
-				?>			
+				</a>			
 				</td>
 				</tr>
 				<?php
