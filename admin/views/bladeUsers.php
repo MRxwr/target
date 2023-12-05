@@ -23,17 +23,6 @@
 		<?php 
 		if( $users = selectDB("orders","`id` != '0' GROUP BY `phone`, `fName`") ){
 			for( $i = 0; $i < sizeof($users); $i++ ){
-				$counter = $i + 1;
-				if ( $users[$i]["hidden"] == 1 ){
-					$icon = "fa fa-unlock";
-					$link = "?v={$_GET["v"]}&show={$users[$i]["id"]}";
-					$hide = direction("Unlock","فتح الحساب");
-				}else{
-					$icon = "fa fa-lock";
-					$link = "?v={$_GET["v"]}&hide={$users[$i]["id"]}";
-					$hide = direction("Lock","قفل الحساب");
-				}
-				
 				?>
 				<tr>
 				<td id="firstName<?php echo $users[$i]["id"]?>" ><?php echo "{$users[$i]["fName"]} {$users[$i]["mName"]} {$users[$i]["lName"]}" ?></td>
@@ -42,9 +31,7 @@
 				<?php
 				if ( $users[$i]["status"] != 2 ){
 				?>		
-				<a href="<?php echo $link ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i>
-				</a>
-				<a href="<?php echo "?v={$_GET["v"]}&delId=" . $users[$i]["id"] ?>" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger"><i class="fa fa-close text-inverse"></i>
+				<a href="?v=UserInfo&id=<?php echo $users[$i]["id"] ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <?php echo direction("More","المزيد") ?>
 				</a>
 				<?php
 					}
