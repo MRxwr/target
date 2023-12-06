@@ -1,3 +1,8 @@
+<?php
+require ("admin/includes/config.php");
+require ("admin/includes/translate.php");
+require ("admin/includes/functions.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
