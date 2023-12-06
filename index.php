@@ -3,7 +3,7 @@ require("templates/header.php");
 require("templates/navbar.php");
 
 // get viewed page from pages folder \\
-if( isset($_GET["v"]) && searchFile("views","blade{$_GET["v"]}.php") ){
+if( isset($_GET["v"]) && searchFile("templates/views","blade{$_GET["v"]}.php") ){
 	require_once("templates/views/".searchFile("views","blade{$_GET["v"]}.php"));
 }else{
 	require_once("templates/views/bladeHome.php");
