@@ -4,9 +4,9 @@ require("templates/navbar.php");
 
 // get viewed page from pages folder \\
 if( isset($_GET["v"]) && searchFile("views","blade{$_GET["v"]}.php") ){
-	require_once("views/".searchFile("views","blade{$_GET["v"]}.php"));
+	require_once("templates/views/".searchFile("views","blade{$_GET["v"]}.php"));
 }else{
-	require_once("views/bladeHome.php");
+	require_once("templates/views/bladeHome.php");
 }
 
 require("templates/modals.php");
