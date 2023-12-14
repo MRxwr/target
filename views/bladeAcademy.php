@@ -4,13 +4,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 mt_45 text-center">
-                    <img src="img/insight_bg.png" alt="" class="insight_bg">
+                    <img src="logos/<?php echo $mainAcademy[0]["imageurl"] ?>" alt="" class="insight_bg">
                 </div>
                 <div class="col-lg-7 mt_45">
                     <div class="insight_right">
-                        <img src="img/insight_bg.png" alt="">
-                        <div class="button_box">INSIGHT FORCE</div>
-                        <p>Aspires to create a generation with great confidence and has good knowledge in the various types of martial arts that may help him in his life.Aspires to create a generation with great confidence and has good knowledge in the various types of martial arts that may help him in his life.</p>
+                        <img src="logos/<?php echo $mainAcademy[0]["imageurl"] ?>" alt="">
+                        <div class="button_box"><?php echo direction($mainAcademy[0]["enTitle"],$mainAcademy[0]["arTitle"]) ?></div>
+                        <p><?php echo direction($mainAcademy[0]["enDetails"],$mainAcademy[0]["arDetails"]) ?></p>
                     </div>
                 </div>
             </div>
