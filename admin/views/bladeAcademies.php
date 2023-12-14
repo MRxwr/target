@@ -166,6 +166,9 @@
 				<td><?php echo $counter = 1 + $i ?></td>
 				<td><?php echo $academyTitle ?></td>
 				<td class="text-nowrap">
+					<a href="?v=Sports&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Branches","الأفرع") ?></a>
+					<a id="<?php echo $academies[$i]["id"] ?>" class="edit btn btn-Success" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل")  ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
+					</a>
 					<a href="?v=Branches&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Branches","الأفرع") ?></a>
 					<a id="<?php echo $academies[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل")  ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
