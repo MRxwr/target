@@ -10,7 +10,7 @@
 <div class="panel-body">
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
-			<div class="col-md-6">
+			<div class="col-md-12">
 			<label><?php echo direction("Sports","الرياضات") ?></label>
 			<select id="mySelect3" name="sport[]" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
@@ -23,7 +23,7 @@
 			</select>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-12">
 			<label><?php echo direction("Gender","الجنس") ?></label>
 			<select id="mySelect" name="gender[]" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
@@ -36,12 +36,17 @@
 			</select>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-4">
+			<label><?php echo direction("URL","الرابط") ?></label>
+			<input type="text" name="url" class="form-control" required>
+			</div>
+
+			<div class="col-md-4">
 			<label><?php echo direction("English Title","الإسم الإنجليزي") ?></label>
 			<input type="text" name="enTitle" class="form-control" required>
 			</div>
 			
-			<div class="col-md-6">
+			<div class="col-md-4">
 			<label><?php echo direction("Arabic Title","الإسم العربي") ?></label>
 			<input type="text" name="arTitle" class="form-control" required>
 			</div>
@@ -182,6 +187,7 @@
 					<div style="display:none"><label id="arAlert<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["arAlert"] ?></label></div>
 					<div style="display:none"><label id="terms<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["terms"] ?></label></div>
 					<div style="display:none"><label id="iban<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["iban"] ?></label></div>
+					<div style="display:none"><label id="url<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["url"] ?></label></div>
 				</td>
 				</tr>
 				<?php
@@ -223,6 +229,7 @@
 			$("input[name=update]").val(id);
 			$("input[name=enTitle]").val(enTitle).focus();
 			$("input[name=arTitle]").val(arTitle);
+			$("input[name=url]").val(url);
 			$("textarea[name=enDetails]").html(enDetails);
 			$("textarea[name=arDetails]").html(arDetails);
 			$("input[name=tiktok]").val(tiktok);
