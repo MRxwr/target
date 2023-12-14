@@ -61,24 +61,34 @@
 			<textarea name="arDetails" class="form-control" style="width:100%;height:250px" required></textarea>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-2">
 			<label><?php echo direction("TikTok","التيك توك") ?></label>
 			<input type="text" name="tiktok" class="form-control" required>
 			</div>
 			
-			<div class="col-md-3">
+			<div class="col-md-2">
 			<label><?php echo direction("Instagram","الإنستجرام") ?></label>
 			<input type="text" name="instagram" class="form-control" required>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-2">
 			<label><?php echo direction("Snapchat","سناب شات") ?></label>
 			<input type="text" name="snapchat" class="form-control" required>
 			</div>
 			
-			<div class="col-md-3">
+			<div class="col-md-2">
 			<label><?php echo direction("Youtube","يوتيوب") ?></label>
 			<input type="text" name="youtube" class="form-control" required>
+			</div>
+			</div>
+			
+			<div class="col-md-2">
+			<label><?php echo direction("Whatsapp","واتساب") ?></label>
+			<input type="number" step='1' name="whatsapp" class="form-control" required>
+			</div>
+			</div>
+			
+			<div class="col-md-2">
 			</div>
 			
 			<div class="col-md-6">
@@ -182,6 +192,7 @@
 					<div style="display:none"><label id="instagram<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["instagram"] ?></label></div>
 					<div style="display:none"><label id="snapchat<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["snapchat"] ?></label></div>
 					<div style="display:none"><label id="youtube<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["youtube"] ?></label></div>
+					<div style="display:none"><label id="whatsapp<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["whatsapp"] ?></label></div>
 					<div style="display:none"><label id="enDetails<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["enDetails"] ?></label></div>
 					<div style="display:none"><label id="arDetails<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["arDetails"] ?></label></div>
 					<div style="display:none"><label id="enAlert<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["enAlert"] ?></label></div>
@@ -221,6 +232,7 @@
 			var instagram = $("#instagram"+id).html();
 			var snapchat = $("#snapchat"+id).html();
 			var youtube = $("#youtube"+id).html();
+			var whatsapp = $("#whatsapp"+id).html();
 			var enAlert = $("#enAlert"+id).html();
 			var arAlert = $("#arAlert"+id).html();
 			var terms = $("#terms"+id).html();
@@ -238,6 +250,7 @@
 			$("input[name=instagram]").val(instagram);
 			$("input[name=snapchat]").val(snapchat);
 			$("input[name=youtube]").val(youtube);
+			$("input[name=whatsapp]").val(whatsapp);
 			$("textarea[name=terms]").html(terms);
 			$("input[name=arAlert]").val(arAlert);
 			$("input[name=enAlert]").val(enAlert);
