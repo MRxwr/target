@@ -2,7 +2,7 @@
     <div class="footer_area">
         <div class="container">
             <div class="footer_new_wap">
-                <a href="#"><img src="img/logo_1.png" alt=""></a>
+                <a href="#"><img src="logos/<?php echo $mainAcademy[0]["imageurl"] ?>" alt=""></a>
                 <p>Powered By Target<img src="img/brand.svg" alt=""></p>
             </div>
         </div>
