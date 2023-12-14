@@ -30,7 +30,7 @@
             ?>
             <div class="social_icon">
                 <?php
-                $socialAccounts = [$mainAcademy[0]["enAlert"],$mainAcademy[0]["enAlert"],$mainAcademy[0]["enAlert"],$mainAcademy[0]["enAlert"]];
+                $socialAccounts = [$mainAcademy[0]["tiktok"],$mainAcademy[0]["instagram"],$mainAcademy[0]["snapchat"],$mainAcademy[0]["youtube"]];
                 $socialImages = ["tik_1.svg","ins_1.svg","sna_1.svg","you.svg"];
                 $socialLinks = ["https://www.tiktok.com/@","https://www.instagram.com/","https://www.snapchat.com/add/","https://www.youtube.com/"];
                 for( $i = 0; $i < sizeof($socialImages); $i++){
