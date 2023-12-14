@@ -10,7 +10,7 @@
     <!-- back to top -->
     <a href="#" class="back-to-top"><i class="fal fa-angle-up"></i></a>
     <!-- whatsapp -->
-    <a href="#" class="whatsapp"><img src="img/what_2.svg" alt=""></a>
+    <?php echo $whatsapp = ( !empty($mainAcademy[0]["whatsapp"])) ? "<a href='https://wa.me/{$mainAcademy[0]["whatsapp"]}' class='whatsapp'><img src='img/what_2.svg' alt=''></a>": ""; ?>
     
     <!-- all js here -->
     <script src="js/jquery-3.4.1.min.js"></script>
