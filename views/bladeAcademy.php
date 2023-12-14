@@ -96,11 +96,11 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
                 ?>
                 <div class="month_wap">
                     <?php
-                    $priceAfer = $subscription[$y]["price"]-$subscription[$y]["priceAfterDiscount"];
+                    $priceAfer = (float)$subscription[$y]["price"]-(float)$subscription[$y]["priceAfterDiscount"];
                     echo $save = ( !empty($subscription[$y]["priceAfterDiscount"]) ) ? "" : "<div class='save_style'><p>SAVE {$priceAfer}KD</p></div>";
                     ?>
                     <h4><?php echo direction($subscription[$y]["enTitle"],$subscription[$y]["arTitle"]) ?></h4>
-                    <h6><?php echo $price = ( !empty($subscription[$y]["priceAfterDiscount"]) ) ? $subscription[$y]["priceAfterDiscount"] : $subscription[$y]["price"] ;?></h6>
+                    <h6><?php echo $price = ( !empty($subscription[$y]["priceAfterDiscount"]) ) ? $subscription[$y]["priceAfterDiscount"] : $subscription[$y]["price"] ;?>KD</h6>
                 </div>
                 <?php
                     }
