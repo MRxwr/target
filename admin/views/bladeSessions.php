@@ -1,5 +1,5 @@
 <?php
-if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["id"]}'")){
+if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 	$academyId = $academy[0]["academyId"];
 }else{
 	$academyId = 0;
