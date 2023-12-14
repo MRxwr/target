@@ -187,7 +187,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 					<label id="enSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["enSubTitle"] ?></label>
 					<label id="arSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arSubTitle"] ?></label>
 					<label id="days<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["days"] ?></label>
-					<label id="branches<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["branches"] ?></label>
+					<label id="branches<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["branchId"] ?></label>
 					<label id="sessions<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["sessions"] ?></label>
 				</td>
 				</tr>
