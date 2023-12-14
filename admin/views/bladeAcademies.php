@@ -213,6 +213,7 @@
 			var id = $(this).attr("id");
 			var enTitle = $("#enTitle"+id).html();
 			var arTitle = $("#arTitle"+id).html();
+			var url = $("#url"+id).html();
 			var enDetails = $("#enDetails"+id).html();
 			var arDetails = $("#arDetails"+id).html();
 			var tiktok = $("#tiktok"+id).html();
