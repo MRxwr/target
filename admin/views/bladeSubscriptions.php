@@ -235,6 +235,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			$("input[name=enSubTitle]").val(enSubTitle);
 			$("textarea[name=enDetails]").val(enDetails);
 			$("textarea[name=arDetails]").val(arDetails);
+			$("input[name=branchId]").val(branches);
 			var $select = $('#mySelect3');
 			$select.val(null).trigger('change');
 			var $option = $select.find('option[value="' + sport + '"]');
@@ -244,13 +245,10 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			$("input[name=price]").val(price);
 			$("input[name=priceAfterDiscount]").val(priceAfterDiscount);
 			var daysArray = JSON.parse(days);
-			var branchesArray = JSON.parse(branches);
 			var sessionsArray = JSON.parse(sessions);
-			$('#mySelect').val(null).trigger('change');
 			$('#mySelect1').val(null).trigger('change');
 			$('#mySelect2').val(null).trigger('change');
 			setSelectedOptions(daysArray, "mySelect2");
-			setSelectedOptions(branchesArray, "mySelect");
 			setSelectedOptions(sessionsArray, "mySelect1");
 		})
 		function setSelectedOptions(ids, selectId) {
