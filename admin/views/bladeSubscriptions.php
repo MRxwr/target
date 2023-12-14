@@ -27,7 +27,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			<label><?php echo direction("Sports","الرياضات") ?></label>
 			<select id="mySelect3" name="sportId" class="form-control"required>
 				<?php
-				if( $academySport = selectDB("academies","`id` = '{$_GET["code"]}'") ){
+				if( $academySport = selectDB("academies","`id` = '{$academyId}'") ){
 					$academySport = json_decode($academySport[0]["sport"],true);
 					for( $i =0; $i < sizeof($academySport); $i++ ){
 						$sport = selectDB("sports","`id` = '{$academySport[$i]}'");
@@ -42,7 +42,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			<label><?php echo direction("Days","الأيام") ?></label>
 			<select id="mySelect2" name="days[]" multiple class="form-control"required>
 				<?php
-				if( $academyDays = selectDB("days","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
+				if( $academyDays = selectDB("days","`branchId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyDays); $i++ ){
 						echo "<option value='{$academyDays[$i]["id"]}'>".direction("{$academyDays[$i]["enTitle"]}","{$academyDays[$i]["arTitle"]}")."</option>";
 					}
@@ -55,7 +55,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			<label><?php echo direction("Sessions","الحصص") ?></label>
 			<select id="mySelect1" name="sessions[]" multiple class="form-control"required>
 				<?php
-				if( $academyBranches = selectDB("sessions","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
+				if( $academyBranches = selectDB("sessions","`branchId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyBranches); $i++ ){
 						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
 					}
