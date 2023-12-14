@@ -86,18 +86,23 @@
 			<input type="text" name="arAlert" class="form-control" required>
 			</div>
 
-			<div class="col-md-12">
+			<div class="col-md-4">
 			<label><?php echo direction("IBAN","الأيبان") ?></label>
 			<input type="text" name="iban" class="form-control" required>
 			</div>
 
-			<div class="col-md-12">
+			<div class="col-md-8">
+			<label><?php echo direction("Terms & Policy","سياسة الأكادمية") ?></label>
+			<textarea name="terms" class="form-control" style="width:100%;height:250px" required></textarea>
+			</div>
+
+			<div class="col-md-4">
 			<label><?php echo direction("Logo","الشعار") ?></label>
 			<input type="file" name="imageurl" class="form-control" >
 			</div>
 
 			<div id="images" style="margin-top: 10px; display:none">
-				<div class="col-md-12">
+				<div class="col-md-4">
 				<img id="logoImg" src="" style="width:250px;height:250px">
 				</div>
 			</div>
