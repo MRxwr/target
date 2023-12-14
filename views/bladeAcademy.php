@@ -19,9 +19,15 @@
     <!-- alert_area -->
     <div class="alert_area">
         <div class="container">
-            <div class="alert alert-danger" role="alert">
-                A simple danger alert—check it out!
-            </div>
+            <?php
+            if( !empty($mainAcademy[0]["enAlert"]) ){
+                ?>
+                <div class="alert alert-danger" role="alert">
+                <?php echo direction($mainAcademy[0]["enAlert"],$mainAcademy[0]["arAlert"]) ?>
+                </div>
+                <?php
+            }
+            ?>
             <div class="social_icon">
                 <a href="#"><img src="img/tik_1.svg" alt=""></a>
                 <a href="#"><img src="img/ins_1.svg" alt=""></a>
