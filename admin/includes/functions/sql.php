@@ -150,6 +150,10 @@ function insertDB2($table, $data){
 	}
 	$sql .= ")VALUES(";
 	for($i = 0 ; $i < sizeof($data) ; $i++ ){
+        if (is_array($data[$keys[$i]])) {
+            // Convert the array to JSON and save it back to the same key
+            $data[$keys[$i]] = json_encode($data[$keys[$i]]);
+        }
 		$sql .= "'".$data[$keys[$i]]."'";
 		if ( isset($keys[$i+1]) ){
 			$sql .= ", ";
