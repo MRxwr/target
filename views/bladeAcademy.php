@@ -29,10 +29,16 @@
             }
             ?>
             <div class="social_icon">
-                <a href="#"><img src="img/tik_1.svg" alt=""></a>
-                <a href="#"><img src="img/ins_1.svg" alt=""></a>
-                <a href="#"><img src="img/sna_1.svg" alt=""></a>
-                <a href="#"><img src="img/you.svg" alt=""></a>
+                <?php
+                $socialAccounts = [$mainAcademy[0]["enAlert"],$mainAcademy[0]["enAlert"],$mainAcademy[0]["enAlert"],$mainAcademy[0]["enAlert"]];
+                $socialImages = ["tik_1.svg","ins_1.svg","sna_1.svg","you.svg"];
+                $socialLinks = ["https://www.tiktok.com/@","https://www.instagram.com/","https://www.snapchat.com/add/","https://www.youtube.com/"];
+                for( $i = 0; $i < sizeof($socialImages); $i++){
+                    if( !empty( $socialAccounts[$i] ) ){
+                        echo "<a href='{$socialLinks[$i]}{$socialAccounts[$i]}' target='_blank'><img src='img/{$socialImages[$i]}' alt=''></a>";
+                    }
+                }
+                ?>
             </div>
             <div class="text-center mt_60">
                 <div class="button_box">ACTIVITES</div>
