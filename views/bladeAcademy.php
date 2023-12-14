@@ -97,8 +97,10 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
             </button>
             <div class="modal-body p-0 text-center">
                 <h2><?php echo direction("Choose the subscription period","إختر مدة الإشتراك")?></h2>
-                <?php echo "<h3>" . direction("We also have saving plans","لدينا إشتراكات خاصه") . "</h3>" ?>
-                <?php
+                <?php 
+                if ( $priceAfterText ){
+                    echo "<h3>" . direction("We also have saving plans","لدينا إشتراكات خاصه") . "</h3>";
+                }
                     for( $y = 0; $y < sizeof($subscription); $y++ ){
                 ?>
                 <div class="month_wap">
