@@ -80,12 +80,10 @@
 			<label><?php echo direction("Youtube","يوتيوب") ?></label>
 			<input type="text" name="youtube" class="form-control" required>
 			</div>
-			</div>
 			
 			<div class="col-md-2">
 			<label><?php echo direction("Whatsapp","واتساب") ?></label>
 			<input type="number" step='1' name="whatsapp" class="form-control" required>
-			</div>
 			</div>
 			
 			<div class="col-md-2">
