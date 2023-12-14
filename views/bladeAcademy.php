@@ -79,7 +79,15 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
 <?php 
 if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0'") ){
     for( $i = 0; $i < sizeof($mainSports); $i++){
+        $priceAfterText = 0;
         $title = direction($mainSports[$i]["enTitle"],$mainSports[$i]["arTitle"]);
+        if( $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[$i]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price`") ){
+            for( $z = 0; $z < sizeof($subscription); $z++ ){
+                if ( !empty($subscription[$z]["priceAfterDiscount"]) ){
+                    $priceAfterText = 1;
+                    break;
+                }
+            }
 ?>
 <div class="modal fade" id="<?php echo strtolower(str_replace(" ","_",$title)) ?>" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -88,10 +96,9 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body p-0 text-center">
-                <h2>Choose the subscription period</h2>
-                <h3>We also have saving plans</h3>
+                <h2><?php echo direction("Choose the subscription period","إختر مدة الإشتراك")?></h2>
+                <?php echo "<h3>" . direction("We also have saving plans","لدينا إشتراكات خاصه") . "</h3>" ?>
                 <?php
-                if( $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[$i]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price`") ){
                     for( $y = 0; $y < sizeof($subscription); $y++ ){
                 ?>
                 <div class="month_wap">
@@ -104,13 +111,13 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
                 </div>
                 <?php
                     }
-                }
                 ?>
             </div>
         </div>
     </div>
 </div> 
 <?php
+        }
     }
 }
 ?>
