@@ -180,6 +180,7 @@
 					<div style="display:none"><label id="arDetails<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["arDetails"] ?></label></div>
 					<div style="display:none"><label id="enAlert<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["enAlert"] ?></label></div>
 					<div style="display:none"><label id="arAlert<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["arAlert"] ?></label></div>
+					<div style="display:none"><label id="terms<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["terms"] ?></label></div>
 					<div style="display:none"><label id="iban<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["iban"] ?></label></div>
 				</td>
 				</tr>
@@ -214,6 +215,7 @@
 			var youtube = $("#youtube"+id).html();
 			var enAlert = $("#enAlert"+id).html();
 			var arAlert = $("#arAlert"+id).html();
+			var terms = $("#terms"+id).html();
 			var gender = $("#gender"+id).html();
 			var sport = $("#sport"+id).html();
 			var logo = $("#logo"+id).html();
@@ -227,6 +229,7 @@
 			$("input[name=instagram]").val(instagram);
 			$("input[name=snapchat]").val(snapchat);
 			$("input[name=youtube]").val(youtube);
+			$("textarea[name=terms]").html(terms);
 			$("input[name=arAlert]").val(arAlert);
 			$("input[name=enAlert]").val(enAlert);
 			$("input[name=iban]").val(iban);
