@@ -35,6 +35,7 @@
 			<div class="col-md-6" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
 			<input type="hidden" name="update" value="0">
+			<input type="hidden" name="academyId" value="<?php echo $_GET["code"] ?>">
 			</div>
 		</div>
 	</form>
@@ -73,7 +74,7 @@
 		
 		<tbody>
 		<?php 
-		if( $sports = selectDB("sports","`status` = '0' ORDER BY `order` ASC") ){
+		if( $sports = selectDB("sports","`status` = '0' AND `academyId` = '{$_GET["code"]}' ORDER BY `order` ASC") ){
 		for( $i = 0; $i < sizeof($sports); $i++ ){
 		$counter = $i + 1;
 		if ( $sports[$i]["hidden"] == 1 ){
