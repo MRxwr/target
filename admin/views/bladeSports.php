@@ -20,6 +20,23 @@
 			<label><?php echo direction("Arabic Title","العنوان بالعربي") ?></label>
 			<input type="text" name="arTitle" class="form-control" required>
 			</div>
+			</div>
+
+			<div class="col-md-6">
+			<label><?php echo direction("New?","رياضة جديدة") ?></label>
+			<select name="isNew" class="form-control" required>
+				<option value='0'><?php echo direction("No","لا") ?></option>
+				<option value='1'><?php echo direction("Yes","نعم") ?></option>
+			</select>
+			</div>
+
+			<div class="col-md-6">
+			<label><?php echo direction("Closed?","مغلقه") ?></label>
+			<select name="isClosed" class="form-control" required>
+				<option value='0'><?php echo direction("No","لا") ?></option>
+				<option value='1'><?php echo direction("Yes","نعم") ?></option>
+			</select>
+			</div>
 			
 			<div class="col-md-6">
 			<label><?php echo direction("Logo","الشعار") ?></label>
@@ -104,6 +121,8 @@
 		</a>
 		<div style="display:none"><label id="hidden<?php echo $sports[$i]["id"]?>"><?php echo $sports[$i]["hidden"] ?></label></div>
 		<div style="display:none"><label id="logo<?php echo $sports[$i]["id"]?>"><?php echo $sports[$i]["imageurl"] ?></label></div>		
+		<div style="display:none"><label id="isNew<?php echo $sports[$i]["id"]?>"><?php echo $sports[$i]["isNew"] ?></label></div>
+		<div style="display:none"><label id="isClosed<?php echo $sports[$i]["id"]?>"><?php echo $sports[$i]["isClosed"] ?></label></div>		
 		</td>
 		</tr>
 		<?php
@@ -126,12 +145,16 @@
 			var id = $(this).attr("id");
 			var arTitle = $("#arTitle"+id).html();
 			var enTitle = $("#enTitle"+id).html();
+			var isNew = $("#isNew"+id).html();
+			var isClosed = $("#isClosed"+id).html();
 			var hidden = $("#hidden"+id).html();
 			var logo = $("#logo"+id).html();
 			$("input[type=file]").prop("required",false);
 			$("input[name=arTitle]").val(arTitle).focus();
 			$("input[name=update]").val(id);
 			$("input[name=enTitle]").val(enTitle);
+			$("select[name=isClosed]").val(isClosed);
+			$("select[name=isNew]").val(isNew);
 			$("#logoImg").attr("src","../logos/"+logo);
 			$("#images").attr("style","margin-top:10px;display:block");
 		})
