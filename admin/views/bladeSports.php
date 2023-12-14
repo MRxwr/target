@@ -20,7 +20,6 @@
 			<label><?php echo direction("Arabic Title","العنوان بالعربي") ?></label>
 			<input type="text" name="arTitle" class="form-control" required>
 			</div>
-			</div>
 
 			<div class="col-md-6">
 			<label><?php echo direction("New?","رياضة جديدة") ?></label>
