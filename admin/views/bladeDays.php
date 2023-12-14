@@ -7,9 +7,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 ?>
 <div class="col-sm-12">
 	<a class="btn btn-default" href="?v=Branches&code=<?php echo $academyId ?>" ><?php echo direction("Back to list of branches","العوده لقائمة الأفرع") ?></a>
-</div>
 	<div class="clearfix"></div>
-</div>
 </div>
 
 <div class="col-sm-12">
