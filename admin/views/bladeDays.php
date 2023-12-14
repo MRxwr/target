@@ -66,7 +66,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 		<tbody>
 		<?php 
 		$orderBy = direction("enTitle","arTitle");
-		if( $days = selectDB("days","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
+		if( $days = selectDB("days","`status` = '0' AND `branchId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($days); $i++ ){
 				if ( $days[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
