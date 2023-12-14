@@ -41,7 +41,7 @@
                 ?>
             </div>
             <div class="text-center mt_60">
-                <div class="button_box">ACTIVITES</div>
+                <div class="button_box"><?php echo direction("ACTIVITES","الأنشطة") ?></div>
             </div>
         </div>
     </div>
@@ -49,62 +49,39 @@
     <div class="insight_cart">
         <div class="container">
             <div class="row mt_30">
+<?php
+if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0'") ){
+    for( $i = 0; $i < sizeof($mainSports); $i++){
+        $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[$i]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price` ASC LIMIT 1");
+        $title = direction($mainSports[$i]["enTitle"],$mainSports[$i]["arTitle"]);
+?>
                 <div class="col-lg-3 col-sm-6 col-6 mt_50">
-                    <a href="#karate" data-toggle="modal" class="man_box">
+                    <a href="#<?php echo strtolower(str_replace(" ","_",$title)) ?>" data-toggle="modal" class="man_box">
                         <div class="man_top">
-                            <h2>KARATE</h2>
-                            <h3>12 Session per Month</h3>
-                            <h4>Starting from 45 KD</h4>
+                            <h2><?php echo $title ?></h2>
+                            <h3><?php echo direction($subscription[0]["enSubTitle"],$subscription[0]["arSubTitle"]) ?></h3>
+                            <h4><?php echo direction("Starting from","يبدأ من") . " {$subscription[0]["price"]}KD" ?></h4>
                         </div>
                         <div class="man_body" style="background-image: url(img/man.png);">
-                            <img src="img/man_1.png" alt="" class="img-fluid">
+                            <img src="logos/<?php echo $mainSports[0]["imageurl"] ?>" alt="" class="img-fluid">
                         </div>
                     </a>
                 </div> 
-                <div class="col-lg-3 col-sm-6 col-6 mt_50">
-                    <a href="#karate" data-toggle="modal" class="man_box">
-                        <div class="man_top">
-                            <h2>Fencing sport</h2>
-                            <h3>12 Session per Month</h3>
-                            <h4>Starting from 45 KD</h4>
-                        </div>
-                        <div class="man_body" style="background-image: url(img/man.png);">
-                            <img src="img/man_2.png" alt="" class="img-fluid">
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-sm-6 col-6 mt_50">
-                    <a href="#karate" data-toggle="modal" class="man_box">
-                        <span class="post-date">NEW</span>
-                        <div class="man_top">
-                            <h2>KICK BOXING</h2>
-                            <h3>12 Session per Month</h3>
-                            <h4>Starting from 45 KD</h4>
-                        </div>
-                        <div class="man_body" style="background-image: url(img/man.png);">
-                            <img src="img/man_3.png" alt="" class="img-fluid">
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-sm-6 col-6 mt_50">
-                    <a href="#karate" data-toggle="modal" class="man_box">
-                        <span class="post-date post-color">Sold Out</span>
-                        <div class="man_top">
-                            <h2>BOXING</h2>
-                            <h3>12 Session per Month</h3>
-                            <h4>Starting from 45 KD</h4>
-                        </div>
-                        <div class="man_body" style="background-image: url(img/man.png);">
-                            <img src="img/man_4.png" alt="" class="img-fluid">
-                        </div>
-                    </a>
-                </div>
+<?php
+    }
+}
+?>
             </div>
         </div>
     </div>
 </main>
 
-<div class="modal fade" id="karate" tabindex="-1">
+<?php 
+if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0'") ){
+    for( $i = 0; $i < sizeof($mainSports); $i++){
+        $title = direction($mainSports[$i]["enTitle"],$mainSports[$i]["arTitle"]);
+?>
+<div class="modal fade" id="<?php echo strtolower(str_replace(" ","_",$title)) ?>" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -113,25 +90,26 @@
             <div class="modal-body p-0 text-center">
                 <h2>Choose the subscription period</h2>
                 <h3>We also have saving plans</h3>
-                <div class="month_wap mt_30">
-                    <h4>One Month Subscription</h4>
-                    <h6>45 KD</h6>
-                </div>
+                <?php
+                if( $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[$i]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price`") ){
+                    for( $y = 0; $y < sizeof($subscription); $y++ ){
+                ?>
                 <div class="month_wap">
-                    <div class="save_style">
-                        <p>Save 10%</p>
-                    </div>
-                    <h4>Two Month Subscription</h4>
-                    <h6>80 KD</h6>
+                    <?php
+                    echo $save = ( !empty($subscription[$y]["priceAfterDiscount"]) ) ? "" : "<div class='save_style'><p>SAVE ".$subscription[$y]["price"]-$subscription[$y]["priceAfterDiscount"]."KD</p></div>";
+                    ?>
+                    <h4><?php echo direction($subscription[$y]["enTitle"],$subscription[$y]["arTitle"]) ?></h4>
+                    <h6><?php echo $price = ( !empty($subscription[$y]["priceAfterDiscount"]) ) ? $subscription[$y]["priceAfterDiscount"] : $subscription[$y]["price"] ;?></h6>
                 </div>
-                <div class="month_wap">
-                    <div class="save_style">
-                        <p>Save 20%</p>
-                    </div>
-                    <h4>Three Month Subscription</h4>
-                    <h6>120 KD</h6>
-                </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
 </div> 
+<?php
+    }
+}
+?>
