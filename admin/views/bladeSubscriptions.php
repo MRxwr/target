@@ -1,3 +1,10 @@
+<?php
+if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["id"]}'")){
+	$academyId = $academy[0]["academyId"];
+}else{
+	$academyId = 0;
+}
+?>
 <div class="col-sm-12">
 <div class="panel panel-default card-view">
 <div class="panel-heading">
@@ -11,7 +18,7 @@
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
 			
-			<div class="col-md-6">
+			<div class="col-md-12">
 			<label><?php echo direction("Sports","الرياضات") ?></label>
 			<select id="mySelect3" name="sportId" class="form-control"required>
 				<?php
@@ -20,19 +27,6 @@
 					for( $i =0; $i < sizeof($academySport); $i++ ){
 						$sport = selectDB("sports","`id` = '{$academySport[$i]}'");
 						echo "<option value='{$sport[0]["id"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}")."</option>";
-					}
-				}
-				?>
-			</select>
-			</div>
-
-			<div class="col-md-6">
-			<label><?php echo direction("Branches","الأفرع") ?></label>
-			<select id="mySelect" name="branches[]" multiple class="form-control"required>
-				<?php
-				if( $academyBranches = selectDB("branches","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
-					for( $i =0; $i < sizeof($academyBranches); $i++ ){
-						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
 					}
 				}
 				?>
@@ -113,7 +107,8 @@
 			<div class="col-md-12" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
 			<input type="hidden" name="update" value="0">
-			<input type="hidden" name="academyId" value="<?php echo $_GET["code"] ?>">
+			<input type="hidden" name="branchId" value="<?php echo $_GET["code"] ?>">
+			<input type="hidden" name="academyId" value="<?php echo $academyId ?>">
 			</div>
 		</div>
 	</form>

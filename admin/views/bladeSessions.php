@@ -1,3 +1,10 @@
+<?php
+if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["id"]}'")){
+	$academyId = $academy[0]["academyId"];
+}else{
+	$academyId = 0;
+}
+?>
 <div class="col-sm-12">
 <div class="panel panel-default card-view">
 <div class="panel-heading">
@@ -28,7 +35,8 @@
 			<div class="col-md-12" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
 			<input type="hidden" name="update" value="0">
-            <input type="hidden" name="academyId" value="<?php echo $_GET["code"] ?>">
+            <input type="hidden" name="branchId" value="<?php echo $_GET["code"] ?>">
+			<input type="hidden" name="academyId" value="<?php echo $academyId ?>">
 			</div>
 		</div>
 	</form>

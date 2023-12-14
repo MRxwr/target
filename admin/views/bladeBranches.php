@@ -58,27 +58,30 @@
 		<tbody>
 		<?php 
 		$orderBy = direction("enTitle","arTitle");
-		if( $sessions = selectDB("branches","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
-			for( $i = 0; $i < sizeof($sessions); $i++ ){
-				if ( $sessions[$i]["hidden"] == 1 ){
+		if( $branches = selectDB("branches","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
+			for( $i = 0; $i < sizeof($branches); $i++ ){
+				if ( $branches[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
-					$link = "?show={$sessions[$i]["id"]}";
+					$link = "?show={$branches[$i]["id"]}";
 					$hide = direction("Show","أظهر");
 				}else{
 					$icon = "fa fa-eye-slash";
-					$link = "?hide={$sessions[$i]["id"]}";
+					$link = "?hide={$branches[$i]["id"]}";
 					$hide = direction("Hide","إخفاء");
 				}
 				?>
 				<tr>
 				<td><?php echo $counter = $i + 1 ?></td>
-				<td id="enTitle<?php echo $sessions[$i]["id"]?>" ><?php echo $sessions[$i]["enTitle"] ?></td>
-				<td id="arTitle<?php echo $sessions[$i]["id"]?>" ><?php echo $sessions[$i]["arTitle"] ?></td>
+				<td id="enTitle<?php echo $branches[$i]["id"]?>" ><?php echo $branches[$i]["enTitle"] ?></td>
+				<td id="arTitle<?php echo $branches[$i]["id"]?>" ><?php echo $branches[$i]["arTitle"] ?></td>
 				<td class="text-nowrap">
-					<a id="<?php echo $sessions[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
+					<a href="?v=Days&code=<?php echo $branches[$i]["id"] ?>" class="btn btn-primary"><?php echo direction("Days","الأيام") ?></a>
+					<a href="?v=Sessions&code=<?php echo $branches[$i]["id"] ?>" class="btn btn-default"><?php echo direction("Sessions","المحاضرات") ?></a>
+					<a href="?v=Subscriptions&code=<?php echo $branches[$i]["id"] ?>" class="btn btn-success"><?php echo direction("Subscriptions","الإشتراكات") ?></a>
+					<a id="<?php echo $branches[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
 					<a href="<?php echo $link . "&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>			
-					<a href="<?php echo "?delId={$sessions[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>			
+					<a href="<?php echo "?delId={$branches[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>			
 				</td>
 				</tr>
 				<?php

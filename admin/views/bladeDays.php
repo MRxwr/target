@@ -1,3 +1,10 @@
+<?php
+if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["id"]}'")){
+	$academyId = $academy[0]["academyId"];
+}else{
+	$academyId = 0;
+}
+?>
 <div class="col-sm-12">
 <div class="panel panel-default card-view">
 <div class="panel-heading">
@@ -23,7 +30,8 @@
 			<div class="col-md-12" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
 			<input type="hidden" name="update" value="0">
-            <input type="hidden" name="academyId" value="<?php echo $_GET["code"] ?>">
+            <input type="hidden" name="branchId" value="<?php echo $_GET["code"] ?>">
+            <input type="hidden" name="academyId" value="<?php echo $academyId ?>">
 			</div>
 		</div>
 	</form>
@@ -58,27 +66,27 @@
 		<tbody>
 		<?php 
 		$orderBy = direction("enTitle","arTitle");
-		if( $sessions = selectDB("days","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
-			for( $i = 0; $i < sizeof($sessions); $i++ ){
-				if ( $sessions[$i]["hidden"] == 1 ){
+		if( $days = selectDB("days","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
+			for( $i = 0; $i < sizeof($days); $i++ ){
+				if ( $days[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
-					$link = "?show={$sessions[$i]["id"]}";
+					$link = "?show={$days[$i]["id"]}";
 					$hide = direction("Show","أظهر");
 				}else{
 					$icon = "fa fa-eye-slash";
-					$link = "?hide={$sessions[$i]["id"]}";
+					$link = "?hide={$days[$i]["id"]}";
 					$hide = direction("Hide","إخفاء");
 				}
 				?>
 				<tr>
 				<td><?php echo $counter = $i + 1 ?></td>
-				<td id="enTitle<?php echo $sessions[$i]["id"]?>" ><?php echo $sessions[$i]["enTitle"] ?></td>
-				<td id="arTitle<?php echo $sessions[$i]["id"]?>" ><?php echo $sessions[$i]["arTitle"] ?></td>
+				<td id="enTitle<?php echo $days[$i]["id"]?>" ><?php echo $days[$i]["enTitle"] ?></td>
+				<td id="arTitle<?php echo $days[$i]["id"]?>" ><?php echo $days[$i]["arTitle"] ?></td>
 				<td class="text-nowrap">
-					<a id="<?php echo $sessions[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
+					<a id="<?php echo $days[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
 					<a href="<?php echo $link . "&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>			
-					<a href="<?php echo "?delId={$sessions[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>			
+					<a href="<?php echo "?delId={$days[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>			
 				</td>
 				</tr>
 				<?php
