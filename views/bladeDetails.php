@@ -4,19 +4,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 mt_45 text-center">
-                    <img alt="" class="insight_bg" src="img/insight_bg.png">
-                    </img>
+                    <img src="logos/<?php echo $mainAcademy[0]["imageurl"] ?>" alt="" class="insight_bg">
                 </div>
                 <div class="col-lg-7 mt_45">
                     <div class="insight_right">
-                        <img alt="" src="img/insight_bg.png">
-                            <div class="button_box">
-                                INSIGHT FORCE
-                            </div>
-                            <p>
-                                Aspires to create a generation with great confidence and has good knowledge in the various types of martial arts that may help him in his life.Aspires to create a generation with great confidence and has good knowledge in the various types of martial arts that may help him in his life.
-                            </p>
-                        </img>
+                        <img src="logos/<?php echo $mainAcademy[0]["imageurl"] ?>" alt="">
+                        <div class="button_box"><?php echo direction($mainAcademy[0]["enTitle"],$mainAcademy[0]["arTitle"]) ?></div>
+                        <p><?php echo direction($mainAcademy[0]["enDetails"],$mainAcademy[0]["arDetails"]) ?></p>
                     </div>
                 </div>
             </div>
@@ -25,19 +19,26 @@
     <!-- alert_area -->
     <div class="alert_area">
         <div class="container">
+            <?php
+            if( !empty($mainAcademy[0]["enAlert"]) ){
+                ?>
+                <div class="alert alert-danger" role="alert">
+                <?php echo direction($mainAcademy[0]["enAlert"],$mainAcademy[0]["arAlert"]) ?>
+                </div>
+                <?php
+            }
+            ?>
             <div class="social_icon">
-                <a href="#">
-                    <img alt="" src="img/tik_1.svg"/>
-                </a>
-                <a href="#">
-                    <img alt="" src="img/ins_1.svg"/>
-                </a>
-                <a href="#">
-                    <img alt="" src="img/sna_1.svg"/>
-                </a>
-                <a href="#">
-                    <img alt="" src="img/you.svg"/>
-                </a>
+                <?php
+                $socialAccounts = [$mainAcademy[0]["tiktok"],$mainAcademy[0]["instagram"],$mainAcademy[0]["snapchat"],$mainAcademy[0]["youtube"]];
+                $socialImages = ["tik_1.svg","ins_1.svg","sna_1.svg","you.svg"];
+                $socialLinks = ["https://www.tiktok.com/@","https://www.instagram.com/","https://www.snapchat.com/add/","https://www.youtube.com/"];
+                for( $i = 0; $i < sizeof($socialImages); $i++){
+                    if( !empty( $socialAccounts[$i] ) ){
+                        echo "<a href='{$socialLinks[$i]}{$socialAccounts[$i]}' target='_blank'><img src='img/{$socialImages[$i]}' alt=''></a>";
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
