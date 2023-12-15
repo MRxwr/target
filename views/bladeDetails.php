@@ -58,6 +58,7 @@
                 if( $subscription = selectDB("subscriptions","`id` = '{$_POST["id"]}' AND `status` = '0' AND `hidden` = '0'") ){
                     $sport = selectDB("sports","`id` = '{$subscription[0]["sportId"]}' AND `hidden` = '0' AND `status` = '0'");
                     $genders = json_decode($subscription[0]["genders"],true);
+                    var_dump($genders);
                     $sessions = json_decode($subscription[0]["sessions"],true);
                     $days = json_decode($subscription[0]["days"],true);
                 }else{
