@@ -59,8 +59,6 @@
                     $sport = selectDB("sports","`id` = '{$subscription[0]["sportId"]}' AND `hidden` = '0' AND `status` = '0'");
                     $branches = json_decode($subscription[0]["branches"],true);
                     $genders = json_decode($subscription[0]["genders"],true);
-                    $sessions = json_decode($subscription[0]["sessions"],true);
-                    $days = json_decode($subscription[0]["days"],true);
                 }else{
                     header("Location: " . $_SERVER['HTTP_REFERER']);die();
                 }
