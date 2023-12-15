@@ -123,7 +123,7 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
     }
 }
 ?>
-<form id="myForm" action="process.php" method="POST">
+<form id="myForm" action="?v=Details" method="POST">
         <input id="idInput" type="hidden" name="id">
 </form>
 <script>
