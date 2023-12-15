@@ -309,13 +309,13 @@
                     </div>
 
                     <div class="step_control">
-                        <button class="button_box" id="prevBtn" onclick="nextPrev(-1)" type="button">
-                        Previous
-                        </button>
-                        <button class="button_box" id="nextBtn" onclick="nextPrev(1)" type="button">
-                        Next
-                        </button>
-                    </div>
+                                <button class="button_box" id="prevBtn" onclick="nextPrev(-1)" type="button">
+                                    Previous
+                                </button>
+                                <button class="button_box" id="nextBtn" onclick="nextPrev(1)" type="button">
+                                    NEXT
+                                </button>
+                            </div>
                 </form>
 
             </div>
