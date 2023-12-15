@@ -42,9 +42,9 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			<label><?php echo direction("Gender","الجنس") ?></label>
 			<select id="mySelect" name="genders[]" multiple class="form-control" required>
 				<?php
-				if( $academyDays = selectDB("genders","`academyId` = '{$academyId}' AND `status` = '0' AND `hidden` = '0'") ){
-					for( $i =0; $i < sizeof($academyDays); $i++ ){
-						echo "<option value='{$academyDays[$i]["id"]}'>".direction("{$academyDays[$i]["enTitle"]}","{$academyDays[$i]["arTitle"]}")."</option>";
+				if( $academyGenders = selectDB("genders","`academyId` = '{$academyId}' AND `status` = '0' AND `hidden` = '0'") ){
+					for( $i =0; $i < sizeof($academyGenders); $i++ ){
+						echo "<option value='{$academyGenders[$i]["id"]}'>".direction("{$academyGenders[$i]["enTitle"]} {$academyGenders[$i]["enSubTitle"]}","{$academyGenders[$i]["arTitle"]} {$academyGenders[$i]["arSubTitle"]}")."</option>";
 					}
 				}
 				?>
@@ -238,6 +238,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			var sport = $("#sport"+id).html();
 			var branches = $("#branches"+id).html();
 			var sessions = $("#sessions"+id).html();
+			var genders = $("#genders"+id).html();
 			var days = $("#days"+id).html();
 			var numberOfDays = $("#numberOfDays"+id).html();
 			var price = $("#price"+id).html();
