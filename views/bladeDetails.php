@@ -57,6 +57,7 @@
                 <?php
                 if( $subscription = selectDB("subscriptions","`id` = '{$_POST["id"]}' AND `status` = '0' AND `hidden` = '0'") ){
                     $sport = selectDB("sports","`id` = '{$subscription[0]["sportId"]}' AND `hidden` = '0' AND `status` = '0'");
+                    $branches = json_decode($subscription[0]["branches"],true);
                     $genders = json_decode($subscription[0]["genders"],true);
                     $sessions = json_decode($subscription[0]["sessions"],true);
                     $days = json_decode($subscription[0]["days"],true);
@@ -194,7 +195,8 @@
                                                 $loopGender = $loopGender[0];
                                                 $title = direction("{$loopGender["enTitle"]}","{$loopGender["arTitle"]}");
                                                 $subTitle = direction("{$loopGender["enSubTitle"]}","{$loopGender["arSubTitle"]}");
-                                                echo "<div class=\"size_radio\"> <input id=\"us{$i}\" name=\"gender\" type=\"radio\"> <label for=\"us{$i}\"> {$title} <span> {$subTitle} </span> </label> </input> </div>";
+                                                $checked = ( $i == 0 ) ? "checked=''" : "" ;
+                                                echo "<div class=\"size_radio\"> <input id=\"us{$i}\" name=\"gender\" type=\"radio\" {$checked}> <label for=\"us{$i}\"> {$title} <span> {$subTitle} </span> </label> </input> </div>";
                                             }
                                         }
                                         ?>
@@ -221,9 +223,8 @@
                                     </div>
                                     <div class="style_radio style_radio_2">
                                         <?php 
-                                        if( $branches = selectDB("subscriptions","`sportId` = '{$subscription[0]["sportId"]}' AND `academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0'") ){
-                                            for( $i = 0; $i < sizeof($branches); $i++ ){
-                                                $branch = selectDB("branches","`id` = '{$branches[$i]["branchId"]}' AND `hidden` = '0' AND `status` = '0'");
+                                        for( $i = 0; $i < sizeof($branches); $i++ ){
+                                            if( $branch = selectDB("branches","`id` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
                                                 $title = direction("{$branch[0]["enTitle"]}","{$branch[0]["arTitle"]}");
                                                 $checked = ( $i == 0 ) ? "checked=''" : "" ;
                                                 echo "<div class=\"size_radio\"> <input id=\"ba{$i}\" name=\"branch\" type=\"radio\" {$checked}> <label for=\"ba{$i}\"> {$title} </label> </input> </div>";
