@@ -37,7 +37,8 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 				?>
 			</select>
 			</div>
-
+			<hr>
+			
 			<div class="col-md-12">
 			<label><?php echo direction("Gender","الجنس") ?></label>
 			<select id="mySelect" name="genders[]" multiple class="form-control" required>
