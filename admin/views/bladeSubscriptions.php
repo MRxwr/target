@@ -53,32 +53,6 @@
 			</select>
 			</div>
 
-			<div class="col-md-12">
-			<label><?php echo direction("Days","الأيام") ?></label>
-			<select id="mySelect2" name="days[]" multiple class="form-control"required>
-				<?php
-				if( $academyDays = selectDB("days","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
-					for( $i =0; $i < sizeof($academyDays); $i++ ){
-						echo "<option value='{$academyDays[$i]["id"]}'>".direction("{$academyDays[$i]["enTitle"]}","{$academyDays[$i]["arTitle"]}")."</option>";
-					}
-				}
-				?>
-			</select>
-			</div>
-
-			<div class="col-md-12">
-			<label><?php echo direction("Sessions","الحصص") ?></label>
-			<select id="mySelect1" name="sessions[]" multiple class="form-control"required>
-				<?php
-				if( $academySessions = selectDB("sessions","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
-					for( $i =0; $i < sizeof($academySessions); $i++ ){
-						echo "<option value='{$academySessions[$i]["id"]}'>".direction("{$academySessions[$i]["enTitle"]}","{$academySessions[$i]["arTitle"]}")."</option>";
-					}
-				}
-				?>
-			</select>
-			</div>
-
 			<div class="col-md-6">
 			<label><?php echo direction("English Title","العنوان بالإنجليزي") ?></label>
 			<input type="text" name="enTitle" class="form-control" required>
@@ -200,10 +174,8 @@
 					<label id="arDetails<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arDetails"] ?></label>
 					<label id="enSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["enSubTitle"] ?></label>
 					<label id="arSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arSubTitle"] ?></label>
-					<label id="days<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["days"] ?></label>
 					<label id="genders<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["genders"] ?></label>
 					<label id="branches<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["branches"] ?></label>
-					<label id="sessions<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["sessions"] ?></label>
 				</td>
 				</tr>
 				<?php
@@ -224,8 +196,6 @@
 	<script>
 		$(document).ready(function() {
 			$('#mySelect').select2();
-			$('#mySelect1').select2();
-			$('#mySelect2').select2();
 			$('#mySelect3').select2();
 			$('#mySelect4').select2();
 		});
@@ -239,9 +209,7 @@
 			var arDetails = $("#arDetails"+id).html();
 			var sport = $("#sport"+id).html();
 			var branches = $("#branches"+id).html();
-			var sessions = $("#sessions"+id).html();
 			var genders = $("#genders"+id).html();
-			var days = $("#days"+id).html();
 			var numberOfDays = $("#numberOfDays"+id).html();
 			var price = $("#price"+id).html();
 			var priceAfterDiscount = $("#priceAfterDiscount"+id).html();
@@ -260,17 +228,11 @@
 			$("input[name=numberOfDays]").val(numberOfDays);
 			$("input[name=price]").val(price);
 			$("input[name=priceAfterDiscount]").val(priceAfterDiscount);
-			var daysArray = JSON.parse(days);
-			var sessionsArray = JSON.parse(sessions);
 			var gendersArray = JSON.parse(genders);
 			var branchesArray = JSON.parse(branches);
 			$('#mySelect').val(null).trigger('change');
-			$('#mySelect1').val(null).trigger('change');
-			$('#mySelect2').val(null).trigger('change');
 			$('#mySelect4').val(null).trigger('change');
 			setSelectedOptions(gendersArray, "mySelect");
-			setSelectedOptions(daysArray, "mySelect2");
-			setSelectedOptions(sessionsArray, "mySelect1");
 			setSelectedOptions(branchesArray, "mySelect4");
 		})
 		function setSelectedOptions(ids, selectId) {
