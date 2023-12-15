@@ -148,7 +148,7 @@ if ( isset($_GET["hide"]) || isset($_GET["show"]) || isset($_GET["delId"]) || is
 					$_POST["password"] = $user[0]["password"];
 				}
 			}
-			
+			var_dump($_POST);die();
 			if( updateDB2("{$table}", $_POST, "`id` = '{$id}'") ){
 			}else{
 			?>
