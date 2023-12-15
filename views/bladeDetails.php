@@ -67,24 +67,24 @@
                             <h2><?php echo direction($sport[0]["enTitle"],$sport[0]["arTitle"]) ?></h2>
                             <span><?php echo $price = ($subscription[0]["priceAfterDiscount"] > 0) ? $subscription[0]["priceAfterDiscount"] : $subscription[0]["price"] ?>KD</span>
                         </div>
-                        <h3><?php echo $subscription[0]["numberOfDays"] . direction("Sessions per month","الحصص في الشهر") ?></h3>
+                        <h3><?php echo $subscription[0]["numberOfDays"] . " " . direction("Sessions per month","الحصص في الشهر") ?></h3>
                         <h4><?php echo direction("Description","الشرح") ?>:</h4>
                         <p><?php echo direction($subscription[0]["enDetails"],$subscription[0]["arDetails"]) ?></p>
                         <h5><?php echo direction("Share","المشاركة") ?>:</h5>
                         <div class="karate_icon">
-                            <a href="https://www.facebook.com/sharer.php?u=[post-url]">
+                            <a href="https://www.facebook.com/sharer.php?u=<?php echo $_SERVER['HTTP_REFERER'] ?>">
                                 <img alt="" class="w-100" src="img/icon_1.svg"/>
                             </a>
-                            <a href="https://twitter.com/share?url=[post-url]&text=[post-title]">
+                            <a href="https://twitter.com/share?url=<?php echo $_SERVER['HTTP_REFERER'] ?>&text=<?php echo $mainAcademy[0]["enTitle"] ?>">
                                 <img alt="" class="w-100" src="img/icon_2.svg"/>
                             </a>
-                            <a href="https://pinterest.com/pin/create/bookmarklet/?media=[post-img]&url=[post-url]&is_video=[is_video]&description=[post-title]">
+                            <a href="https://pinterest.com/pin/create/bookmarklet/?media=<?php echo $mainAcademy[0]["imageurl"] ?>&url=<?php echo $_SERVER['HTTP_REFERER'] ?>&is_video=&description=<?php echo $mainAcademy[0]["enTitle"] ?>">
                                 <img alt="" class="w-100" src="img/icon_3.svg"/>
                             </a>
-                            <a href="https://www.linkedin.com/shareArticle?url=[post-url]&title=[post-title]">
+                            <a href="https://www.linkedin.com/shareArticle?url=<?php echo $_SERVER['HTTP_REFERER'] ?>&title=<?php echo $mainAcademy[0]["enTitle"] ?>">
                                 <img alt="" class="w-100" src="img/icon_4.svg"/>
                             </a>
-                            <a href="https://t.me/share/url?url={url}&text={text}">
+                            <a href="https://t.me/share/url?url=<?php echo $_SERVER['HTTP_REFERER'] ?>&text=<?php echo $mainAcademy[0]["enTitle"] ?>">
                                 <img alt="" class="w-100" src="img/icon_5.svg"/>
                             </a>
                         </div>
