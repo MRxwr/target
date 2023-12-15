@@ -103,7 +103,7 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
                 }
                     for( $y = 0; $y < sizeof($subscription); $y++ ){
                 ?>
-                <div class="month_wap">
+                <div class="month_wap" onclick="submitForm('<?php echo $subscription[$y]["id"]; ?>')">
                     <?php
                     $priceAfer = (float)$subscription[$y]["price"]-(float)$subscription[$y]["priceAfterDiscount"];
                     echo $save = ( !empty($subscription[$y]["priceAfterDiscount"]) ) ? "<div class='save_style'><p>SAVE {$priceAfer}KD</p></div>" : "";
@@ -123,3 +123,12 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
     }
 }
 ?>
+<form id="myForm" action="process.php" method="POST">
+        <input id="idInput" type="hidden" name="id">
+</form>
+<script>
+    function submitForm(id) {
+        document.getElementById('idInput').value = id;
+        document.getElementById('myForm').submit();
+    }
+</script>
