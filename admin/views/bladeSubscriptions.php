@@ -50,7 +50,6 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 				?>
 			</select>
 			</div>
-			</div>
 
 			<div class="col-md-4">
 			<label><?php echo direction("Days","الأيام") ?></label>
