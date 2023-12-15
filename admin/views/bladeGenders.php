@@ -90,23 +90,22 @@
 		?>
 		<tr>
 		<td>
-		<input name="order[]" class="form-control" type="number" value="<?php echo $sports[$i]["order"] ?>">
-		<input name="id[]" class="form-control" type="hidden" value="<?php echo $sports[$i]["id"] ?>">
+		<input name="order[]" class="form-control" type="number" value="<?php echo $genders[$i]["order"] ?>">
+		<input name="id[]" class="form-control" type="hidden" value="<?php echo $genders[$i]["id"] ?>">
 		</td>
-		<td id="enTitle<?php echo $sports[$i]["id"]?>" ><?php echo $sports[$i]["enTitle"] ?></td>
-		<td id="arTitle<?php echo $sports[$i]["id"]?>" ><?php echo $sports[$i]["arTitle"] ?></td>
-		<td id="enSubTitle<?php echo $sports[$i]["id"]?>" ><?php echo $sports[$i]["enSubTitle"] ?></td>
-		<td id="arSubTitle<?php echo $sports[$i]["id"]?>" ><?php echo $sports[$i]["arSubTitle"] ?></td>
+		<td id="enTitle<?php echo $genders[$i]["id"]?>" ><?php echo $genders[$i]["enTitle"] ?></td>
+		<td id="arTitle<?php echo $genders[$i]["id"]?>" ><?php echo $genders[$i]["arTitle"] ?></td>
+		<td id="enSubTitle<?php echo $genders[$i]["id"]?>" ><?php echo $genders[$i]["enSubTitle"] ?></td>
+		<td id="arSubTitle<?php echo $genders[$i]["id"]?>" ><?php echo $genders[$i]["arSubTitle"] ?></td>
 		<td class="text-nowrap">
 		
-		<a id="<?php echo $sports[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل")  ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
+		<a id="<?php echo $genders[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل")  ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 		</a>
 		<a href="<?php echo $link . "&v={$_GET["v"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i>
 		</a>
-		<a href="?delId=<?php echo $sports[$i]["id"] . "&v={$_GET["v"]}" ?>" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف")  ?>" class="btn btn-danger"><i class="fa fa-close text-inverse"></i>
+		<a href="?delId=<?php echo $genders[$i]["id"] . "&v={$_GET["v"]}" ?>" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف")  ?>" class="btn btn-danger"><i class="fa fa-close text-inverse"></i>
 		</a>
-		<div style="display:none"><label id="hidden<?php echo $sports[$i]["id"]?>"><?php echo $sports[$i]["hidden"] ?></label></div>
-		<div style="display:none"><label id="logo<?php echo $sports[$i]["id"]?>"><?php echo $sports[$i]["imageurl"] ?></label></div>		
+		<div style="display:none"><label id="hidden<?php echo $genders[$i]["id"]?>"><?php echo $genders[$i]["hidden"] ?></label></div>
 		</td>
 		</tr>
 		<?php
