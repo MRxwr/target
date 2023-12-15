@@ -57,6 +57,7 @@
                 <?php
                 if( $subscription = selectDB("subscriptions","`id` = '{$_POST["id"]}' AND `status` = '0' AND `hidden` = '0'") ){
                     $sport = selectDB("sports","`id` = '{$subscription[0]["sportId"]}' AND `hidden` = '0' AND `status` = '0'");
+                    $genders = selectDB("genders","`id` = '{$subscription[0]["gender"]}' AND `hidden` = '0' AND `status` = '0'");
                 }else{
                     header("Location: " . $_SERVER['HTTP_REFERER']);die();
                 }
@@ -72,19 +73,24 @@
                         <p><?php echo direction($subscription[0]["enDetails"],$subscription[0]["arDetails"]) ?></p>
                         <h5><?php echo direction("Share","المشاركة") ?>:</h5>
                         <div class="karate_icon">
-                            <a href="https://www.facebook.com/sharer.php?u=<?php echo $_SERVER['HTTP_REFERER'] ?>">
+                            <?php
+                            $referer = $_SERVER['HTTP_REFERER'];
+                            $title = $mainAcademy[0]["enTitle"];
+                            $imageUrl = $mainAcademy[0]["imageurl"];
+                            ?>
+                            <a href="https://www.facebook.com/sharer.php?u=<?php echo $referer ?>">
                                 <img alt="" class="w-100" src="img/icon_1.svg"/>
                             </a>
-                            <a href="https://twitter.com/share?url=<?php echo $_SERVER['HTTP_REFERER'] ?>&text=<?php echo $mainAcademy[0]["enTitle"] ?>">
+                            <a href="https://twitter.com/share?url=<?php echo $referer ?>&text=<?php echo $title ?>">
                                 <img alt="" class="w-100" src="img/icon_2.svg"/>
                             </a>
-                            <a href="https://pinterest.com/pin/create/bookmarklet/?media=<?php echo $mainAcademy[0]["imageurl"] ?>&url=<?php echo $_SERVER['HTTP_REFERER'] ?>&is_video=&description=<?php echo $mainAcademy[0]["enTitle"] ?>">
+                            <a href="https://pinterest.com/pin/create/bookmarklet/?media=<?php echo $imageUrl ?>&url=<?php echo $referer ?>&is_video=&description=<?php echo $title ?>">
                                 <img alt="" class="w-100" src="img/icon_3.svg"/>
                             </a>
-                            <a href="https://www.linkedin.com/shareArticle?url=<?php echo $_SERVER['HTTP_REFERER'] ?>&title=<?php echo $mainAcademy[0]["enTitle"] ?>">
+                            <a href="https://www.linkedin.com/shareArticle?url=<?php echo $referer ?>&title=<?php echo $title ?>">
                                 <img alt="" class="w-100" src="img/icon_4.svg"/>
                             </a>
-                            <a href="https://t.me/share/url?url=<?php echo $_SERVER['HTTP_REFERER'] ?>&text=<?php echo $mainAcademy[0]["enTitle"] ?>">
+                            <a href="https://t.me/share/url?url=<?php echo $referer ?>&text=<?php echo $title ?>">
                                 <img alt="" class="w-100" src="img/icon_5.svg"/>
                             </a>
                         </div>
@@ -104,32 +110,17 @@
                     <div class="step_wap">
                         <span class="step">
                             <div class="personal_item">
-                                <p>
-                                    <span>
-                                        1
-                                    </span>
-                                    Personal Details
-                                </p>
+                                <p><span>1</span><?php echo direction("Personal Details","البيانات الشخصية") ?></p>
                             </div>
                         </span>
                         <span class="step">
                             <div class="personal_item">
-                                <p>
-                                    <span>
-                                        2
-                                    </span>
-                                    Timing
-                                </p>
+                                <p><span>2</span><?php echo direction("Time & Location","الوقت والمواعيد") ?></p>
                             </div>
                         </span>
                         <span class="step">
                             <div class="personal_item">
-                                <p>
-                                    <span>
-                                        3
-                                    </span>
-                                    Checkout
-                                </p>
+                                <p><span>3</span><?php echo direction("Payment","الدفع") ?></p>
                             </div>
                         </span>
                     </div>
@@ -139,17 +130,13 @@
                         <div class="row align-items-center">
                             <div class="col-lg-5">
                                 <div class="teb_left">
-                                    <h2>
-                                        Personal Details
-                                    </h2>
+                                    <h2><?php echo direction("Personal Details","البيانات الشخصية") ?></h2>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="tab_right">
                                     <div class="tab_title">
-                                        <h3>
-                                            Name *
-                                        </h3>
+                                        <h3><?php echo direction("Name","الاسم") ?> *</h3>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4">
@@ -166,9 +153,7 @@
                                         </div>
                                     </div>
                                     <div class="tab_title mt_20">
-                                        <h3>
-                                            Mobile Number *
-                                        </h3>
+                                        <h3><?php echo direction("Mobile Number","رقم الجوال") ?> *</h3>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4">
@@ -177,51 +162,22 @@
                                         </div>
                                     </div>
                                     <div class="tab_title mt_20">
-                                        <h3>
-                                            Gender *
-                                        </h3>
+                                        <h3><?php echo direction("Gender","الجنس") ?> *</h3>
                                     </div>
                                     <div class="style_radio">
+                                        <?php 
+                                        if( ){
+                                            for(){
+                                        ?>
                                         <div class="size_radio">
                                             <input checked="" id="us7" name="us3" type="radio">
-                                                <label for="us7">
-                                                    MAN
-                                                    <span>
-                                                        18 above
-                                                    </span>
-                                                </label>
+                                                <label for="us7">MAN<span>18 above</span></label>
                                             </input>
                                         </div>
-                                        <div class="size_radio">
-                                            <input id="us8" name="us3" type="radio">
-                                                <label for="us8">
-                                                    WOMAN
-                                                    <span>
-                                                        18 above
-                                                    </span>
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="us9" name="us3" type="radio">
-                                                <label for="us9">
-                                                    BOY
-                                                    <span>
-                                                        below 18
-                                                    </span>
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="us10" name="us3" type="radio">
-                                                <label for="us10">
-                                                    GIRL
-                                                    <span>
-                                                        below 18
-                                                    </span>
-                                                </label>
-                                            </input>
-                                        </div>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -233,128 +189,47 @@
                         <div class="row align-items-center">
                             <div class="col-lg-5">
                                 <div class="teb_left">
-                                    <h2>
-                                        BRANCH & TIMING
-                                    </h2>
+                                    <h2><?php echo direction("Time & Location","الوقت والمواعيد") ?></h2>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="tab_right">
                                     <div class="tab_title">
-                                        <h4>
-                                            Branch
-                                        </h4>
+                                        <h4><?php echo direction("Branch","الفرع") ?></h4>
                                     </div>
                                     <div class="style_radio style_radio_2">
+
                                         <div class="size_radio">
                                             <input checked="" id="ba7" name="ba3" type="radio">
-                                                <label for="ba7">
-                                                    Sabah Alsalem
-                                                </label>
+                                                <label for="ba7">Sabah Alsalem</label>
                                             </input>
                                         </div>
-                                        <div class="size_radio">
-                                            <input id="ba8" name="ba3" type="radio">
-                                                <label for="ba8">
-                                                    Kifan
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="ba9" name="ba3" type="radio">
-                                                <label for="ba9">
-                                                    Shuweik
-                                                </label>
-                                            </input>
-                                        </div>
-                                    </div>
+                                        
                                     <div class="tab_title mt_25">
-                                        <h4>
-                                            Days
-                                        </h4>
+                                        <h4><?php echo direction("Days","الأيام") ?></h4>
                                     </div>
                                     <div class="style_radio style_radio_2">
+
                                         <div class="size_radio">
                                             <input checked="" id="ba10" name="ba4" type="radio">
-                                                <label for="ba10">
-                                                    Sat, Sun, Mon
-                                                </label>
+                                                <label for="ba10">Sat, Sun, Mon</label>
                                             </input>
                                         </div>
-                                        <div class="size_radio">
-                                            <input id="ba11" name="ba4" type="radio">
-                                                <label for="ba11">
-                                                    Tues, Wed
-                                                </label>
-                                            </input>
-                                        </div>
+
                                     </div>
+
                                     <div class="tab_title mt_25">
-                                        <h4>
-                                            Session Time
-                                        </h4>
+                                        <h4><?php echo direction("Session Time","وقت الحصة") ?></h4>
                                     </div>
                                     <div class="style_radio style_radio_2">
+
                                         <div class="size_radio">
                                             <input checked="" id="in1" name="in1" type="radio">
-                                                <label for="in1">
-                                                    6:00 - 7:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 10
-                                                </h6>
+                                                <label for="in1">6:00 - 7:00</label>
+                                                <h6><?php echo direction("Seats Available","المقاعد المتاحة")?>: 10</h6>
                                             </input>
                                         </div>
-                                        <div class="size_radio">
-                                            <input id="in2" name="in1" type="radio">
-                                                <label for="in2">
-                                                    8:00 - 9:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 0
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in3" name="in1" type="radio">
-                                                <label for="in3">
-                                                    9:00 - 10:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 4
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in4" name="in1" type="radio">
-                                                <label for="in4">
-                                                    6:00 - 7:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 10
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in5" name="in1" type="radio">
-                                                <label for="in5">
-                                                    8:00 - 9:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 0
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in6" name="in1" type="radio">
-                                                <label for="in6">
-                                                    9:00 - 10:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 4
-                                                </h6>
-                                            </input>
-                                        </div>
+                                
                                     </div>
                                 </div>
                             </div>
@@ -366,98 +241,56 @@
                         <div class="row align-items-center">
                             <div class="col-lg-5">
                                 <div class="teb_left">
-                                    <h2>
-                                        Checkout
-                                    </h2>
+                                    <h2>Checkout</h2>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="tab_right">
                                     <div class="tab_title">
-                                        <h4>
-                                            Please choose preferd payment method:
-                                        </h4>
+                                        <h4><?php echo direction("Please choose preferd payment method","يرجى تحديد طريقة الدفع المفضلة") ?>:</h4>
                                     </div>
                                     <div class="checkout_wap mt_45">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <h5>
-                                                    Activity:
-                                                    <span>
-                                                        HEAVY LIFTING
-                                                    </span>
-                                                </h5>
-                                                <h5>
-                                                    Branch:
-                                                    <span>
-                                                        Sabah Al Salem
-                                                    </span>
-                                                </h5>
-                                                <h5>
-                                                    Subscription Date:
-                                                    <span>
-                                                        03-05-2023
-                                                    </span>
+                                                <h5><?php echo direction("Activity","النشاط") ?>:<span>HEAVY LIFTING</span></h5>
+                                                <h5><?php echo direction("Branch","الفرع") ?>:<span>Sabah Al Salem</span></h5>
+                                                <h5><?php echo direction("Date","التاريخ") ?>:
+                                                    <span><?php date_default_timezone_set('Etc/GMT+3'); echo date("Y-m-d") ?></span>
                                                 </h5>
                                             </div>
+
                                             <div class="col-lg-6">
-                                                <h5>
-                                                    Days:
-                                                    <span>
-                                                        Sat, Sun, Mon
-                                                    </span>
-                                                </h5>
-                                                <h5>
-                                                    Session Time:
-                                                    <span>
-                                                        6:00 - 7:00
-                                                    </span>
-                                                </h5>
-                                                <h5>
-                                                    Total Price:
-                                                    <span>
-                                                        45 KD
-                                                    </span>
-                                                </h5>
+                                                <h5><?php echo direction("Days","اليوم") ?>:<span>Sat, Sun, Mon</span></h5>
+                                                <h5><?php echo direction("Session Time","وقت الحصة") ?>:<span>6:00 - 7:00</span></h5>
+                                                <h5><?php echo direction("Price","السعر") ?>:<span>45 KD</span></h5>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="check_inp mt_30">
                                                 <input placeholder="Coupon Code" type="text">
                                                     <button class="check_btn" type="submit">
-                                                        Apply
+                                                        <?php echo direction("Apply", "تطبيق") ?>
                                                     </button>
                                                 </input>
                                             </div>
+
                                             <div class="shape_radio mt_20">
                                                 <div class="shape_items mb_10">
                                                     <input checked="" id="au1" name="pk1" type="radio">
-                                                        <label for="au1">
-                                                            <span>
-                                                            </span>
-                                                            KNET
-                                                        </label>
+                                                        <label for="au1"><span></span>KNET</label>
                                                     </input>
                                                 </div>
                                                 <div class="shape_items">
                                                     <input id="au2" name="pk1" type="radio">
-                                                        <label for="au2">
-                                                            <span>
-                                                            </span>
-                                                            VISA / MASTER CARD
-                                                        </label>
+                                                        <label for="au2"><span></span>VISA / MASTER CARD</label>
                                                     </input>
                                                 </div>
                                             </div>
+
                                             <div class="agree_box">
                                                 <input checked="" id="chk1" type="checkbox">
-                                                    <label for="chk1">
-                                                        <span class="rectangle">
-                                                        </span>
-                                                        <div>
-                                                            I agree to the 
-                                                            <a data-toggle="modal" href="#terms">terms and conditions.</a>
-                                                        </div>
+                                                    <label for="chk1"><span class="rectangle"></span>
+                                                        <div><?php echo direction("I agree with the", "أوافق على") ?> <a data-toggle="modal" href="#terms"><?php echo direction("Terms & Conditions", "الشروط والأحكام") ?></a></div>
                                                     </label>
                                                 </input>
                                             </div>
@@ -470,10 +303,10 @@
 
                     <div class="step_control">
                         <button class="button_box" id="prevBtn" onclick="nextPrev(-1)" type="button">
-                            Previous
+                            <?php echo direction("Previous","السابق") ?>
                         </button>
                         <button class="button_box" id="nextBtn" onclick="nextPrev(1)" type="button">
-                            NEXT
+                            <?php echo direction("Next","التالي") ?>
                         </button>
                     </div>
                 </form>
