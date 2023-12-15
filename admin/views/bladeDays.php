@@ -1,10 +1,3 @@
-<?php
-if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
-	$academyId = $academy[0]["academyId"];
-}else{
-	$academyId = 0;
-}
-?>
 <div class="col-sm-12" style="padding: 10px;">
 	<a class="btn btn-default" href="?v=Branches&code=<?php echo $academyId ?>" ><?php echo direction("Back to list of branches","العوده لقائمة الأفرع") ?></a>
 </div>
@@ -34,8 +27,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			<div class="col-md-12" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
 			<input type="hidden" name="update" value="0">
-            <input type="hidden" name="branchId" value="<?php echo $_GET["code"] ?>">
-            <input type="hidden" name="academyId" value="<?php echo $academyId ?>">
+            <input type="hidden" name="academyId" value="<?php echo $_GET["code"] ?>">
 			</div>
 		</div>
 	</form>

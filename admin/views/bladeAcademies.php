@@ -174,12 +174,15 @@
 				<td><?php echo $counter = 1 + $i ?></td>
 				<td><?php echo $academyTitle ?></td>
 				<td class="text-nowrap">
-					<a href="?v=Sports&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-success"><?php echo direction("Sports","الرياضات") ?></a>
+					<a href="?v=Sports&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-danger"><?php echo direction("Sports","الرياضات") ?></a>
 					<a href="?v=Genders&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Gender","الجنس") ?></a>
 					<a href="?v=Branches&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-primary"><?php echo direction("Branches","الأفرع") ?></a>
+					<a href="?v=Days&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-warning"><?php echo direction("Days","الأيام") ?></a>
+					<a href="?v=Sessions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-default"><?php echo direction("Sessions","المحاضرات") ?></a>
+					<a href="?v=Subscriptions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-success"><?php echo direction("Subscriptions","الإشتراكات") ?></a>
 					<a id="<?php echo $academies[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل")  ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
-					<a href="<?php echo $link . "&v={$_GET["v"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>
+					<a href="<?php echo $link . "&v={$_GET["v"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>
 					<a href="?delId=<?php echo $academies[$i]["id"] . "&v={$_GET["v"]}" ?>" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف")  ?>" class="btn btn-danger"><i class="fa fa-close text-inverse"></i>
 					</a>
 					<div style="display:none"><label id="logo<?php echo $academies[$i]["id"]?>"><?php echo $academies[$i]["imageurl"] ?></label></div>

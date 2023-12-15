@@ -1,13 +1,5 @@
-<?php
-if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
-	$academyId = $academy[0]["academyId"];
-}else{
-	$academyId = 0;
-}
-?>
-
 <div class="col-sm-12" style="padding: 10px;">
-	<a class="btn btn-default" href="?v=Branches&code=<?php echo $academyId ?>" ><?php echo direction("Back to list of branches","العوده لقائمة الأفرع") ?></a>
+	<a class="btn btn-default" href="?v=Branches&code=<?php echo $_GET["code"] ?>" ><?php echo direction("Back to list of branches","العوده لقائمة الأفرع") ?></a>
 </div>
 
 <div class="col-sm-12">
@@ -53,10 +45,23 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			</div>
 
 			<div class="col-md-12">
+			<label><?php echo direction("Branches","الأفرع") ?></label>
+			<select id="mySelect4" name="branches[]" multiple class="form-control"required>
+				<?php
+				if( $academyBranches = selectDB("branches","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
+					for( $i =0; $i < sizeof($academyBranches); $i++ ){
+						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
+					}
+				}
+				?>
+			</select>
+			</div>
+
+			<div class="col-md-12">
 			<label><?php echo direction("Days","الأيام") ?></label>
 			<select id="mySelect2" name="days[]" multiple class="form-control"required>
 				<?php
-				if( $academyDays = selectDB("days","`branchId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
+				if( $academyDays = selectDB("days","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyDays); $i++ ){
 						echo "<option value='{$academyDays[$i]["id"]}'>".direction("{$academyDays[$i]["enTitle"]}","{$academyDays[$i]["arTitle"]}")."</option>";
 					}
@@ -69,9 +74,9 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			<label><?php echo direction("Sessions","الحصص") ?></label>
 			<select id="mySelect1" name="sessions[]" multiple class="form-control"required>
 				<?php
-				if( $academyBranches = selectDB("sessions","`branchId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
-					for( $i =0; $i < sizeof($academyBranches); $i++ ){
-						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
+				if( $academySessions = selectDB("sessions","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
+					for( $i =0; $i < sizeof($academySessions); $i++ ){
+						echo "<option value='{$academySessions[$i]["id"]}'>".direction("{$academySessions[$i]["enTitle"]}","{$academySessions[$i]["arTitle"]}")."</option>";
 					}
 				}
 				?>
@@ -202,7 +207,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 					<label id="arSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arSubTitle"] ?></label>
 					<label id="days<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["days"] ?></label>
 					<label id="genders<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["genders"] ?></label>
-					<label id="branches<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["branchId"] ?></label>
+					<label id="branches<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["branches"] ?></label>
 					<label id="sessions<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["sessions"] ?></label>
 				</td>
 				</tr>
@@ -227,6 +232,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			$('#mySelect1').select2();
 			$('#mySelect2').select2();
 			$('#mySelect3').select2();
+			$('#mySelect4').select2();
 		});
 		$(document).on("click",".edit", function(){
 			var id = $(this).attr("id");
@@ -251,7 +257,6 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			$("input[name=enSubTitle]").val(enSubTitle);
 			$("textarea[name=enDetails]").val(enDetails);
 			$("textarea[name=arDetails]").val(arDetails);
-			$("input[name=branchId]").val(branches);
 			var $select = $('#mySelect3');
 			$select.val(null).trigger('change');
 			var $option = $select.find('option[value="' + sport + '"]');
@@ -263,12 +268,15 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			var daysArray = JSON.parse(days);
 			var sessionsArray = JSON.parse(sessions);
 			var gendersArray = JSON.parse(genders);
+			var branchesArray = JSON.parse(branches);
 			$('#mySelect').val(null).trigger('change');
 			$('#mySelect1').val(null).trigger('change');
 			$('#mySelect2').val(null).trigger('change');
+			$('#mySelect4').val(null).trigger('change');
 			setSelectedOptions(gendersArray, "mySelect");
 			setSelectedOptions(daysArray, "mySelect2");
 			setSelectedOptions(sessionsArray, "mySelect1");
+			setSelectedOptions(branchesArray, "mySelect4");
 		})
 		function setSelectedOptions(ids, selectId) {
 			var $select = $('#' + selectId);
