@@ -57,7 +57,9 @@
                 <?php
                 if( $subscription = selectDB("subscriptions","`id` = '{$_POST["id"]}' AND `status` = '0' AND `hidden` = '0'") ){
                     $sport = selectDB("sports","`id` = '{$subscription[0]["sportId"]}' AND `hidden` = '0' AND `status` = '0'");
-                    $genders = selectDB("genders","`id` = '{$subscription[0]["gender"]}' AND `hidden` = '0' AND `status` = '0'");
+                    $genders = json_decode($subscription[0]["genders"],true);
+                    $sessions = json_decode($subscription[0]["sessions"],true);
+                    $days = json_decode($subscription[0]["days"],true);
                 }else{
                     header("Location: " . $_SERVER['HTTP_REFERER']);die();
                 }
@@ -166,15 +168,15 @@
                                     </div>
                                     <div class="style_radio">
                                         <?php 
-                                        if( ){
-                                            for(){
-                                        ?>
-                                        <div class="size_radio">
-                                            <input checked="" id="us7" name="us3" type="radio">
-                                                <label for="us7">MAN<span>18 above</span></label>
-                                            </input>
-                                        </div>
-                                        <?php
+                                        for( $i = 0; $i < sizeof($genders); $i++){
+                                            if( $loopGender = selectDB("genders","`id` = '$genders[$i]' AND `hidden` = '0' AND `status` = '0'") ){
+                                                $loopGender = $loopGender[0];
+                                                $title = direction("{$loopGender["enTitle"]} {$loopGender["enSubTitle"]}","{$loopGender["arTitle"]} {$loopGender["arSubTitle"]}");
+                                                echo "<div class='size_radio'>
+                                                        <input id='us$i' name='gender' type='radio'>
+                                                            <label for='us$i'>{$title}</label>
+                                                        </input>
+                                                    </div>";
                                             }
                                         }
                                         ?>
@@ -198,13 +200,18 @@
                                         <h4><?php echo direction("Branch","الفرع") ?></h4>
                                     </div>
                                     <div class="style_radio style_radio_2">
-
-                                        <div class="size_radio">
-                                            <input checked="" id="ba7" name="ba3" type="radio">
-                                                <label for="ba7">Sabah Alsalem</label>
-                                            </input>
-                                        </div>
-                                        
+                                    <?php
+                                    if($branches = selectDB("subscriptions","`academyId` = '{$mainAcademy[0]["id"]}' AND `sportId` = '{$subscription[0]["sportId"]}' AND `hidden` = '0' AND `status` = '0'") ){
+                                        for( $i = 0; $i < sizeof($branches); $i++ ){
+                                            $title = direction("{$branches[$i]["enTitle"]}","{$branches[$i]["arTitle"]}");
+                                            echo "<div class='size_radio'>
+                                                <input id='ba{$i}' name='branch' type='radio'>
+                                                    <label for='ba{$i}'>{$title}</label>
+                                                </input>
+                                            </div>";
+                                        }
+                                    }
+                                    ?>
                                     <div class="tab_title mt_25">
                                         <h4><?php echo direction("Days","الأيام") ?></h4>
                                     </div>
