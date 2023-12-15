@@ -310,10 +310,10 @@
 
                     <div class="step_control">
                         <button class="button_box" id="prevBtn" onclick="nextPrev(-1)" type="button">
-                            <?php echo direction("Previous","السابق") ?>
+                        Previous
                         </button>
                         <button class="button_box" id="nextBtn" onclick="nextPrev(1)" type="button">
-                            <?php echo direction("Next","التالي") ?>
+                        Next
                         </button>
                     </div>
                 </form>
