@@ -64,7 +64,7 @@
                 <div class="col-lg-8 mt_45">
                     <div class="karate_box">
                         <div class="kd_wap d-flex align-items-center justify-content-between">
-                            <h2><?php echo direction($sport[0]["enDetails"],$sport[0]["arDetails"]) ?></h2>
+                            <h2><?php echo direction($sport[0]["enTitle"],$sport[0]["arTitle"]) ?></h2>
                             <span><?php echo $price = ($subscription[0]["priceAfterDiscount"] > 0) ? $subscription[0]["priceAfterDiscount"] : $subscription[0]["price"] ?>KD</span>
                         </div>
                         <h3><?php echo $subscription[0]["numberOfDays"] . direction("Sessions per month","الحصص في الشهر") ?></h3>
