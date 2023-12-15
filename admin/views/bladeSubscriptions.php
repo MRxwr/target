@@ -40,7 +40,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 
 			<div class="col-md-4">
 			<label><?php echo direction("Gender","الجنس") ?></label>
-			<select id="mySelect" name="genders[]" multiple class="form-control"required>
+			<select id="mySelect" name="genders[]" multiple class="form-control" required>
 				<?php
 				if( $academyDays = selectDB("genders","`academyId` = '{$academyId}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyDays); $i++ ){
