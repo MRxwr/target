@@ -127,8 +127,7 @@
 			<div class="col-md-12" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
 			<input type="hidden" name="update" value="0">
-			<input type="hidden" name="branchId" value="<?php echo $_GET["code"] ?>">
-			<input type="hidden" name="academyId" value="<?php echo $academyId ?>">
+			<input type="hidden" name="academyId" value="<?php echo $_GET["code"] ?>">
 			</div>
 		</div>
 	</form>
