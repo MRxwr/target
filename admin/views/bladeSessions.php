@@ -80,7 +80,7 @@
 		$orderBy = direction("enTitle","arTitle");
 		if( $sessions = selectDB("sessions","`status` = '0' AND `academyId` = '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($sessions); $i++ ){
-				$branch = selectDB("branches","`id` = '{$sessions[$i]["branchId"]}' `status` = '0' AND `hidden` = '0'");
+				$branch = selectDB("branches","`id` = '{$sessions[$i]["branchId"]}' AND `status` = '0' AND `hidden` = '0'");
 				if ( $sessions[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
 					$link = "?show={$sessions[$i]["id"]}";

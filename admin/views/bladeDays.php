@@ -74,7 +74,7 @@
 		$orderBy = direction("enTitle","arTitle");
 		if( $days = selectDB("days","`status` = '0' AND `academyId` = '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($days); $i++ ){
-				$branch = selectDB("branches","`id` = '{$days[$i]["branchId"]}' `status` = '0' AND `hidden` = '0'");
+				$branch = selectDB("branches","`id` = '{$days[$i]["branchId"]}' AND `status` = '0' AND `hidden` = '0'");
 				if ( $days[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
 					$link = "?show={$days[$i]["id"]}";
