@@ -188,46 +188,16 @@
                                         </h3>
                                     </div>
                                     <div class="style_radio">
-                                        <div class="size_radio">
-                                            <input checked="" id="us7" name="us3" type="radio">
-                                                <label for="us7">
-                                                    MAN
-                                                    <span>
-                                                        18 above
-                                                    </span>
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="us8" name="us3" type="radio">
-                                                <label for="us8">
-                                                    WOMAN
-                                                    <span>
-                                                        18 above
-                                                    </span>
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="us9" name="us3" type="radio">
-                                                <label for="us9">
-                                                    BOY
-                                                    <span>
-                                                        below 18
-                                                    </span>
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="us10" name="us3" type="radio">
-                                                <label for="us10">
-                                                    GIRL
-                                                    <span>
-                                                        below 18
-                                                    </span>
-                                                </label>
-                                            </input>
-                                        </div>
+                                        <?php
+                                        for( $i = 0; $i < sizeof($genders); $i++ ){
+                                            if( $loopGender = selectDB("genders","`id` = '{$genders[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
+                                                $loopGender = $loopGender[0];
+                                                $title = direction("{$loopGender["enTitle"]}","{$loopGender["arTitle"]}");
+                                                $subTitle = direction("{$loopGender["enSubTitle"]}","{$loopGender["arSubTitle"]}");
+                                                echo "<div class=\"size_radio\"> <input id=\"us{$i}\" name=\"us3\" type=\"radio\"> <label for=\"us{$i}\"> {$title} <span> {$subTitle} </span> </label> </input> </div>";
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +208,7 @@
                             <div class="col-lg-5">
                                 <div class="teb_left">
                                     <h2>
-                                        BRANCH & TIMING
+                                    <?php echo direction("Subscription Details","تفاصيل الاشتراك") ?>
                                     </h2>
                                 </div>
                             </div>
@@ -369,7 +339,7 @@
                             <div class="col-lg-5">
                                 <div class="teb_left">
                                     <h2>
-                                        Checkout
+                                    <?php echo direction("Checkout","الدفع") ?>
                                     </h2>
                                 </div>
                             </div>
