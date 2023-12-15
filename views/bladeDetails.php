@@ -154,7 +154,7 @@
                                 <div class="tab_right">
                                     <div class="tab_title">
                                         <h3>
-                                            Name *
+                                            <?php echo direction("Name","الاسم")?> *
                                         </h3>
                                     </div>
                                     <div class="row">
@@ -173,7 +173,7 @@
                                     </div>
                                     <div class="tab_title mt_20">
                                         <h3>
-                                            Mobile Number *
+                                            <?php echo direction("Mobile Number","رقم الهاتف")?> *
                                         </h3>
                                     </div>
                                     <div class="row">
@@ -184,7 +184,7 @@
                                     </div>
                                     <div class="tab_title mt_20">
                                         <h3>
-                                            Gender *
+                                            <?php echo direction("Gender","الجنس")?> *
                                         </h3>
                                     </div>
                                     <div class="style_radio">
@@ -194,7 +194,7 @@
                                                 $loopGender = $loopGender[0];
                                                 $title = direction("{$loopGender["enTitle"]}","{$loopGender["arTitle"]}");
                                                 $subTitle = direction("{$loopGender["enSubTitle"]}","{$loopGender["arSubTitle"]}");
-                                                echo "<div class=\"size_radio\"> <input id=\"us{$i}\" name=\"us3\" type=\"radio\"> <label for=\"us{$i}\"> {$title} <span> {$subTitle} </span> </label> </input> </div>";
+                                                echo "<div class=\"size_radio\"> <input id=\"us{$i}\" name=\"gender\" type=\"radio\"> <label for=\"us{$i}\"> {$title} <span> {$subTitle} </span> </label> </input> </div>";
                                             }
                                         }
                                         ?>
@@ -216,31 +216,19 @@
                                 <div class="tab_right">
                                     <div class="tab_title">
                                         <h4>
-                                            Branch
+                                            <?php echo direction("Branch","الفرع")?>
                                         </h4>
                                     </div>
                                     <div class="style_radio style_radio_2">
-                                        <div class="size_radio">
-                                            <input checked="" id="ba7" name="ba3" type="radio">
-                                                <label for="ba7">
-                                                    Sabah Alsalem
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="ba8" name="ba3" type="radio">
-                                                <label for="ba8">
-                                                    Kifan
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="ba9" name="ba3" type="radio">
-                                                <label for="ba9">
-                                                    Shuweik
-                                                </label>
-                                            </input>
-                                        </div>
+                                        <?php 
+                                        if( $branches = selectDB("subscriptions","`sportId` = '{$subscription[0]["sportId"]}' AND `academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0'") ){
+                                            for( $i = 0; $i < sizeof($branches); $i++ ){
+                                                $branch = $branches[$i];
+                                                $title = direction("{$branch["enTitle"]}","{$branch["arTitle"]}");
+                                                echo "<div class=\"size_radio\"> <input id=\"ba{$i}\" name=\"branch\" type=\"radio\"> <label for=\"ba{$i}\"> {$title} </label> </input> </div>";
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                     <div class="tab_title mt_25">
                                         <h4>
