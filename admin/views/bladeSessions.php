@@ -13,7 +13,7 @@
 
 			<div class="col-md-3">
 			<label><?php echo direction("Branch","الفرع") ?></label>
-			<select name="branchId" multiple class="form-control" required>
+			<select name="branchId" class="form-control" required>
 				<?php
 				if( $academyBranches = selectDB("branches","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyBranches); $i++ ){
