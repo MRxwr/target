@@ -38,7 +38,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			</select>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-12">
 			<label><?php echo direction("Gender","الجنس") ?></label>
 			<select id="mySelect" name="genders[]" multiple class="form-control" required>
 				<?php
@@ -51,7 +51,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			</select>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-12">
 			<label><?php echo direction("Days","الأيام") ?></label>
 			<select id="mySelect2" name="days[]" multiple class="form-control"required>
 				<?php
@@ -64,7 +64,7 @@ if( $academy = selectDB2("`academyId`","branches","`id` = '{$_GET["code"]}'")){
 			</select>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-12">
 			<label><?php echo direction("Sessions","الحصص") ?></label>
 			<select id="mySelect1" name="sessions[]" multiple class="form-control"required>
 				<?php
