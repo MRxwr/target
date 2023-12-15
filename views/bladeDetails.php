@@ -103,381 +103,381 @@
     </div>
     <!-- Personal Details -->
 <!-- Personal Details -->
-<div class="personal_details">
-                <div class="container">
-                    <div class="personal_wapper">
-                        <form action="#" id="regForm">
-                            <!-- Circles which indicates the steps of the form: -->
-                            <div class="step_wap">
-                                <span class="step">
-                                    <div class="personal_item">
-                                        <p>
-                                            <span>
-                                                1
-                                            </span>
-                                            Personal Details
-                                        </p>
-                                    </div>
-                                </span>
-                                <span class="step">
-                                    <div class="personal_item">
-                                        <p>
-                                            <span>
-                                                2
-                                            </span>
-                                            Timing
-                                        </p>
-                                    </div>
-                                </span>
-                                <span class="step">
-                                    <div class="personal_item">
-                                        <p>
-                                            <span>
-                                                3
-                                            </span>
-                                            Checkout
-                                        </p>
-                                    </div>
-                                </span>
+    <div class="personal_details">
+        <div class="container">
+            <div class="personal_wapper">
+                <form action="#" id="regForm">
+                    <!-- Circles which indicates the steps of the form: -->
+                    <div class="step_wap">
+                        <span class="step">
+                            <div class="personal_item">
+                                <p>
+                                    <span>
+                                        1
+                                    </span>
+                                    <?php echo direction("Personal Details","البيانات الشخصية") ?>
+                                </p>
                             </div>
-                            <!-- One "tab" for each step in the form: -->
-                            <div class="tab">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-5">
-                                        <div class="teb_left">
-                                            <h2>
-                                                Personal Details
-                                            </h2>
+                        </span>
+                        <span class="step">
+                            <div class="personal_item">
+                                <p>
+                                    <span>
+                                        2
+                                    </span>
+                                    <?php echo direction("Subscription Details","تفاصيل الاشتراك") ?>
+                                </p>
+                            </div>
+                        </span>
+                        <span class="step">
+                            <div class="personal_item">
+                                <p>
+                                    <span>
+                                        3
+                                    </span>
+                                    <?php echo direction("Checkout","الدفع") ?>
+                                </p>
+                            </div>
+                        </span>
+                    </div>
+                    <!-- One "tab" for each step in the form: -->
+                    <div class="tab">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <div class="teb_left">
+                                    <h2>
+                                    <?php echo direction("Personal Details","البيانات الشخصية") ?>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="tab_right">
+                                    <div class="tab_title">
+                                        <h3>
+                                            Name *
+                                        </h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <input placeholder="First Name" type="text">
+                                            </input>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input placeholder="Middle Name" type="text">
+                                            </input>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input placeholder="last Name" type="text">
+                                            </input>
                                         </div>
                                     </div>
-                                    <div class="col-lg-7">
-                                        <div class="tab_right">
-                                            <div class="tab_title">
-                                                <h3>
-                                                    Name *
-                                                </h3>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <input placeholder="First Name" type="text">
-                                                    </input>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <input placeholder="Middle Name" type="text">
-                                                    </input>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <input placeholder="last Name" type="text">
-                                                    </input>
-                                                </div>
-                                            </div>
-                                            <div class="tab_title mt_20">
-                                                <h3>
-                                                    Mobile Number *
-                                                </h3>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <input placeholder="Mobile Number" type="tel">
-                                                    </input>
-                                                </div>
-                                            </div>
-                                            <div class="tab_title mt_20">
-                                                <h3>
-                                                    Gender *
-                                                </h3>
-                                            </div>
-                                            <div class="style_radio">
-                                                <div class="size_radio">
-                                                    <input checked="" id="us7" name="us3" type="radio">
-                                                        <label for="us7">
-                                                            MAN
-                                                            <span>
-                                                                18 above
-                                                            </span>
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="us8" name="us3" type="radio">
-                                                        <label for="us8">
-                                                            WOMAN
-                                                            <span>
-                                                                18 above
-                                                            </span>
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="us9" name="us3" type="radio">
-                                                        <label for="us9">
-                                                            BOY
-                                                            <span>
-                                                                below 18
-                                                            </span>
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="us10" name="us3" type="radio">
-                                                        <label for="us10">
-                                                            GIRL
-                                                            <span>
-                                                                below 18
-                                                            </span>
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                            </div>
+                                    <div class="tab_title mt_20">
+                                        <h3>
+                                            Mobile Number *
+                                        </h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <input placeholder="Mobile Number" type="tel">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="tab_title mt_20">
+                                        <h3>
+                                            Gender *
+                                        </h3>
+                                    </div>
+                                    <div class="style_radio">
+                                        <div class="size_radio">
+                                            <input checked="" id="us7" name="us3" type="radio">
+                                                <label for="us7">
+                                                    MAN
+                                                    <span>
+                                                        18 above
+                                                    </span>
+                                                </label>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="us8" name="us3" type="radio">
+                                                <label for="us8">
+                                                    WOMAN
+                                                    <span>
+                                                        18 above
+                                                    </span>
+                                                </label>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="us9" name="us3" type="radio">
+                                                <label for="us9">
+                                                    BOY
+                                                    <span>
+                                                        below 18
+                                                    </span>
+                                                </label>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="us10" name="us3" type="radio">
+                                                <label for="us10">
+                                                    GIRL
+                                                    <span>
+                                                        below 18
+                                                    </span>
+                                                </label>
+                                            </input>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-5">
-                                        <div class="teb_left">
-                                            <h2>
-                                                BRANCH & TIMING
-                                            </h2>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <div class="teb_left">
+                                    <h2>
+                                        BRANCH & TIMING
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="tab_right">
+                                    <div class="tab_title">
+                                        <h4>
+                                            Branch
+                                        </h4>
+                                    </div>
+                                    <div class="style_radio style_radio_2">
+                                        <div class="size_radio">
+                                            <input checked="" id="ba7" name="ba3" type="radio">
+                                                <label for="ba7">
+                                                    Sabah Alsalem
+                                                </label>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="ba8" name="ba3" type="radio">
+                                                <label for="ba8">
+                                                    Kifan
+                                                </label>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="ba9" name="ba3" type="radio">
+                                                <label for="ba9">
+                                                    Shuweik
+                                                </label>
+                                            </input>
                                         </div>
                                     </div>
-                                    <div class="col-lg-7">
-                                        <div class="tab_right">
-                                            <div class="tab_title">
-                                                <h4>
-                                                    Branch
-                                                </h4>
-                                            </div>
-                                            <div class="style_radio style_radio_2">
-                                                <div class="size_radio">
-                                                    <input checked="" id="ba7" name="ba3" type="radio">
-                                                        <label for="ba7">
-                                                            Sabah Alsalem
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="ba8" name="ba3" type="radio">
-                                                        <label for="ba8">
-                                                            Kifan
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="ba9" name="ba3" type="radio">
-                                                        <label for="ba9">
-                                                            Shuweik
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                            </div>
-                                            <div class="tab_title mt_25">
-                                                <h4>
-                                                    Days
-                                                </h4>
-                                            </div>
-                                            <div class="style_radio style_radio_2">
-                                                <div class="size_radio">
-                                                    <input checked="" id="ba10" name="ba4" type="radio">
-                                                        <label for="ba10">
-                                                            Sat, Sun, Mon
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="ba11" name="ba4" type="radio">
-                                                        <label for="ba11">
-                                                            Tues, Wed
-                                                        </label>
-                                                    </input>
-                                                </div>
-                                            </div>
-                                            <div class="tab_title mt_25">
-                                                <h4>
-                                                    Session Time
-                                                </h4>
-                                            </div>
-                                            <div class="style_radio style_radio_2">
-                                                <div class="size_radio">
-                                                    <input checked="" id="in1" name="in1" type="radio">
-                                                        <label for="in1">
-                                                            6:00 - 7:00
-                                                        </label>
-                                                        <h6>
-                                                            Seats Available: 10
-                                                        </h6>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="in2" name="in1" type="radio">
-                                                        <label for="in2">
-                                                            8:00 - 9:00
-                                                        </label>
-                                                        <h6>
-                                                            Seats Available: 0
-                                                        </h6>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="in3" name="in1" type="radio">
-                                                        <label for="in3">
-                                                            9:00 - 10:00
-                                                        </label>
-                                                        <h6>
-                                                            Seats Available: 4
-                                                        </h6>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="in4" name="in1" type="radio">
-                                                        <label for="in4">
-                                                            6:00 - 7:00
-                                                        </label>
-                                                        <h6>
-                                                            Seats Available: 10
-                                                        </h6>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="in5" name="in1" type="radio">
-                                                        <label for="in5">
-                                                            8:00 - 9:00
-                                                        </label>
-                                                        <h6>
-                                                            Seats Available: 0
-                                                        </h6>
-                                                    </input>
-                                                </div>
-                                                <div class="size_radio">
-                                                    <input id="in6" name="in1" type="radio">
-                                                        <label for="in6">
-                                                            9:00 - 10:00
-                                                        </label>
-                                                        <h6>
-                                                            Seats Available: 4
-                                                        </h6>
-                                                    </input>
-                                                </div>
-                                            </div>
+                                    <div class="tab_title mt_25">
+                                        <h4>
+                                            Days
+                                        </h4>
+                                    </div>
+                                    <div class="style_radio style_radio_2">
+                                        <div class="size_radio">
+                                            <input checked="" id="ba10" name="ba4" type="radio">
+                                                <label for="ba10">
+                                                    Sat, Sun, Mon
+                                                </label>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="ba11" name="ba4" type="radio">
+                                                <label for="ba11">
+                                                    Tues, Wed
+                                                </label>
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="tab_title mt_25">
+                                        <h4>
+                                            Session Time
+                                        </h4>
+                                    </div>
+                                    <div class="style_radio style_radio_2">
+                                        <div class="size_radio">
+                                            <input checked="" id="in1" name="in1" type="radio">
+                                                <label for="in1">
+                                                    6:00 - 7:00
+                                                </label>
+                                                <h6>
+                                                    Seats Available: 10
+                                                </h6>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="in2" name="in1" type="radio">
+                                                <label for="in2">
+                                                    8:00 - 9:00
+                                                </label>
+                                                <h6>
+                                                    Seats Available: 0
+                                                </h6>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="in3" name="in1" type="radio">
+                                                <label for="in3">
+                                                    9:00 - 10:00
+                                                </label>
+                                                <h6>
+                                                    Seats Available: 4
+                                                </h6>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="in4" name="in1" type="radio">
+                                                <label for="in4">
+                                                    6:00 - 7:00
+                                                </label>
+                                                <h6>
+                                                    Seats Available: 10
+                                                </h6>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="in5" name="in1" type="radio">
+                                                <label for="in5">
+                                                    8:00 - 9:00
+                                                </label>
+                                                <h6>
+                                                    Seats Available: 0
+                                                </h6>
+                                            </input>
+                                        </div>
+                                        <div class="size_radio">
+                                            <input id="in6" name="in1" type="radio">
+                                                <label for="in6">
+                                                    9:00 - 10:00
+                                                </label>
+                                                <h6>
+                                                    Seats Available: 4
+                                                </h6>
+                                            </input>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-5">
-                                        <div class="teb_left">
-                                            <h2>
-                                                Checkout
-                                            </h2>
-                                        </div>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <div class="teb_left">
+                                    <h2>
+                                        Checkout
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="tab_right">
+                                    <div class="tab_title">
+                                        <h4>
+                                            Please choose preferd payment method:
+                                        </h4>
                                     </div>
-                                    <div class="col-lg-7">
-                                        <div class="tab_right">
-                                            <div class="tab_title">
-                                                <h4>
-                                                    Please choose preferd payment method:
-                                                </h4>
+                                    <div class="checkout_wap mt_45">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h5>
+                                                    Activity:
+                                                    <span>
+                                                        HEAVY LIFTING
+                                                    </span>
+                                                </h5>
+                                                <h5>
+                                                    Branch:
+                                                    <span>
+                                                        Sabah Al Salem
+                                                    </span>
+                                                </h5>
+                                                <h5>
+                                                    Subscription Date:
+                                                    <span>
+                                                        03-05-2023
+                                                    </span>
+                                                </h5>
                                             </div>
-                                            <div class="checkout_wap mt_45">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <h5>
-                                                            Activity:
+                                            <div class="col-lg-6">
+                                                <h5>
+                                                    Days:
+                                                    <span>
+                                                        Sat, Sun, Mon
+                                                    </span>
+                                                </h5>
+                                                <h5>
+                                                    Session Time:
+                                                    <span>
+                                                        6:00 - 7:00
+                                                    </span>
+                                                </h5>
+                                                <h5>
+                                                    Total Price:
+                                                    <span>
+                                                        45 KD
+                                                    </span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="check_inp mt_30">
+                                                <input placeholder="Coupon Code" type="text">
+                                                    <button class="check_btn" type="submit">
+                                                        Apply
+                                                    </button>
+                                                </input>
+                                            </div>
+                                            <div class="shape_radio mt_20">
+                                                <div class="shape_items mb_10">
+                                                    <input checked="" id="au1" name="pk1" type="radio">
+                                                        <label for="au1">
                                                             <span>
-                                                                HEAVY LIFTING
                                                             </span>
-                                                        </h5>
-                                                        <h5>
-                                                            Branch:
-                                                            <span>
-                                                                Sabah Al Salem
-                                                            </span>
-                                                        </h5>
-                                                        <h5>
-                                                            Subscription Date:
-                                                            <span>
-                                                                03-05-2023
-                                                            </span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <h5>
-                                                            Days:
-                                                            <span>
-                                                                Sat, Sun, Mon
-                                                            </span>
-                                                        </h5>
-                                                        <h5>
-                                                            Session Time:
-                                                            <span>
-                                                                6:00 - 7:00
-                                                            </span>
-                                                        </h5>
-                                                        <h5>
-                                                            Total Price:
-                                                            <span>
-                                                                45 KD
-                                                            </span>
-                                                        </h5>
-                                                    </div>
+                                                            KNET
+                                                        </label>
+                                                    </input>
                                                 </div>
-                                                <div>
-                                                    <div class="check_inp mt_30">
-                                                        <input placeholder="Coupon Code" type="text">
-                                                            <button class="check_btn" type="submit">
-                                                                Apply
-                                                            </button>
-                                                        </input>
-                                                    </div>
-                                                    <div class="shape_radio mt_20">
-                                                        <div class="shape_items mb_10">
-                                                            <input checked="" id="au1" name="pk1" type="radio">
-                                                                <label for="au1">
-                                                                    <span>
-                                                                    </span>
-                                                                    KNET
-                                                                </label>
-                                                            </input>
+                                                <div class="shape_items">
+                                                    <input id="au2" name="pk1" type="radio">
+                                                        <label for="au2">
+                                                            <span>
+                                                            </span>
+                                                            VISA / MASTER CARD
+                                                        </label>
+                                                    </input>
+                                                </div>
+                                            </div>
+                                            <div class="agree_box">
+                                                <input checked="" id="chk1" type="checkbox">
+                                                    <label for="chk1">
+                                                        <span class="rectangle">
+                                                        </span>
+                                                        <div>
+                                                            I agree to the 
+                                                            <a data-toggle="modal" href="#terms">terms and conditions.</a>
                                                         </div>
-                                                        <div class="shape_items">
-                                                            <input id="au2" name="pk1" type="radio">
-                                                                <label for="au2">
-                                                                    <span>
-                                                                    </span>
-                                                                    VISA / MASTER CARD
-                                                                </label>
-                                                            </input>
-                                                        </div>
-                                                    </div>
-                                                    <div class="agree_box">
-                                                        <input checked="" id="chk1" type="checkbox">
-                                                            <label for="chk1">
-                                                                <span class="rectangle">
-                                                                </span>
-                                                                <div>
-                                                                    I agree to the 
-                                                                    <a data-toggle="modal" href="#terms">terms and conditions.</a>
-                                                                </div>
-                                                            </label>
-                                                        </input>
-                                                    </div>
-                                                </div>
+                                                    </label>
+                                                </input>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="step_control">
-                                <button class="button_box" id="prevBtn" onclick="nextPrev(-1)" type="button">
-                                    Previous
-                                </button>
-                                <button class="button_box" id="nextBtn" onclick="nextPrev(1)" type="button">
-                                    NEXT
-                                </button>
-                            </div>
+                    <div class="step_control">
+                        <button class="button_box" id="prevBtn" onclick="nextPrev(-1)" type="button">
+                            Previous
+                        </button>
+                        <button class="button_box" id="nextBtn" onclick="nextPrev(1)" type="button">
+                            NEXT
+                        </button>
+                    </div>
                 </form>
 
             </div>
