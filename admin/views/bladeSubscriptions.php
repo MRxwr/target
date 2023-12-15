@@ -15,7 +15,7 @@
 			<label><?php echo direction("Sports","الرياضات") ?></label>
 			<select id="mySelect3" name="sportId" class="form-control"required>
 				<?php
-				if( $academySport = selectDB("academies","`id` = '{$academyId}'") ){
+				if( $academySport = selectDB("academies","`id` = '{$_GET["code"]}'") ){
 					$academySport = json_decode($academySport[0]["sport"],true);
 					for( $i =0; $i < sizeof($academySport); $i++ ){
 						$sport = selectDB("sports","`id` = '{$academySport[$i]}'");
@@ -31,7 +31,7 @@
 			<label><?php echo direction("Gender","الجنس") ?></label>
 			<select id="mySelect" name="genders[]" multiple class="form-control" required>
 				<?php
-				if( $academyGenders = selectDB("genders","`academyId` = '{$academyId}' AND `status` = '0' AND `hidden` = '0'") ){
+				if( $academyGenders = selectDB("genders","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyGenders); $i++ ){
 						echo "<option value='{$academyGenders[$i]["id"]}'>".direction("{$academyGenders[$i]["enTitle"]} {$academyGenders[$i]["enSubTitle"]}","{$academyGenders[$i]["arTitle"]} {$academyGenders[$i]["arSubTitle"]}")."</option>";
 					}
