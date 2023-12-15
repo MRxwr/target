@@ -10,6 +10,20 @@
 <div class="panel-body">
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
+
+			<div class="col-md-4">
+			<label><?php echo direction("Branch","الفرع") ?></label>
+			<select name="branchId" multiple class="form-control" required>
+				<?php
+				if( $academyBranches = selectDB("branches","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
+					for( $i =0; $i < sizeof($academyBranches); $i++ ){
+						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
+					}
+				}
+				?>
+			</select>
+			</div>
+
 			<div class="col-md-4">
 			<label><?php echo direction("English Title","العنوان بالإنجليزي") ?></label>
 			<input type="text" name="enTitle" class="form-control" required>
@@ -60,6 +74,7 @@
 		$orderBy = direction("enTitle","arTitle");
 		if( $days = selectDB("days","`status` = '0' AND `academyId` = '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($days); $i++ ){
+				$branch = selectDB("branches","`id` = '{$days[$i]["branchId"]}' `status` = '0' AND `hidden` = '0'");
 				if ( $days[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
 					$link = "?show={$days[$i]["id"]}";
@@ -74,6 +89,7 @@
 				<td><?php echo $counter = $i + 1 ?></td>
 				<td id="enTitle<?php echo $days[$i]["id"]?>" ><?php echo $days[$i]["enTitle"] ?></td>
 				<td id="arTitle<?php echo $days[$i]["id"]?>" ><?php echo $days[$i]["arTitle"] ?></td>
+				<td><?php echo direction("{$branch[0]["enTitle"]}","{$branch[0]["arTitle"]}") ?><label style='display:none' id="branch<?php echo $days[$i]["id"]?>"><?php echo $days[$i]["branchId"]?></label></td>
 				<td class="text-nowrap">
 					<a id="<?php echo $days[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
@@ -101,8 +117,10 @@
 			var id = $(this).attr("id");
 			var enTitle = $("#enTitle"+id).html();
 			var arTitle = $("#arTitle"+id).html();
+			var branch = $("#branch"+id).html();
             $("input[name=update]").val(id);
 			$("input[name=enTitle]").val(enTitle).focus();
 			$("input[name=arTitle]").val(arTitle);
+			$("select[name=branchId]").val(branch);
 		})
 	</script>
