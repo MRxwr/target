@@ -42,6 +42,7 @@
             </div>
         </div>
     </div>
+    
     <!-- karate_area -->
     <div class="jarate_area">
         <div class="container">
@@ -52,42 +53,38 @@
                         </img>
                     </div>
                 </div>
+
+                <?php
+                if( $subscription = selectDB("subscriptions","`id` = '{$_POST["id"]}' AND `status` = '0' AND `hidden` = '0'") ){
+                    $sport = selectDB("sports","`id` = '{$subscription[0]["sportId"]}' AND `hidden` = '0' AND `status` = '0'");
+                }else{
+                    header("Location: " . $_SERVER['HTTP_REFERER']);die();
+                }
+                ?>
                 <div class="col-lg-8 mt_45">
                     <div class="karate_box">
                         <div class="kd_wap d-flex align-items-center justify-content-between">
-                            <h2>
-                                KARATE
-                            </h2>
-                            <span>
-                                45 KD
-                            </span>
+                            <h2><?php echo direction($sport[0]["enDetails"],$sport[0]["arDetails"]) ?></h2>
+                            <span><?php echo $price = ($subscription[0]["priceAfterDiscount"] > 0) ? $subscription[0]["priceAfterDiscount"] : $subscription[0]["price"] ?>KD</span>
                         </div>
-                        <h3>
-                            12 Session per Month
-                        </h3>
-                        <h4>
-                            Discription:
-                        </h4>
-                        <p>
-                            Karate, judo, taekwondo, and other martial arts are a great way to teach children how to defend themselves, develop muscles and joints and increase their strength, in addition to helping children learn many important life skills.
-                        </p>
-                        <h5>
-                            Share:
-                        </h5>
+                        <h3><?php echo $subscription[0]["numberOfDays"] . direction("Sessions per month","الحصص في الشهر") ?></h3>
+                        <h4><?php echo direction("Description","الشرح") ?>:</h4>
+                        <p><?php echo direction($subscription[0]["enDetails"],$subscription[0]["arDetails"]) ?></p>
+                        <h5><?php echo direction("Share","المشاركة") ?>:</h5>
                         <div class="karate_icon">
-                            <a href="#">
+                            <a href="https://www.facebook.com/sharer.php?u=[post-url]">
                                 <img alt="" class="w-100" src="img/icon_1.svg"/>
                             </a>
-                            <a href="#">
+                            <a href="https://twitter.com/share?url=[post-url]&text=[post-title]">
                                 <img alt="" class="w-100" src="img/icon_2.svg"/>
                             </a>
-                            <a href="#">
+                            <a href="https://pinterest.com/pin/create/bookmarklet/?media=[post-img]&url=[post-url]&is_video=[is_video]&description=[post-title]">
                                 <img alt="" class="w-100" src="img/icon_3.svg"/>
                             </a>
-                            <a href="#">
+                            <a href="https://www.linkedin.com/shareArticle?url=[post-url]&title=[post-title]">
                                 <img alt="" class="w-100" src="img/icon_4.svg"/>
                             </a>
-                            <a href="#">
+                            <a href="https://t.me/share/url?url={url}&text={text}">
                                 <img alt="" class="w-100" src="img/icon_5.svg"/>
                             </a>
                         </div>
@@ -97,10 +94,12 @@
         </div>
     </div>
     <!-- Personal Details -->
+
     <div class="personal_details">
         <div class="container">
             <div class="personal_wapper">
                 <form action="#" id="regForm">
+
                     <!-- Circles which indicates the steps of the form: -->
                     <div class="step_wap">
                         <span class="step">
@@ -134,6 +133,7 @@
                             </div>
                         </span>
                     </div>
+
                     <!-- One "tab" for each step in the form: -->
                     <div class="tab">
                         <div class="row align-items-center">
@@ -227,6 +227,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Second tab -->
                     <div class="tab">
                         <div class="row align-items-center">
                             <div class="col-lg-5">
@@ -358,6 +360,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Circles which indicates the steps of the form: -->
                     <div class="tab">
                         <div class="row align-items-center">
                             <div class="col-lg-5">
@@ -473,6 +477,7 @@
                         </button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
