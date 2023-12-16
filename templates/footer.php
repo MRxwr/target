@@ -89,6 +89,13 @@
         //... and adds the "active" class to the current step:
         x[n].className += " active";
         }
+
+        $(document).on("click",".clickedBranch",function(){
+            var id = $(this).attr("id");
+            console.log(id);
+            $(".dayBranch").attr("style", "display: none");
+            $("#dayBranch" + id).attr("style", "display: block");
+        })
     </script>
 </body>
 </html>
