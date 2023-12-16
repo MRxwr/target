@@ -1,3 +1,10 @@
+function handleClick(element) {
+    var id = element.id;
+    console.log(id);
+    $(".dayBranch").attr("style", "display: none");
+    $("#dayBranch" + id).attr("style", "display: block");
+}
+
 (function ($) {
     "use strict";
 
