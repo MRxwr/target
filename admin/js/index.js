@@ -15,12 +15,12 @@ $(document).ready(function(){
     init();
     
 });
-
+/*
 $(document).on("click", ".clickedBranch", function() {
     var id = $(this).attr("id");
     $(".dayBranch").attr("style", "display: none");
     $("#dayBranch" + id).attr("style", "display: block");
-})
+})*/
 
 $( window ).resize(function() {
     init();
