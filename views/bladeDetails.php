@@ -239,7 +239,7 @@
                                         for( $i = 0; $i < sizeof($branches); $i++ ){
                                             if( $days = selectDB("days","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
                                                 $dayStyle = ( $i == 0 ) ? "style=''" : "style='display:none'" ;
-                                                echo "<div class=\"style_radio style_radio_2 dayBranch\" id='dayBranch{$i}' style=''>";
+                                                echo "<div class=\"style_radio style_radio_2 dayBranch\" id='dayBranch{$i}' style='{$dayStyle}'>";
                                                 for( $y = 0; $y < sizeof($days); $y++ ){
                                                     $title = direction("{$days[$y]["enTitle"]}","{$days[$y]["arTitle"]}");
                                                     $checked = ( $y == 0 ) ? "checked=''" : "" ;
