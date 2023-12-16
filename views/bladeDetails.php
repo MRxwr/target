@@ -277,6 +277,7 @@
                                                                         <label for=\"se{$counter}\"> {$title} </label>
                                                                         <h6> {$seatsText} </h6>
                                                                     </div>";
+                                                $counter++;
                                             }
                                             $sessionBranches .= "</div>";
                                         }
