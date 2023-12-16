@@ -232,24 +232,19 @@
                                     </div>
                                     <div class="tab_title mt_25">
                                         <h4>
-                                            Days
+                                            <?php echo direction("Days","الايام")?>
                                         </h4>
                                     </div>
                                     <div class="style_radio style_radio_2">
-                                        <div class="size_radio">
-                                            <input checked="" id="ba10" name="ba4" type="radio">
-                                                <label for="ba10">
-                                                    Sat, Sun, Mon
-                                                </label>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="ba11" name="ba4" type="radio">
-                                                <label for="ba11">
-                                                    Tues, Wed
-                                                </label>
-                                            </input>
-                                        </div>
+                                        <?php 
+                                        for( $i = 0; $i < sizeof($branches); $i++ ){
+                                            if( $day = selectDB("days","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
+                                                $title = direction("{$day[0]["enTitle"]}","{$day[0]["arTitle"]}");
+                                                $checked = ( $i == 0 ) ? "checked=''" : "" ;
+                                                echo "<div class=\"size_radio\"> <input id=\"da{$i}\" name=\"day\" type=\"radio\" {$checked}> <label for=\"da{$i}\"> {$title} </label> </input> </div>";
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                     <div class="tab_title mt_25">
                                         <h4>
