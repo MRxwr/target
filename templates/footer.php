@@ -95,7 +95,9 @@
             console.log(id);
             $(".dayBranch").attr("style", "display: none");
             $("#dayBranch" + id).attr("style", "display: block");
-        })
+            $(".sessionBranch").attr("style", "display: none");
+            $("#sessionBranch" + id).attr("style", "display: block");
+        });
     </script>
 </body>
 </html>

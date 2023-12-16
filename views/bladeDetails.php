@@ -253,75 +253,29 @@
                                         ?>
                                     <div class="tab_title mt_25">
                                         <h4>
-                                            Session Time
+                                            <?php echo direction("Time","الوقت")?>
                                         </h4>
                                     </div>
-                                    <div class="style_radio style_radio_2">
-                                        <div class="size_radio">
-                                            <input checked="" id="in1" name="in1" type="radio">
-                                                <label for="in1">
-                                                    6:00 - 7:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 10
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in2" name="in1" type="radio">
-                                                <label for="in2">
-                                                    8:00 - 9:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 0
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in3" name="in1" type="radio">
-                                                <label for="in3">
-                                                    9:00 - 10:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 4
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in4" name="in1" type="radio">
-                                                <label for="in4">
-                                                    6:00 - 7:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 10
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in5" name="in1" type="radio">
-                                                <label for="in5">
-                                                    8:00 - 9:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 0
-                                                </h6>
-                                            </input>
-                                        </div>
-                                        <div class="size_radio">
-                                            <input id="in6" name="in1" type="radio">
-                                                <label for="in6">
-                                                    9:00 - 10:00
-                                                </label>
-                                                <h6>
-                                                    Seats Available: 4
-                                                </h6>
-                                            </input>
-                                        </div>
-                                    </div>
+                                    <?php
+                                    $counter = 0;
+                                    for( $i = 0; $i < sizeof($branches); $i++ ){
+                                        if( $sessions = selectDB("sessions","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
+                                            $sessionStyle = ( $i == 0 ) ? "" : "display:none" ;
+                                            echo "<div class=\"style_radio style_radio_2 sessionBranch\" id='sessionBranch{$i}' style='{$sessionStyle}'>";
+                                            for( $y = 0; $y < sizeof($sessions); $y++ ){
+                                                $title = direction("{$sessions[$y]["enTitle"]}","{$sessions[$y]["arTitle"]}");
+                                                $checked = ( $y == 0 ) ? "checked=''" : "" ;
+                                                $seatsText = direction("Seats Available: {$sessions[$y]["quantity"]}","المقاعد المتوفرة: {$sessions[$y]["quantity"]}");
+                                                echo "<div class=\"size_radio\"> <input id=\"se{$counter}\" name=\"session\" type=\"radio\" {$checked}> <label for=\"se{$counter}\"> {$title} </label><h6> {$seatsText} </h6> </input> </div>";
+                                            }
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="tab">
                         <div class="row align-items-center">
                             <div class="col-lg-5">
