@@ -236,6 +236,7 @@
                                         </h4>
                                     </div>
                                         <?php 
+                                        $counter = 0;
                                         for( $i = 0; $i < sizeof($branches); $i++ ){
                                             if( $days = selectDB("days","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
                                                 $dayStyle = ( $i == 0 ) ? "" : "display:none" ;
@@ -243,7 +244,8 @@
                                                 for( $y = 0; $y < sizeof($days); $y++ ){
                                                     $title = direction("{$days[$y]["enTitle"]}","{$days[$y]["arTitle"]}");
                                                     $checked = ( $y == 0 ) ? "checked=''" : "" ;
-                                                    echo "<div class=\"size_radio\"> <input id=\"da{$y}\" name=\"day\" type=\"radio\" {$checked}> <label for=\"da{$y}\"> {$title} </label> </input> </div>";
+                                                    echo "<div class=\"size_radio\"> <input id=\"da{$counter}\" name=\"day\" type=\"radio\" {$checked}> <label for=\"da{$counter}\"> {$title} </label> </input> </div>";
+                                                    $counter++;
                                                 }
                                                 echo "</div>";
                                             }
