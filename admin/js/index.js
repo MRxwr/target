@@ -18,6 +18,7 @@ $(document).ready(function(){
 
 $(document).on("click", ".clickedBranch", function() {
     var id = $(this).attr("id");
+    console.log(id);
     $(".dayBranch").attr("style", "display: none");
     $("#dayBranch" + id).attr("style", "display: block");
 })
