@@ -6,17 +6,6 @@
         $("#preloader").delay(400).fadeOut();
     });
 
-    $(document).on("click",".clickedBranch",function(){
-        handleClick(this);
-    })
-
-    function handleClick(element) {
-        var id = element.id;
-        console.log(id);
-        $(".dayBranch").attr("style", "display: none");
-        $("#dayBranch" + id).attr("style", "display: block");
-    }
-
     $(document).ready(function () {
         //05. sticky header
         function sticky_header(){
