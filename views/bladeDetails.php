@@ -238,10 +238,12 @@
                                     <div class="style_radio style_radio_2">
                                         <?php 
                                         for( $i = 0; $i < sizeof($branches); $i++ ){
-                                            if( $day = selectDB("days","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
-                                                $title = direction("{$day[0]["enTitle"]}","{$day[0]["arTitle"]}");
-                                                $checked = ( $i == 0 ) ? "checked=''" : "" ;
-                                                echo "<div class=\"size_radio\"> <input id=\"da{$i}\" name=\"day\" type=\"radio\" {$checked}> <label for=\"da{$i}\"> {$title} </label> </input> </div>";
+                                            if( $days = selectDB("days","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
+                                                for( $y = 0; $y < sizeof($days); $y++ ){
+                                                    $title = direction("{$days[$y]["enTitle"]}","{$days[$y]["arTitle"]}");
+                                                    $checked = ( $y == 0 ) ? "checked=''" : "" ;
+                                                    echo "<div class=\"size_radio\"> <input id=\"da{$y}\" name=\"day\" type=\"radio\" {$checked}> <label for=\"da{$y}\"> {$title} </label> </input> </div>";
+                                                }
                                             }
                                         }
                                         ?>
