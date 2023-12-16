@@ -6,12 +6,12 @@
         $("#preloader").delay(400).fadeOut();
     });
 
-    function handleClick(element) {
-        var id = element.id;
+    $(document).on("click",".clickedBranch",function(){
+        var id = $(this).attr("id");
         console.log(id);
         $(".dayBranch").attr("style", "display: none");
         $("#dayBranch" + id).attr("style", "display: block");
-    }
+    })
 
     $(document).ready(function () {
         //05. sticky header
