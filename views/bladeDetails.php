@@ -237,19 +237,24 @@
                                     </div>
                                         <?php 
                                         $counter = 0;
-                                        for( $i = 0; $i < sizeof($branches); $i++ ){
-                                            if( $days = selectDB("days","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
-                                                $dayStyle = ( $i == 0 ) ? "" : "display:none" ;
-                                                echo "<div class=\"style_radio style_radio_2 dayBranch\" id='dayBranch{$i}' style='{$dayStyle}'>";
-                                                for( $y = 0; $y < sizeof($days); $y++ ){
+                                        $dayBranches = '';
+                                        for ($i = 0; $i < sizeof($branches); $i++) {
+                                            if ($days = selectDB("days", "`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'")) {
+                                                $dayStyle = ($i == 0) ? "" : "display:none";
+                                                $dayBranches .= "<div class=\"style_radio style_radio_2 dayBranch\" id='dayBranch{$i}' style='{$dayStyle}'>";
+                                                for ($y = 0; $y < sizeof($days); $y++) {
                                                     $title = direction("{$days[$y]["enTitle"]}","{$days[$y]["arTitle"]}");
-                                                    $checked = ( $y == 0 ) ? "checked=''" : "" ;
-                                                    echo "<div class=\"size_radio\"> <input id=\"da{$counter}\" name=\"day\" type=\"radio\" {$checked}> <label for=\"da{$counter}\"> {$title} </label> </input> </div>";
+                                                    $checked = ($y == 0) ? "checked=''" : "";
+                                                    $dayBranches .= "<div class=\"size_radio\">
+                                                                        <input id=\"da{$counter}\" name=\"day\" type=\"radio\" {$checked}>
+                                                                        <label for=\"da{$counter}\"> {$title} </label>
+                                                                    </div>";
                                                     $counter++;
                                                 }
-                                                echo "</div>";
+                                                $dayBranches .= "</div>";
                                             }
                                         }
+                                        echo $dayBranches;
                                         ?>
                                     <div class="tab_title mt_25">
                                         <h4>
@@ -258,25 +263,31 @@
                                     </div>
                                     <?php
                                     $counter = 0;
-                                    for( $i = 0; $i < sizeof($branches); $i++ ){
-                                        if( $sessions = selectDB("sessions","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
-                                            $sessionStyle = ( $i == 0 ) ? "" : "display:none" ;
-                                            echo "<div class=\"style_radio style_radio_2 sessionBranch\" id='sessionBranch{$i}' style='{$sessionStyle}'>";
-                                            for( $y = 0; $y < sizeof($sessions); $y++ ){
+                                    $sessionBranches = '';
+                                    for ($i = 0; $i < sizeof($branches); $i++) {
+                                        if ($sessions = selectDB("sessions", "`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'")) {
+                                            $sessionStyle = ($i == 0) ? "" : "display:none";
+                                            $sessionBranches .= "<div class=\"style_radio style_radio_2 sessionBranch\" id='sessionBranch{$i}' style='{$sessionStyle}'>";
+                                            for ($y = 0; $y < sizeof($sessions); $y++) {
                                                 $title = direction("{$sessions[$y]["enTitle"]}","{$sessions[$y]["arTitle"]}");
-                                                $checked = ( $y == 0 ) ? "checked=''" : "" ;
+                                                $checked = ($y == 0) ? "checked=''" : "";
                                                 $seatsText = direction("Seats Available: {$sessions[$y]["quantity"]}","المقاعد المتوفرة: {$sessions[$y]["quantity"]}");
-                                                echo "<div class=\"size_radio\"> <input id=\"se{$counter}\" name=\"session\" type=\"radio\" {$checked}> <label for=\"se{$counter}\"> {$title} </label><h6> {$seatsText} </h6> </input> </div>";
+                                                $sessionBranches .= "<div class=\"size_radio\">
+                                                                        <input id=\"se{$counter}\" name=\"session\" type=\"radio\" {$checked}>
+                                                                        <label for=\"se{$counter}\"> {$title} </label>
+                                                                        <h6> {$seatsText} </h6>
+                                                                    </div>";
                                             }
-                                            echo "</div>";
+                                            $sessionBranches .= "</div>";
                                         }
                                     }
+                                    echo $sessionBranches;
                                     ?>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="tab">
                         <div class="row align-items-center">
                             <div class="col-lg-5">
