@@ -1,10 +1,3 @@
-function handleClick(element) {
-    var id = element.id;
-    console.log(id);
-    $(".dayBranch").attr("style", "display: none");
-    $("#dayBranch" + id).attr("style", "display: block");
-}
-
 (function ($) {
     "use strict";
 
@@ -14,11 +7,15 @@ function handleClick(element) {
     });
 
     $(document).on("click",".clickedBranch",function(){
-        var id = $(this).attr("id");
+        handleClick(this);
+    })
+
+    function handleClick(element) {
+        var id = element.id;
         console.log(id);
         $(".dayBranch").attr("style", "display: none");
         $("#dayBranch" + id).attr("style", "display: block");
-    })
+    }
 
     $(document).ready(function () {
         //05. sticky header
