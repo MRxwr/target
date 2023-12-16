@@ -268,6 +268,7 @@
                                                 $seatsText = direction("Seats Available: {$sessions[$y]["quantity"]}","المقاعد المتوفرة: {$sessions[$y]["quantity"]}");
                                                 echo "<div class=\"size_radio\"> <input id=\"se{$counter}\" name=\"session\" type=\"radio\" {$checked}> <label for=\"se{$counter}\"> {$title} </label><h6> {$seatsText} </h6> </input> </div>";
                                             }
+                                            echo "</div>";
                                         }
                                     }
                                     ?>
