@@ -225,7 +225,7 @@
                                             if( $branch = selectDB("branches","`id` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
                                                 $title = direction("{$branch[0]["enTitle"]}","{$branch[0]["arTitle"]}");
                                                 $checked = ( $i == 0 ) ? "checked=''" : "" ;
-                                                echo "<div class=\"size_radio\"> <input id=\"ba{$i}\" name=\"branch\" type=\"radio\" {$checked}> <label for=\"ba{$i}\"> {$title} </label> </input> </div>";
+                                                echo "<div class=\"size_radio clickedBranch\" id='{$i}'> <input id=\"ba{$i}\" name=\"branch\" type=\"radio\" {$checked}> <label for=\"ba{$i}\"> {$title} </label> </input> </div>";
                                             }
                                         }
                                         ?>
@@ -235,19 +235,20 @@
                                             <?php echo direction("Days","الايام")?>
                                         </h4>
                                     </div>
-                                    <div class="style_radio style_radio_2">
                                         <?php 
                                         for( $i = 0; $i < sizeof($branches); $i++ ){
                                             if( $days = selectDB("days","`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
+                                                $dayStyle = ( $i == 0 ) ? "style=''" : "style='display:none'" ;
+                                                echo "<div class=\"style_radio style_radio_2 dayBranch\" id='dayBranch{$i}' style=''>";
                                                 for( $y = 0; $y < sizeof($days); $y++ ){
                                                     $title = direction("{$days[$y]["enTitle"]}","{$days[$y]["arTitle"]}");
                                                     $checked = ( $y == 0 ) ? "checked=''" : "" ;
                                                     echo "<div class=\"size_radio\"> <input id=\"da{$y}\" name=\"day\" type=\"radio\" {$checked}> <label for=\"da{$y}\"> {$title} </label> </input> </div>";
                                                 }
+                                                echo "</div>";
                                             }
                                         }
                                         ?>
-                                    </div>
                                     <div class="tab_title mt_25">
                                         <h4>
                                             Session Time
@@ -439,3 +440,11 @@
         </div>
     </div>
 </main>
+
+<script>
+    $(document).on("click", ".clickedBranch", function() {
+        var id = $(this).attr("id");
+        $(".dayBranch").attr("style", "display: none");
+        $("#dayBranch" + id).attr("style", "display: block");
+    })
+</script>
