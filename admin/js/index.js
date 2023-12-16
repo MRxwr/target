@@ -17,11 +17,15 @@ $(document).ready(function(){
 });
 
 $(document).on("click", ".clickedBranch", function() {
-    var id = $(this).attr("id");
+    
+})
+
+function handleClick(element) {
+    var id = element.id;
     console.log(id);
     $(".dayBranch").attr("style", "display: none");
     $("#dayBranch" + id).attr("style", "display: block");
-})
+  }
 
 $( window ).resize(function() {
     init();
