@@ -260,7 +260,7 @@
 			$("#logoImg").attr("src","../logos/"+logo);
 			$("#images").attr("style","margin-top:10px;display:block");
 			//$("select[name=genders]").val(gender);
-			var genderArray = JSON.parse(gender);
+			var genderArray = JSON.parse(gender); 
 			var sportArray = JSON.parse(sport);
 			$('#mySelect').val(null).trigger('change');
 			$('#mySelect3').val(null).trigger('change');
