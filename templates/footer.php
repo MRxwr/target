@@ -30,7 +30,7 @@
             } else {
                 document.getElementById("prevBtn").style.display = "inline";
             }
-            if (n == (x.length)) {
+            if (n == (x.length - 1)) {
                 document.getElementById("nextBtn").innerHTML = "PAY NOW";
                 document.getElementById("nextBtn").setAttribute("type", "submit"); // Add this line
             } else {
