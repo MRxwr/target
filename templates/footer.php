@@ -32,8 +32,10 @@
         }
         if (n == (x.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "PAY NOW";
+        document.getElementById("nextBtn").classList.add("nxtBtn");
         } else {
         document.getElementById("nextBtn").innerHTML = "Next";
+        document.getElementById("nextBtn").classList.remove("nxtBtn");
         }
         // ... and run a function that displays the correct step indicator:
         fixStepIndicator(n)
@@ -119,6 +121,13 @@
             var id = $(this).attr("id");
             var text = $("."+id).html();
             $("#daySel").html(text);
+        })
+
+        $(document).on("click",".nxtBtn",function(){
+            var inTxt = document.getElementsByClassName("nxtBtn").innerHTML; 
+            if(inTxt == "PAY NOW"){
+                document.getElementById("regForm").submit();
+            }
         })
     </script>
 </body>
