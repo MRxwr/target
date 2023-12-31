@@ -120,6 +120,13 @@
             var text = $("."+id).html();
             $("#daySel").html(text);
         })
+
+        $(document).on("click","#nextBtn",function(){
+            var innerText = document.getElementById("nextBtn").innerHTML;
+            if(innerText == "PAY NOW"){
+                document.getElementById("#regForm").submit();
+            }
+        })
     </script>
 </body>
 </html>
