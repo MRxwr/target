@@ -395,6 +395,9 @@
                         <button class="button_box" id="nextBtn" onclick="nextPrev(1)" type="button">
                             <?php echo direction("NEXT","التالي") ?>
                         </button>
+                        <button class="button_box" id='payBtn' type="submit">
+                            <?php echo direction("Pay Now","تابع للدفع") ?>
+                        </button>
                     </div>
                 </form>
 

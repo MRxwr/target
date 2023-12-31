@@ -19,14 +19,6 @@
     <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab
-        $(document).on("click", ".nxtBtn", function() {
-            var x = document.getElementsByClassName("tab");
-            var currentStep = Array.from(x).indexOf(this.parentNode);
-        
-            if (currentStep === x.length - 1 && this.innerHTML === "PAY NOW") {
-                document.getElementById("regForm").submit();
-            }
-        });
         
         function showTab(n) {
         // This function will display the specified tab of the form ...
@@ -35,15 +27,18 @@
         // ... and fix the Previous/Next buttons:
         if (n == 0) {
         document.getElementById("prevBtn").style.display = "none";
+        document.getElementById("payBtn").style.display = "none";
         } else {
         document.getElementById("prevBtn").style.display = "inline";
         }
         if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "PAY NOW";
-        document.getElementById("nextBtn").classList.add("nxtBtn");
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("payBtn").style.display = "inline";
         } else {
         document.getElementById("nextBtn").innerHTML = "Next";
         document.getElementById("nextBtn").classList.remove("nxtBtn");
+        document.getElementById("nextBtn").style.display = "inline";
+        document.getElementById("payBtn").style.display = "none";
         }
         // ... and run a function that displays the correct step indicator:
         fixStepIndicator(n)
