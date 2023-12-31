@@ -99,16 +99,20 @@
             $("#sessionBranch" + id).attr("style", "display: flex");
         });
 
-        $(document).on("click","input[name=session]",function(){
-            var id = $(this).attr("id");
-            var text = $("."+id).html();
-            $("#timeSel").html(text);
-        })
-
         $(document).on("click","input[name=branch]",function(){
             var id = $(this).attr("id");
             var text = $("."+id).html();
             $("#branchSel").html(text);
+            $("input[name=session]").prop("checked", false);
+            $("input[name=day]").prop("checked", false);
+            $("#timeSel").html('');
+            $("#daySel").html('');
+        })
+
+        $(document).on("click","input[name=session]",function(){
+            var id = $(this).attr("id");
+            var text = $("."+id).html();
+            $("#timeSel").html(text);
         })
 
         $(document).on("click","input[name=day]",function(){
