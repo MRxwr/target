@@ -20,8 +20,10 @@
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab
         $(document).on("click",".nxtBtn",function(){
+            if (this.innerHTML === "PAY NOW") {
                 document.getElementById("regForm").submit();
-        })
+            }
+        });
         function showTab(n) {
         // This function will display the specified tab of the form ...
         var x = document.getElementsByClassName("tab");
