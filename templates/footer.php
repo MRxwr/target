@@ -35,6 +35,7 @@
         if (n == (x.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "PAY NOW";
         document.getElementById("nextBtn").classList.add("nxtBtn");
+        return false;
         } else {
         document.getElementById("nextBtn").innerHTML = "Next";
         document.getElementById("nextBtn").classList.remove("nxtBtn");
