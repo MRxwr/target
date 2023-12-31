@@ -21,6 +21,7 @@ function deleteDB($table, $where){
 
 function selectDB($table, $where){
     GLOBAL $dbconnect;
+    die();
     $check = [';', '"'];
     $where = str_replace($check, "", $where);
     $sql = "SELECT * FROM `{$table}`";
