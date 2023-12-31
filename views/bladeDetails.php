@@ -263,26 +263,25 @@
                                     </div>
                                     <?php
                                     $counter = 0;
-                                    $sessionBranches = '<div class=\"style_radio style_radio_2\">';
+                                    $sessionBranches = '';
                                     for ($i = 0; $i < sizeof($branches); $i++) {
                                         if ($sessions = selectDB("sessions", "`branchId` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'")) {
                                             $sessionStyle = ($i == 0) ? "" : "display:none";
-                                            $sessionBranches .= "";
+                                            $sessionBranches .= "<div class=\"style_radio style_radio_2 sessionBranch\" id='sessionBranch{$i}' style='{$sessionStyle}'>";
                                             for ($y = 0; $y < sizeof($sessions); $y++) {
                                                 $title = direction("{$sessions[$y]["enTitle"]}","{$sessions[$y]["arTitle"]}");
                                                 $checked = ($y == 0) ? "checked=''" : "";
                                                 $seatsText = direction("Seats Available: {$sessions[$y]["quantity"]}","المقاعد المتوفرة: {$sessions[$y]["quantity"]}");
-                                                $sessionBranches .= "<div class=\"size_radio sessionBranch\" id='sessionBranch{$i}' style='{$sessionStyle}'>
+                                                $sessionBranches .= "<div class=\"size_radio\">
                                                                         <input id=\"se{$counter}\" name=\"session\" type=\"radio\" {$checked}>
                                                                         <label for=\"se{$counter}\"> {$title} </label>
                                                                         <h6> {$seatsText} </h6>
                                                                     </div>";
                                                 $counter++;
                                             }
-                                            
+                                            $sessionBranches .= "</div>";
                                         }
                                     }
-                                    $sessionBranches .= "</div>";
                                     echo $sessionBranches;
                                     ?>
                                 </div>
