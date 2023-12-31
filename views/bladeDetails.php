@@ -274,7 +274,7 @@
                                                 $seatsText = direction("Seats Available: {$sessions[$y]["quantity"]}","المقاعد المتوفرة: {$sessions[$y]["quantity"]}");
                                                 $sessionBranches .= "<div class=\"size_radio\">
                                                                         <input id=\"se{$counter}\" name=\"session\" type=\"radio\" {$checked}>
-                                                                        <label for=\"se{$counter}\"> {$title} </label>
+                                                                        <label for=\"se{$counter}\" class='se{$counter}'> {$title} </label>
                                                                         <h6> {$seatsText} </h6>
                                                                     </div>";
                                                 $counter++;
@@ -302,49 +302,42 @@
                                 <div class="tab_right">
                                     <div class="tab_title">
                                         <h4>
-                                            Please choose preferd payment method:
+                                            <?php echo direction("Checkout Details","تفاصيل الدفع") ?>
                                         </h4>
                                     </div>
                                     <div class="checkout_wap mt_45">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <h5>
-                                                    Activity:
-                                                    <span>
-                                                        HEAVY LIFTING
-                                                    </span>
+                                                    <?php echo direction("Activity","النشاط") ?>:
+                                                    <span><?php echo direction($sport[0]["enTitle"],$sport[0]["arTitle"]) ?></span>
                                                 </h5>
                                                 <h5>
-                                                    Branch:
-                                                    <span>
-                                                        Sabah Al Salem
-                                                    </span>
+                                                    <?php echo direction("Branch","الفرع") ?>:
+                                                    <span id="branchSel"></span>
                                                 </h5>
                                                 <h5>
-                                                    Subscription Date:
+                                                    <?php echo direction("Date","التاريخ") ?>:
                                                     <span>
-                                                        03-05-2023
+                                                        <?php
+                                                            date_default_timezone_set("Asia/Kuwait");
+                                                            echo date("d/m/Y");
+                                                        ?>
                                                     </span>
                                                 </h5>
                                             </div>
                                             <div class="col-lg-6">
                                                 <h5>
-                                                    Days:
-                                                    <span>
-                                                        Sat, Sun, Mon
-                                                    </span>
+                                                    <?php echo direction("Days","الايام") ?>:
+                                                    <span id="daySel"></span>
                                                 </h5>
                                                 <h5>
-                                                    Session Time:
-                                                    <span>
-                                                        6:00 - 7:00
-                                                    </span>
+                                                    <?php echo direction("Time","الوقت") ?>:
+                                                    <span id="timeSel"></span>
                                                 </h5>
                                                 <h5>
-                                                    Total Price:
-                                                    <span>
-                                                        45 KD
-                                                    </span>
+                                                    <?php echo direction("Price","السعر") ?>:
+                                                    <span id="priceSel"><?php echo $price ?>KD</span>
                                                 </h5>
                                             </div>
                                         </div>
@@ -352,7 +345,7 @@
                                             <div class="check_inp mt_30">
                                                 <input placeholder="Coupon Code" type="text">
                                                     <button class="check_btn" type="submit">
-                                                        Apply
+                                                        <?php echo direction("Apply","تطبيق") ?>
                                                     </button>
                                                 </input>
                                             </div>
@@ -382,8 +375,8 @@
                                                         <span class="rectangle">
                                                         </span>
                                                         <div>
-                                                            I agree to the 
-                                                            <a data-toggle="modal" href="#terms">terms and conditions.</a>
+                                                            <?php echo direction("I agree to the","أوافق على") ?>
+                                                            <a data-toggle="modal" href="#terms"><?php echo direction("terms and conditions.","الشروط والاحكام.") ?></a>
                                                         </div>
                                                     </label>
                                                 </input>
@@ -397,10 +390,10 @@
 
                     <div class="step_control">
                         <button class="button_box" id="prevBtn" onclick="nextPrev(-1)" type="button">
-                            Previous
+                            <?php echo direction("Previous","السابق") ?>
                         </button>
                         <button class="button_box" id="nextBtn" onclick="nextPrev(1)" type="button">
-                            NEXT
+                            <?php echo direction("NEXT","التالي") ?>
                         </button>
                     </div>
                 </form>

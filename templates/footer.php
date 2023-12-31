@@ -98,6 +98,13 @@
             $(".sessionBranch").attr("style", "display: none");
             $("#sessionBranch" + id).attr("style", "display: flex");
         });
+
+        $(document).on("click","input[name=session]",function(){
+            var id = $(this).attr("id");
+            console.log(id);
+            var text = $("."+id).html();
+            $("#timeSel").html(text);
+        })
     </script>
 </body>
 </html>
