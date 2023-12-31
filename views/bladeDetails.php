@@ -105,7 +105,7 @@
     <div class="personal_details">
         <div class="container">
             <div class="personal_wapper">
-                <form action="#" id="regForm">
+                <form action="?v=Payment" id="regForm">
                     <!-- Circles which indicates the steps of the form: -->
                     <div class="step_wap">
                         <span class="step">
