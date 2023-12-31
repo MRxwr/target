@@ -124,10 +124,7 @@
         })
 
         $(document).on("click",".nxtBtn",function(){
-            var inTxt = document.getElementsByClassName("nxtBtn").innerHTML; 
-            if(inTxt == "PAY NOW"){
                 document.getElementById("regForm").submit();
-            }
         })
     </script>
 </body>
