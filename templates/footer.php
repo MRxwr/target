@@ -94,9 +94,9 @@
             var id = $(this).attr("id");
             console.log(id);
             $(".dayBranch").attr("style", "display: none");
-            $("#dayBranch" + id).attr("style", "display: block");
+            $("#dayBranch" + id).attr("style", "display: flex");
             $(".sessionBranch").attr("style", "display: none");
-            $("#sessionBranch" + id).attr("style", "display: block");
+            $("#sessionBranch" + id).attr("style", "display: flex");
         });
     </script>
 </body>
