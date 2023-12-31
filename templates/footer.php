@@ -31,14 +31,15 @@
                 document.getElementById("prevBtn").style.display = "inline";
             }
             if (n == (x.length - 1)) {
-                document.getElementById("nextBtn").innerHTML = "PAY NOW";
-                document.getElementById("nextBtn").setAttribute("type", "submit");
                 document.getElementById("nextBtn").addEventListener("click", function(event) {
                     event.preventDefault(); // Prevent form submission
                     if (event.target.innerHTML === "PAY NOW") {
                         document.getElementById("#regForm").submit();
                     }
                 });
+                document.getElementById("nextBtn").innerHTML = "PAY NOW";
+                document.getElementById("nextBtn").setAttribute("type", "submit");
+                return false;
             } else {
                 document.getElementById("nextBtn").innerHTML = "Next";
                 document.getElementById("nextBtn").setAttribute("type", "button");
