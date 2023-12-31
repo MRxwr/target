@@ -224,7 +224,7 @@
                                         for( $i = 0; $i < sizeof($branches); $i++ ){
                                             if( $branch = selectDB("branches","`id` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
                                                 $title = direction("{$branch[0]["enTitle"]}","{$branch[0]["arTitle"]}");
-                                                $checked = ( $i == 0 ) ? "checked=''" : "" ;
+                                                $checked = ( $i == 0 ) ? "" : "" ;
                                                 echo "<div class=\"size_radio clickedBranch\" id='{$i}'> <input id=\"ba{$i}\" name=\"branch\" type=\"radio\" {$checked}> <label for=\"ba{$i}\" class='ba{$i}'> {$title} </label> </input> </div>";
                                             }
                                         }
