@@ -1,5 +1,6 @@
 <?php
 session_start ();
+/*
 require("config.php");
 require("functions.php");
 require("translate.php");
@@ -22,4 +23,5 @@ if( $employee = selectDB("employees","`email` LIKE '{$_POST["email"]}' AND `pass
 }else{
 	header("Location: ../login.php?error=p");die();
 }
+*/
 ?>
