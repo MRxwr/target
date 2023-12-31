@@ -32,10 +32,20 @@
             }
             if (n == (x.length - 1)) {
                 document.getElementById("nextBtn").innerHTML = "PAY NOW";
-                document.getElementById("nextBtn").setAttribute("type", "submit"); // Add this line
+                document.getElementById("nextBtn").setAttribute("type", "submit");
+                document.getElementById("nextBtn").addEventListener("click", function(event) {
+                    event.preventDefault(); // Prevent form submission
+                    // Add your custom logic here
+                    // For example, you can submit the form programmatically using JavaScript:
+                    document.getElementById("#regForm").submit();
+                });
             } else {
                 document.getElementById("nextBtn").innerHTML = "Next";
-                document.getElementById("nextBtn").setAttribute("type", "button"); // Add this line
+                document.getElementById("nextBtn").setAttribute("type", "button");
+                document.getElementById("nextBtn").removeEventListener("click", function(event) {
+                    event.preventDefault();
+                    document.getElementById("#regForm").submit();
+                });
             }
             // ... and run a function that displays the correct step indicator:
             fixStepIndicator(n);
