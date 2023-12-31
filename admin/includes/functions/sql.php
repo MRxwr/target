@@ -21,13 +21,13 @@ function deleteDB($table, $where){
 
 function selectDB($table, $where){
     GLOBAL $dbconnect;
-    die();
     $check = [';', '"'];
     $where = str_replace($check, "", $where);
     $sql = "SELECT * FROM `{$table}`";
     if (!empty($where)) {
         $sql .= " WHERE {$where}";
     }
+    echo $sql ;die();
     if ($stmt = $dbconnect->prepare($sql)) {
         $stmt->execute();
         $result = $stmt->get_result();
