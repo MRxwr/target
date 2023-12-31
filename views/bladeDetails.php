@@ -225,7 +225,7 @@
                                             if( $branch = selectDB("branches","`id` = '{$branches[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
                                                 $title = direction("{$branch[0]["enTitle"]}","{$branch[0]["arTitle"]}");
                                                 $checked = ( $i == 0 ) ? "checked=''" : "" ;
-                                                echo "<div class=\"size_radio clickedBranch\" id='{$i}'> <input id=\"ba{$i}\" name=\"branch\" type=\"radio\" {$checked}> <label for=\"ba{$i}\"> {$title} </label> </input> </div>";
+                                                echo "<div class=\"size_radio clickedBranch\" id='{$i}'> <input id=\"ba{$i}\" name=\"branch\" type=\"radio\" {$checked}> <label for=\"ba{$i}\" class='ba{$i}'> {$title} </label> </input> </div>";
                                             }
                                         }
                                         ?>
@@ -247,7 +247,7 @@
                                                     $checked = ($y == 0) ? "checked=''" : "";
                                                     $dayBranches .= "<div class=\"size_radio\">
                                                                         <input id=\"da{$counter}\" name=\"day\" type=\"radio\" {$checked}>
-                                                                        <label for=\"da{$counter}\"> {$title} </label>
+                                                                        <label for=\"da{$counter}\" class='da{$counter}'> {$title} </label>
                                                                     </div>";
                                                     $counter++;
                                                 }

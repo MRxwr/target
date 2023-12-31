@@ -101,9 +101,20 @@
 
         $(document).on("click","input[name=session]",function(){
             var id = $(this).attr("id");
-            console.log(id);
             var text = $("."+id).html();
             $("#timeSel").html(text);
+        })
+
+        $(document).on("click","input[name=branch]",function(){
+            var id = $(this).attr("id");
+            var text = $("."+id).html();
+            $("#branchSel").html(text);
+        })
+
+        $(document).on("click","input[name=day]",function(){
+            var id = $(this).attr("id");
+            var text = $("."+id).html();
+            $("#daySel").html(text);
         })
     </script>
 </body>
