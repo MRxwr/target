@@ -158,15 +158,15 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            <input placeholder="First Name" type="text">
+                                            <input placeholder="First Name" name="firstName" type="text">
                                             </input>
                                         </div>
                                         <div class="col-lg-4">
-                                            <input placeholder="Middle Name" type="text">
+                                            <input placeholder="Middle Name" name="middleName" type="text">
                                             </input>
                                         </div>
                                         <div class="col-lg-4">
-                                            <input placeholder="last Name" type="text">
+                                            <input placeholder="last Name" name="lastName" type="text">
                                             </input>
                                         </div>
                                     </div>
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            <input placeholder="Mobile Number" type="tel">
+                                            <input placeholder="Mobile Number" name="mobile" type="tel">
                                             </input>
                                         </div>
                                     </div>
