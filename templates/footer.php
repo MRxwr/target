@@ -35,7 +35,7 @@
         document.getElementById("nextBtn").classList.add("nxtBtn");
         } else {
         document.getElementById("nextBtn").innerHTML = "Next";
-        document.getElementById("nextBtn").classList.remove("nxtBtn");
+        //document.getElementById("nextBtn").classList.remove("nxtBtn");
         }
         // ... and run a function that displays the correct step indicator:
         fixStepIndicator(n)
