@@ -1,3 +1,3 @@
 <?php
-header("LOCATION: index.html");die();
+echo "<script> window.location.href = '/'</script>";
 ?>
