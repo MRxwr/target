@@ -1,4 +1,3 @@
 RewriteEngine On
-RewriteCond %{QUERY_STRING} !(^|&)academyURL= [NC]
-RewriteRule ^([^/]+)/?$ index.html [L]
+RewriteRule ^$ index.html [L]
 RewriteRule ^([^/]+)/?$ index.php?academyURL=$1 [QSA,L]
