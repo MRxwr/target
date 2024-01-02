@@ -1,9 +1,12 @@
 <?php
-if( isset($_POST["otp1"]) ){
+if( isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1 ){
+}elseif( isset($_POST["otp1"]) ){
     $originalOTP = $_POST["otp1"].$_POST["otp2"].$_POST["otp3"].$_POST["otp4"].$_POST["otp5"].$_POST["otp6"];
     $sessionOTP = $_SESSION["otp"];
     if( $originalOTP != $sessionOTP){
         echo "<script>alert('Wrong OTP');window.history.go(-2);</script>";die();
+    }else{
+        $_SESSION["loggedIn"] = 1;
     }
 }else{
     echo "<script>alert('Wrong OTP');window.history.go(-2);</script>";die();
