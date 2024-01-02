@@ -1,37 +1,35 @@
 <?php
 if( isset($_POST["m"]) && !empty($_POST["m"]) ){
-$randNumber = randNumber();
-$_SESSION["otp"] = $randNumber;
-/*
-$curl = curl_init();
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://www.kwtsms.com/API/send/',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => 
-  array('username' => 'targetkwnet',
-        'password' => 'kyAf*HGc8Dz',
-        'sender' => 'KWT-SMS',
-        'mobile' => "965{$_POST["m"]}",
-        'lang' => '1',
-        'test' => '0',
-        'message' => "{$randNumber}"
+    $randNumber = randNumber();
+    $_SESSION["otp"] = $randNumber;
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://www.kwtsms.com/API/send/',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => 
+    array('username' => 'targetkwnet',
+            'password' => 'kyAf*HGc8Dz',
+            'sender' => 'KWT-SMS',
+            'mobile' => "965{$_POST["m"]}",
+            'lang' => '1',
+            'test' => '0',
+            'message' => "{$randNumber}"
+        ),
+    CURLOPT_HTTPHEADER => array(
+        'Cookie: PHPSESSID=e7687b136755b738f048053f94f742c0'
     ),
-  CURLOPT_HTTPHEADER => array(
-    'Cookie: PHPSESSID=e7687b136755b738f048053f94f742c0'
-  ),
-));
-$response = curl_exec($curl);
-curl_close($curl);
-*/
+    ));
+    $response = curl_exec($curl);
+    curl_close($curl);
 }else{
-    //echo "<script>window.history.back()</script>";
-    //die();
+    echo "<script>window.history.back()</script>";
+    die();
 }
 ?>
 
