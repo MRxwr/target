@@ -1,5 +1,5 @@
 <?php
-if( isset($_GET["m"]) && !empty($_GET["m"]) ){
+if( isset($_POST["m"]) && !empty($_POST["m"]) ){
 $randNumber = randNumber();
 $_SESSION["otp"] = $randNumber;
 /*
@@ -17,7 +17,7 @@ curl_setopt_array($curl, array(
   array('username' => 'targetkwnet',
         'password' => 'kyAf*HGc8Dz',
         'sender' => 'KWT-SMS',
-        'mobile' => "965{$_GET["m"]}",
+        'mobile' => "965{$_POST["m"]}",
         'lang' => '1',
         'test' => '0',
         'message' => "{$randNumber}"
@@ -55,7 +55,7 @@ curl_close($curl);
                         <button class="button" type="submit"><?php echo direction("Verify","تحقق") ?> <img src="img/veri.svg" alt=""></button>
                     </div>
                 </form>
-                <p><?php echo direction("Didn't get your OTP? ","لم تستلم رمز التحقق؟") ?><a href="?v=Verification&m=<?php echo $_GET["m"] ?>"><?php echo direction("Send again","ارسال مرة اخرى") ?></a>.</p>
+                <p><?php echo direction("Didn't get your OTP? ","لم تستلم رمز التحقق؟") ?><a href="?v=Verification&m=<?php echo $_POST["m"] ?>"><?php echo direction("Send again","ارسال مرة اخرى") ?></a>.</p>
             </div>
         </div>
     </div>

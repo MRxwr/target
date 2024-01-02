@@ -10,7 +10,7 @@
             <div class="modal-body p-0 text-center">
                 <h2><?php echo direction("Log in","تسجيل الدخول") ?></h2>
                 <h3> <?php echo direction("Check your Subsicriptions","تحقق من الاشتراك") ?></h3>
-                <form action="?v=Verification" method="get" class="account_form">
+                <form action="?v=Verification" method="post" class="account_form">
                     <input placeholder="Enter Mobile Number" type="tel" name="m" max="8" min="8" pattern="[0-9]{8}" step="any" required>
                         <button class="button mt_30" type="submit">
                             <?php echo direction("Log in","تسجيل الدخول") ?>
