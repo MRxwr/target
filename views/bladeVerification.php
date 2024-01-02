@@ -31,7 +31,7 @@ curl_close($curl);
 */
 }else{
     //echo "<script>window.history.back()</script>";
-    die();
+    //die();
 }
 ?>
 
