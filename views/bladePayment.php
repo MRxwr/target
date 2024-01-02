@@ -147,7 +147,7 @@ if( !isset($_POST) ){
         'ExtraMerchantsData'=> json_encode($extraMerchantData),//Optional for multivendor API
     );
     
-    //print_r($comon_array);die();
+    print_r($comon_array);
 
     $fields_string = http_build_query($comon_array);
 	$ch = curl_init();
@@ -161,6 +161,7 @@ if( !isset($_POST) ){
 	curl_close ($ch);
 	$response = json_decode($server_output,true);
 
+    echo json_encode($response);
     //saving info and redirecting to payment pages
     if( $response["status"] == "success" && isset($response["paymentURL"]) && !empty($response["paymentURL"]) ){
         $_POST["gatewayId"] = $comon_array["order_id"];
