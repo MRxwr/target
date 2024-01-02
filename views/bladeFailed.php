@@ -42,8 +42,8 @@
             </div>
         </div>
     </div>
-    <!-- succesful_area -->
-    <div class="succesful_area">
+    <!-- failed_area -->
+    <div class="failed_area">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-4 mt_50 custom_full">

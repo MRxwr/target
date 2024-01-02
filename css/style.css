@@ -1581,6 +1581,67 @@ html[dir="rtl"] #terms .modal-content p{
 .term_cond {
 	max-width: 98.6rem!important;
 }
+/*failed_area*/
+.failed_area{
+	max-width: 150rem;
+	margin: 0 auto;
+	padding-bottom: 16rem;
+}
+.failed_area h2{
+	font-size: 2rem;
+	color: #142B48;
+	font-family: 'Lato', sans-serif;
+	margin-bottom: 1rem;
+	position: relative;
+}
+html[dir="rtl"] .failed_area h2{
+	font-family: 'Tajawal', sans-serif;
+}
+.failed_area h2::before {
+	content: '';
+	position: absolute;
+	background-image: url(../img/close.png);
+	background-size: contain;
+	background-position: center center;
+	width: 2.7rem;
+	height: 2.7rem;
+	left: -4.5rem;
+	top: 0;
+	background-repeat: no-repeat;
+}
+html[dir="rtl"] .failed_area h2::before{
+	left: auto;
+	right: -4.5rem;
+}
+.failed_area p{
+	font-size: 1.1rem;
+	color: #142B48;
+	font-family: 'Lato', sans-serif;
+	margin-bottom: 3.2rem;
+}
+html[dir="rtl"] .failed_area p{
+	font-family: 'Tajawal', sans-serif;
+}
+.failed_area h3{
+	font-size: 1.1rem;
+	color: #142B48;
+	font-family: 'Lato', sans-serif;
+	margin-bottom: 4rem;
+}
+html[dir="rtl"] .failed_area h3{
+	font-family: 'Tajawal', sans-serif;
+}
+.failed_area .button_box {
+   padding: 1.7rem 5rem;
+   -webkit-column-gap: 3rem;
+      -moz-column-gap: 3rem;
+           column-gap: 3rem;
+}
+.failed_area .button_box img{
+	width: 1.7rem;
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+}
 /*succesful_area*/
 .succesful_area{
 	max-width: 150rem;
