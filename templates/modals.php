@@ -8,12 +8,12 @@
                 </span>
             </button>
             <div class="modal-body p-0 text-center">
-                <h2>Log in to your account</h2>
-                <h3> Check your Subsicriptions</h3>
-                <form action="#" class="account_form">
-                    <input placeholder="Enter Mobile Number" type="tel">
+                <h2><?php echo direction("Log in","تسجيل الدخول") ?></h2>
+                <h3> <?php echo direction("Check your Subsicriptions","تحقق من الاشتراك") ?></h3>
+                <form action="?v=Verification" method="get" class="account_form">
+                    <input placeholder="Enter Mobile Number" type="tel" name="m" max="8" min="8" pattern="[0-9]{8}" step="any" required>
                         <button class="button mt_30" type="submit">
-                            Submit
+                            <?php echo direction("Log in","تسجيل الدخول") ?>
                         </button>
                     </input>
                 </form>
