@@ -59,7 +59,7 @@ if( !isset($_POST) ){
     if( $AdminSettings = selectDB("settings","`id` = '1'") ){}
 
     //checking academy Inforamtion
-    if( $academyData = selectDB("academies","`url` = '{$_GET["v"]}'")){}
+    if( $academyData = selectDB("academies","`url` = '{$_GET["academyURL"]}'")){}
     if( $dayData = selectDB("days","`id` = '{$data["day"]}'")){}
     if( $branchData = selectDB("branches","`id` = '{$data["branch"]}'")){}
     if( $genderData = selectDB("genders","`id` = '{$data["gender"]}'")){}
