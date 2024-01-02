@@ -24,7 +24,7 @@ require ("admin/includes/functions.php");
     <link href="css/fontawesome.min.css" rel="stylesheet" type="text/css" />
     <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
     <link href="css/helper.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css?x=1" rel="stylesheet" type="text/css" />
     <link href="css/responsive.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
