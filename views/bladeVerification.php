@@ -1,7 +1,9 @@
 <?php
+print_r($_GET);
 if( isset($_GET["m"]) && !empty($_GET["m"]) ){
 $randNumber = randNumber();
 $_SESSION["otp"] = $randNumber;
+/*
 $curl = curl_init();
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://www.kwtsms.com/API/send/',
@@ -27,8 +29,9 @@ curl_setopt_array($curl, array(
 ));
 $response = curl_exec($curl);
 curl_close($curl);
+*/
 }else{
-    echo "<script>window.history.back()</script>";
+    //echo "<script>window.history.back()</script>";
     die();
 }
 ?>
