@@ -6,7 +6,7 @@ require("templates/navbar.php");
 if( isset($_GET["Result"]) && !empty($_GET["Result"]) && $_GET["Result"] == "CAPTURED"){
 	$_GET["v"] = "Success";
 }elseif( isset($_GET["Result"]) && !empty($_GET["Result"]) && $_GET["Result"] != "CAPTURED" ){
-	$_GET["v"] = "Failer";
+	$_GET["v"] = "Failed";
 }
 
 // get viewed page from pages folder \\
