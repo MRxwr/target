@@ -11,6 +11,7 @@ if( isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1 ){
 }else{
     echo "<script>alert('Wrong OTP');window.history.go(-2);</script>";die();
 }
+print_r($_SESSION);
 ?>
 <main class="overflow-hidden over_custom">
     <!-- account_area -->
