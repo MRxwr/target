@@ -1,3 +1,14 @@
+<?php
+if( isset($_POST["otp1"]) ){
+    $originalOTP = $_POST["otp1"].$_POST["otp2"].$_POST["otp3"].$_POST["otp4"].$_POST["otp5"].$_POST["otp6"];
+    $sessionOTP = $_SESSION["otp"];
+    if( $originalOTP != $sessionOTP){
+        echo "<script>alert('Wrong OTP');window.history.go(-2);</script>";die();
+    }
+}else{
+    echo "<script>alert('Wrong OTP');window.history.go(-2);</script>";die();
+}
+?>
 <main class="overflow-hidden over_custom">
     <!-- account_area -->
     <div class="account_area mt_40">

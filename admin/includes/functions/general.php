@@ -23,6 +23,12 @@ function direction($valEn,$valAr){
 	return $response;
 }
 
+// select a randon number \\
+function randNumber() {
+	$number = rand(100000, 999999);
+	return $number;
+}
+
 // select a randon letter \\
 function randLetter() {
     $alphabet = 'abcdefghijklmnopqrstuvwxyz';
