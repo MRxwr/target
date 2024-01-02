@@ -47,9 +47,9 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-4 mt_50 custom_full">
-                    <h2><?php echo direction("Your payment was succesful","عملية دفع ناجحة") ?></h2>
-                    <p><?php echo direction("Thank you for booking with us.","شكرا لحجزك معنا") ?></p>
-                    <h3><?php echo direction("We Wish to see you soon.","نتمنى ان نراكم قريبا") ?></h3>
+                    <h2><?php echo direction("Your payment has failed","عملية دفع فاشلة") ?></h2>
+                    <p><?php echo direction("Please try again and make sure to book your seat.","يرجى المحاولة مرة اخرى وتأكد من حجز المقعد.") ?></p>
+                    <h3><?php echo direction("Thank you.","شكرا.") ?></h3>
                     <a href="https://targetkw.net/<?php echo $_GET["academyURL"] ?>" class="button_box"><img src="img/home.svg" alt=""><?php echo direction("Home","الرئيسية") ?></a>
                 </div>
                 <div class="col-lg-4 mt_50">
