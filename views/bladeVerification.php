@@ -2,6 +2,7 @@
 if( isset($_POST["m"]) && !empty($_POST["m"]) ){
     $randNumber = randNumber();
     $_SESSION["otp"] = $randNumber;
+    $_SESSION["mobile"] = $_POST["m"];
     $curl = curl_init();
     curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://www.kwtsms.com/API/send/',
