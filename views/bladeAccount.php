@@ -11,7 +11,6 @@ if( isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1 ){
 }else{
     echo "<script>alert('Wrong OTP');window.history.go(-2);</script>";die();
 }
-print_r($_SESSION);
 ?>
 <main class="overflow-hidden over_custom">
     <!-- account_area -->
@@ -19,7 +18,7 @@ print_r($_SESSION);
         <div class="container">
         <h2><?php echo direction("MY ACCOUNT","حسابي") ?></h2>
         <?php
-        if( $orders = selectDB("orders","`status` != '2' AND `mobile` LIKE '%{$_SESSION["mobile"]}%' ORDER BY `date` DESC") ){
+        if( $orders = selectDB("orders","`status` != '2' AND `phone` LIKE '%{$_SESSION["mobile"]}%' ORDER BY `date` DESC") ){
             for( $i =0; $i < sizeof($orders); $i++ ){
                 $subscription = selectDB("subscriptions","`id` = {$order[$i]["subscriptionId"]}");
                 $sport = selectDB("sports","`id` = {$subscription[0]["sportId"]}");
