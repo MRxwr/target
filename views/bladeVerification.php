@@ -1,5 +1,5 @@
 <?php
-if( isset($_GET["m"]) && !empty($_GET["m"]) && strlen($_GET["m"]) == 8 ){
+if( isset($_GET["m"]) && !empty($_GET["m"]) ){
 $randNumber = randNumber();
 $_SESSION["otp"] = $randNumber;
 $curl = curl_init();
