@@ -1,5 +1,4 @@
 <?php
-print_r($_GET);
 if( isset($_GET["m"]) && !empty($_GET["m"]) ){
 $randNumber = randNumber();
 $_SESSION["otp"] = $randNumber;
