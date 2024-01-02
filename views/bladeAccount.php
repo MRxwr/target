@@ -20,7 +20,7 @@ if( isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1 ){
         <?php
         if( $orders = selectDB("orders","`status` != '2' AND `phone` LIKE '%{$_SESSION["mobile"]}%' ORDER BY `date` DESC") ){
             for( $i =0; $i < sizeof($orders); $i++ ){
-                $subscription = selectDB("subscriptions","`id` = {$order[$i]["subscriptionId"]}");
+                $subscription = selectDB("subscriptions","`id` = {$orders[$i]["subscriptionId"]}");
                 $sport = selectDB("sports","`id` = {$subscription[0]["sportId"]}");
                 ?>
                 <div class="accoun_wapper">
