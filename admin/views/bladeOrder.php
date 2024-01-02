@@ -1,7 +1,8 @@
 <?php
 
 if( $order = selectDB("orders","`id` = '{$_GET["id"]}'") ){
-
+    $subscription = selectDB("subscriptions","`id` = {$order[0]["subscriptionId"]}");
+    $sport = selectDB("sports","`id` = {$subscription[0]["sportId"]}");
 }else{
     ?>
     <script>
@@ -70,6 +71,7 @@ td{
             <td class='txt-dark' style='white-space: break-spaces;'>
                 <?php echo 
                         direction($order[0]["enAcademy"],$order[0]["arAcademy"]) . " - " .
+                        direction($sport[0]["enTitle"],$sport[0]["arTitle"]) . " - " .
                         direction($order[0]["enSubscription"],$order[0]["arSubscription"]) . " - " . 
                         direction($order[0]["enBranch"],$order[0]["arBranch"]) . " - " . 
                         direction($order[0]["enDay"],$order[0]["arDay"]) . " - " . 
