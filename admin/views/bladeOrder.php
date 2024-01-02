@@ -68,7 +68,7 @@ td{
     </tr>
     <tbody>
         <tr>
-            <td class='txt-dark' style='white-space: break-spaces;'>
+            <td class='txt-dark' style=''>
                 <?php echo 
                         direction($order[0]["enAcademy"],$order[0]["arAcademy"]) . " - " .
                         direction($sport[0]["enTitle"],$sport[0]["arTitle"]) . " - " .
