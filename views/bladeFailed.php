@@ -68,7 +68,7 @@
                         <h4><span><?php echo direction("Subscription Date","تاريخ الاشتراك") ?>:</span><?php echo substr($order[0]["date"],0,10) ?></h4>
                         <h4><span><?php echo direction("Days","الايام") ?>:</span><?php echo direction($order[0]["enDay"],$order[0]["arDay"]) ?></h4>
                         <h4><span><?php echo direction("Time","وقت") ?>:</span><?php echo direction($order[0]["enSession"],$order[0]["arSession"]) ?></h4>
-                        <h4><span><?php echo direction("Price","السعر") ?>:</span><?php echo $order[0]["price"] ?>KD</h4>
+                        <h4><span><?php echo direction("Price","السعر") ?>:</span><?php echo $order[0]["total"] ?>KD</h4>
                     </div>
                 </div>
             </div>
