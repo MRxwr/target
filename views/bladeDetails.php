@@ -399,6 +399,7 @@
                             <?php echo direction("Pay Now","تابع للدفع") ?>
                         </button>
                     </div>
+                    <input name="subscription" type="hidden" value="<?php echo $_POST["id"] ?>">
                 </form>
 
             </div>
