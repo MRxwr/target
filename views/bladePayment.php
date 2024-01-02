@@ -147,7 +147,7 @@ if( !isset($_POST) ){
         'ExtraMerchantsData'=> json_encode($extraMerchantData),//Optional for multivendor API
     );
     
-    print_r($comon_array);
+    //print_r($comon_array);
 
     $fields_string = http_build_query($comon_array);
 	$ch = curl_init();
@@ -161,7 +161,6 @@ if( !isset($_POST) ){
 	curl_close ($ch);
 	$response = json_decode($server_output,true);
 
-    echo json_encode($response);
     //saving info and redirecting to payment pages
     if( $response["status"] == "success" && isset($response["paymentURL"]) && !empty($response["paymentURL"]) ){
         $_POST["gatewayId"] = $comon_array["order_id"];
@@ -173,12 +172,12 @@ if( !isset($_POST) ){
             "InvoiceId"  => $comon_array["order_id"]
         );
         insertDB2("orders",$_POST);
-        echo outputData($response);
+        echo "<script>window.location.href='{$response["paymentURL"]}';</script>";die();
     }else{
         $response = array(
             "msg" => 'Error while proccessing payment',
         );
-        echo outputError($response);
+        echo "<script>alert('Error while proccessing payment');window.history.go(-2);</script>";die();
     }
     
 }
