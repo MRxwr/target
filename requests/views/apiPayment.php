@@ -48,7 +48,7 @@ if( !isset($_POST) ){
     }
 
     //checking session information
-    if( $sessionData = selectDB("sessions","`id` = '{$data["sessionId"]}' AND `quantity` > '0'")){}else{
+    if( $sessionData = selectDB("sessions","`id` = '{$data["session"]}' AND `quantity` > '0'")){}else{
         $response = array(
             "msg" => 'No sessions available anymore.',
         );
@@ -59,13 +59,13 @@ if( !isset($_POST) ){
     if( $AdminSettings = selectDB("settings","`id` = '1'") ){}
 
     //checking academy Inforamtion
-    if( $academyData = selectDB("academies","`id` = '{$data["academyId"]}'")){}
-    if( $dayData = selectDB("days","`id` = '{$data["dayId"]}'")){}
-    if( $branchData = selectDB("branches","`id` = '{$data["branchId"]}'")){}
-    if( $genderData = selectDB("genders","`id` = '{$data["genderId"]}'")){}
+    if( $academyData = selectDB("academies","`url` = '{$_GET["v"]}'")){}
+    if( $dayData = selectDB("days","`id` = '{$data["day"]}'")){}
+    if( $branchData = selectDB("branches","`id` = '{$data["branch"]}'")){}
+    if( $genderData = selectDB("genders","`id` = '{$data["gender"]}'")){}
 
     //checking subscription information
-    if( $subscriptionData = selectDB("subscriptions","`id` = '{$data["subscriptionId"]}'")){
+    if( $subscriptionData = selectDB("subscriptions","`id` = '{$data["subscription"]}'")){
         $price = ($subscriptionData[0]["priceAfterDiscount"] != 0 ) ? $subscriptionData[0]["priceAfterDiscount"] : $subscriptionData[0]["price"] ;
         if( $numberOfTimesAvalability && $academyAprroved ){
             $price = $subscriptionData[0]["price"];
@@ -82,27 +82,27 @@ if( !isset($_POST) ){
         $newTotal = ( $voucherType == 0 ) ? ($newTotal*(1-($voucherAmount/100))) : $newTotal - $voucherAmount;
     }
 
-    $_POST["fName"] = "{$data["fName"]}";
-    $_POST["mName"] = "{$data["mName"]}";
-    $_POST["lName"] = "{$data["lName"]}";
+    $_POST["fName"] = "{$data["firstName"]}";
+    $_POST["mName"] = "{$data["middleName"]}";
+    $_POST["lName"] = "{$data["lastName"]}";
     $_POST["phone"] = "{$data["mobile"]}";
     $_POST["email"] = "{$AdminSettings[0]["email"]}";
-    $_POST["academyId"] = $data["academyId"];
+    $_POST["academyId"] = $academyData[0]["id"];
     $_POST["enAcademy"] = $academyData[0]["enTitle"];
     $_POST["arAcademy"] = $academyData[0]["arTitle"];
-    $_POST["sessionId"] = $data["sessionId"];
+    $_POST["sessionId"] = $data["session"];
     $_POST["enSession"] = $sessionData[0]["enTitle"];
     $_POST["arSession"] = $sessionData[0]["arTitle"];
-    $_POST["branchId"] = $data["branchId"];
+    $_POST["branchId"] = $data["branch"];
     $_POST["enBranch"] = $branchData[0]["enTitle"];
     $_POST["arBranch"] = $branchData[0]["arTitle"];
-    $_POST["dayId"] = $data["dayId"];
+    $_POST["dayId"] = $data["day"];
     $_POST["enDay"] = $dayData[0]["enTitle"];
     $_POST["arDay"] = $dayData[0]["arTitle"];
-    $_POST["genderId"] = $data["genderId"];
+    $_POST["genderId"] = $data["gender"];
     $_POST["enGender"] = "{$genderData[0]["enTitle"]} {$genderData[0]["enSubTitle"]}";
     $_POST["arGender"] = "{$genderData[0]["arTitle"]} {$genderData[0]["arSubTitle"]}";
-    $_POST["subscriptionId"] = $data["subscriptionId"];
+    $_POST["subscriptionId"] = $data["subscription"];
     $_POST["enSubscription"] = $subscriptionData[0]["enTitle"];
     $_POST["arSubscription"] = $subscriptionData[0]["arTitle"];
     $_POST["subscriptionQuantity"] = 1;
