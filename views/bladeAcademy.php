@@ -50,10 +50,11 @@
         <div class="container">
             <div class="row mt_30">
 <?php
-if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0'") ){
-    for( $i = 0; $i < sizeof($mainSports); $i++){
-        $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[$i]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price` ASC LIMIT 1");
-        $title = direction($mainSports[$i]["enTitle"],$mainSports[$i]["arTitle"]);
+$sports = json_decode($mainAcademy[0]["sports"],true);
+for( $y = 0; $y < sizeof($sports); $y++){
+    if( $mainSports = selectDB("sports","`id` = '{$sports[$y]}' AND `hidden` = '0' AND `status` = '0'") ){
+        $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[0]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price` ASC LIMIT 1");
+        $title = direction($mainSports[0]["enTitle"],$mainSports[0]["arTitle"]);
 ?>
                 <div class="col-lg-3 col-sm-6 col-6 mt_50">
                     <a href="#<?php echo strtolower(str_replace(" ","_",$title)) ?>" data-toggle="modal" class="man_box">
@@ -77,11 +78,11 @@ if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND
 </main>
 
 <?php 
-if( $mainSports = selectDB("sports","`academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0'") ){
-    for( $i = 0; $i < sizeof($mainSports); $i++){
+for( $i = 0; $i < sizeof($sports); $i++){
+    if( $mainSports = selectDB("sports","`id` = '{$sports[$y]}' AND `hidden` = '0' AND `status` = '0'") ){
         $priceAfterText = 0;
-        $title = direction($mainSports[$i]["enTitle"],$mainSports[$i]["arTitle"]);
-        if( $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[$i]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price`") ){
+        $title = direction($mainSports[0]["enTitle"],$mainSports[0]["arTitle"]);
+        if( $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[0]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price`") ){
             for( $z = 0; $z < sizeof($subscription); $z++ ){
                 if ( !empty($subscription[$z]["priceAfterDiscount"]) ){
                     $priceAfterText = 1;
