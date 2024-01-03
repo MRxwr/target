@@ -50,7 +50,7 @@
         <div class="container">
             <div class="row mt_30">
 <?php
-$sports = $mainAcademy[0]["sports"];
+$sports = json_decode($mainAcademy[0]["sport"],true);
 var_dump($sports);
 for( $y = 0; $y < sizeof($sports); $y++){
     if( $mainSports = selectDB("sports","`id` = '{$sports[$y]}' AND `hidden` = '0' AND `status` = '0'") ){
