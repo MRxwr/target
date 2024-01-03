@@ -53,7 +53,7 @@
 $sports = json_decode($mainAcademy[0]["sport"],true);
 for( $y = 0; $y < sizeof($sports); $y++){
     if( $mainSports = selectDB("sports","`id` = '{$sports[$y]}' AND `hidden` = '0' AND `status` = '0'") ){
-        $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[0]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price` ASC LIMIT 1");
+        $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[0]["id"]}' AND `academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price` ASC LIMIT 1");
         $title = direction($mainSports[0]["enTitle"],$mainSports[0]["arTitle"]);
 ?>
                 <div class="col-lg-3 col-sm-6 col-6 mt_50">
