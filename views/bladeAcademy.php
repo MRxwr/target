@@ -79,8 +79,7 @@ for( $y = 0; $y < sizeof($sports); $y++){
 
 <?php 
 for( $i = 0; $i < sizeof($sports); $i++){
-    var_dump($sports[$i]);
-    if( $mainSports = selectDB("sports","`id` = '{$sports[$y]}' AND `hidden` = '0' AND `status` = '0'") ){
+    if( $mainSports = selectDB("sports","`id` = '{$sports[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
         $priceAfterText = 0;
         $title = direction($mainSports[0]["enTitle"],$mainSports[0]["arTitle"]);
         if( $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[0]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price`") ){
