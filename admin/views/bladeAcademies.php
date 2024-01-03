@@ -174,8 +174,8 @@
 				<td><?php echo $counter = 1 + $i ?></td>
 				<td><?php echo $academyTitle ?></td>
 				<td class="text-nowrap">
-					<a href="?v=Sports&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-danger"><?php echo direction("Sports","الرياضات") ?></a>
-					<a href="?v=Genders&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Gender","الجنس") ?></a>
+					<!--<a href="?v=Sports&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-danger"><?php echo direction("Sports","الرياضات") ?></a>
+					<a href="?v=Genders&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Gender","الجنس") ?></a>-->
 					<a href="?v=Branches&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-primary"><?php echo direction("Branches","الأفرع") ?></a>
 					<a href="?v=Days&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-warning"><?php echo direction("Days","الأيام") ?></a>
 					<a href="?v=Sessions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-default"><?php echo direction("Sessions","المحاضرات") ?></a>
