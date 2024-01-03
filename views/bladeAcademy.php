@@ -82,7 +82,7 @@ for( $i = 0; $i < sizeof($sports); $i++){
     if( $mainSports = selectDB("sports","`id` = '{$sports[$i]}' AND `hidden` = '0' AND `status` = '0'") ){
         $priceAfterText = 0;
         $title = direction($mainSports[0]["enTitle"],$mainSports[0]["arTitle"]);
-        if( $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[0]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price`") ){
+        if( $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[0]["id"]}' AND `academyId` = '{$mainAcademy[0]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price`") ){
             for( $z = 0; $z < sizeof($subscription); $z++ ){
                 if ( !empty($subscription[$z]["priceAfterDiscount"]) ){
                     $priceAfterText = 1;
