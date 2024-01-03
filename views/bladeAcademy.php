@@ -78,6 +78,7 @@ for( $y = 0; $y < sizeof($sports); $y++){
 </main>
 
 <?php 
+var_dump($sports);
 for( $i = 0; $i < sizeof($sports); $i++){
     if( $mainSports = selectDB("sports","`id` = '{$sports[$y]}' AND `hidden` = '0' AND `status` = '0'") ){
         $priceAfterText = 0;
