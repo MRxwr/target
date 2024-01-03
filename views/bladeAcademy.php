@@ -51,6 +51,7 @@
             <div class="row mt_30">
 <?php
 $sports = json_decode($mainAcademy[0]["sports"],true);
+print_r($sports);
 for( $y = 0; $y < sizeof($sports); $y++){
     if( $mainSports = selectDB("sports","`id` = '{$sports[$y]}' AND `hidden` = '0' AND `status` = '0'") ){
         $subscription = selectDB("subscriptions","`sportId` = '{$mainSports[0]["id"]}' AND `hidden` = '0' AND `status` = '0' ORDER BY `price` ASC LIMIT 1");
