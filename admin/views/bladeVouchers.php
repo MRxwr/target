@@ -44,10 +44,12 @@
 			<select name="academyId" class="form-control" id="mySelect">
                 <option value='0'><?php echo direction("All","الكل") ?></option>
 				<?php
-				if( $academy = selectDB("academies","`status` = '0'") ){
+				$where = ( empty($empAcademy) ) ? "" : " AND `academyId` = '{$empAcademy}'";
+				if( $academy = selectDB("academies","`status` = '0' {$where}") ){
 					for( $i = 0; $i < sizeof($academy); $i++ ){
 						$academyTitle = direction($academy[$i]["enTitle"],$academy[$i]["arTitle"]);
-						echo "<option value='{$academy[$i]["id"]}'>{$academyTitle}</option>";
+						$selected = ( $i == 0 ) ? "selected" : "" ;
+						echo "<option value='{$academy[$i]["id"]}' {$selected}>{$academyTitle}</option>";
 					}
 				}
 				?>
