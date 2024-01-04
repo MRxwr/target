@@ -107,7 +107,8 @@
 		
 		<tbody>
 		<?php 
-		if( $vouchers = selectDB("vouchers","`status` = '0' AND `hidden` != '2'") ){
+		$where = ( empty($empAcademy) ) ? "" : " AND `academyId` = '{$empAcademy}'";
+		if( $vouchers = selectDB("vouchers","`status` = '0' AND `hidden` != '2' {$where}") ){
 			for( $i = 0; $i < sizeof($vouchers); $i++ ){
 				if ( $vouchers[$i]["hidden"] == 1 ){
 					$icon = "fa fa-unlock";
