@@ -23,7 +23,7 @@
 			</select>
 			</div>
 
-			<div class="col-md-12">
+			<!--<div class="col-md-12">
 			<label><?php echo direction("Gender","الجنس") ?></label>
 			<select id="mySelect" name="gender[]" class="select2 select2-multiple select2-hidden-accessible" data-placeholder="Choose" multiple required>
 				<?php
@@ -34,7 +34,7 @@
 				}
 				?>
 			</select>
-			</div>
+			</div>-->
 
 			<div class="col-md-4">
 			<label><?php echo direction("URL","الرابط") ?></label>
@@ -174,8 +174,8 @@
 				<td><?php echo $counter = 1 + $i ?></td>
 				<td><?php echo $academyTitle ?></td>
 				<td class="text-nowrap">
-					<!--<a href="?v=Sports&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-danger"><?php echo direction("Sports","الرياضات") ?></a>
-					<a href="?v=Genders&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Gender","الجنس") ?></a>-->
+					<!--<a href="?v=Sports&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-danger"><?php echo direction("Sports","الرياضات") ?></a>-->
+					<a href="?v=Genders&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-info"><?php echo direction("Gender","الجنس") ?></a>
 					<a href="?v=Branches&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-primary"><?php echo direction("Branches","الأفرع") ?></a>
 					<a href="?v=Days&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-warning"><?php echo direction("Days","الأيام") ?></a>
 					<a href="?v=Sessions&code=<?php echo $academies[$i]["id"] ?>" class="btn btn-default"><?php echo direction("Sessions","المحاضرات") ?></a>
