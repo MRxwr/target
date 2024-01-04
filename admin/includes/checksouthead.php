@@ -10,7 +10,8 @@ if ( isset ( $_COOKIE[$cookieSession."A"] ) ){
 		$email = $user[0]["email"];
 		$username = $user[0]["fullName"];
 		$userType = $user[0]["empType"];
-		$_SESSION[$cookieSession."A"] = $email;	
+		$empAcademy = ( $userType != '1' ) ? $user[0]["academyId"]: "";
+		$_SESSION[$cookieSession."A"] = $email;
 	}else{
 		header("Location: logout.php");die();
 	}
