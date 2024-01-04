@@ -44,7 +44,7 @@
 			<select name="academyId" class="form-control" id="mySelect">
                 <option value='0'><?php echo direction("All","الكل") ?></option>
 				<?php
-				$where = ( empty($empAcademy) ) ? "" : " AND `academyId` = '{$empAcademy}'";
+				$where = ( empty($empAcademy) ) ? "" : " AND `id` = '{$empAcademy}'";
 				if( $academy = selectDB("academies","`status` = '0' {$where}") ){
 					for( $i = 0; $i < sizeof($academy); $i++ ){
 						$academyTitle = direction($academy[$i]["enTitle"],$academy[$i]["arTitle"]);
