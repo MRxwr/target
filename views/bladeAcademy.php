@@ -103,13 +103,15 @@ for( $i = 0; $i < sizeof($sports); $i++){
                     echo "<h3>" . direction("We also have saving plans","لدينا إشتراكات خاصه") . "</h3>";
                 }
                     for( $y = 0; $y < sizeof($subscription); $y++ ){
+                        $genders = json_decode($subscription[$i]["genders"],true);;
+				        $gender = selectDB("genders","`id` = '{$genders[0]}'");
                 ?>
                 <div class="month_wap" onclick="submitForm('<?php echo $subscription[$y]["id"]; ?>')">
                     <?php
                     $priceAfer = (float)$subscription[$y]["price"]-(float)$subscription[$y]["priceAfterDiscount"];
                     echo $save = ( !empty($subscription[$y]["priceAfterDiscount"]) ) ? "<div class='save_style'><p>SAVE {$priceAfer}KD</p></div>" : "";
                     ?>
-                    <h4><?php echo direction($subscription[$y]["enTitle"],$subscription[$y]["arTitle"]) ?></h4>
+                    <h4><?php echo direction("{$subscription[$y]["enTitle"]} - {$gender[0]["enTitle"]} {$gender[0]["enSubTitle"]}","{$subscription[$y]["arTitle"]} - {$gender[0]["arTitle"]} {$gender[0]["arSubTitle"]}") ?></h4>
                     <h6><?php echo $price = ( !empty($subscription[$y]["priceAfterDiscount"]) ) ? $subscription[$y]["priceAfterDiscount"] : $subscription[$y]["price"] ;?>KD</h6>
                 </div>
                 <?php
