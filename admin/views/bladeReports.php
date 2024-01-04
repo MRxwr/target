@@ -100,7 +100,7 @@ if ( isset($_POST["endDate"]) ){
 		$where .= " AND `voucher` LIKE '%{$_POST["voucher"]}%'";
 	}
 	if ( !empty($_POST["academyId"]) ){
-		$where .= " AND `academyId` LIKE '%{$_POST["academyId"]}%'";
+		$where .= " AND `academyId` LIKE '{$_POST["academyId"]}'";
 	}
 	if ( !empty($_POST["paymentMethod"]) ){
 		$where .= " AND `paymentMethod` = '{$_POST["paymentMethod"]}'";
