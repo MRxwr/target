@@ -30,10 +30,13 @@
 	<div class="form-group">
 	<label class="control-label mb-10">Select Academy</label>
 	<select class="form-control" name="academyId">
-		<option value="0" selected><?php echo direction("All","الكل") ?></option>
 		<?php
-			if( $academies = selectDB("academies","`id` != '0' AND `status` = '0'")){
+			$where = ( empty($empAcademy) ) ? "" : " AND `id` = '{$empAcademy}'";
+			if( $academies = selectDB("academies","`status` = '0' {$where}")){
 				for( $i = 0; $i < sizeof($academies); $i++ ){
+					if( empty($empAcademy) ){
+						echo "<option value='0'>".direction("All","الكل")."</option>";
+					}
 					echo "<option value='{$academies[$i]["id"]}'>".direction($academies[$i]["enTitle"],$academies[$i]["arTitle"])."</option>";
 				}
 			}
