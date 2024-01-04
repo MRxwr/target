@@ -1,9 +1,3 @@
-<?php
-if( empty($empAcademy) ){
-}elseif( isset($_GET["code"]) && $_GET["code"] != $empAcademy ){
-	echo "<script>window.location.replace('?v=Home')</script>";
-}
-?>
 <div class="col-sm-12">
 <div class="panel panel-default card-view">
 <div class="panel-heading">
