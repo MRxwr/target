@@ -31,9 +31,11 @@
 			<label><?php echo direction("Gender","الجنس") ?></label>
 			<select id="mySelect" name="genders[]" multiple class="form-control" required>
 				<?php
-				if( $academyGenders = selectDB("genders","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
-					for( $i =0; $i < sizeof($academyGenders); $i++ ){
-						echo "<option value='{$academyGenders[$i]["id"]}'>".direction("{$academyGenders[$i]["enTitle"]} {$academyGenders[$i]["enSubTitle"]}","{$academyGenders[$i]["arTitle"]} {$academyGenders[$i]["arSubTitle"]}")."</option>";
+				if( $gendersList = selectDB("academies","`id` = '{$_GET["code"]}'") ){
+					$gendersList = json_decode($gendersList[0]["gender"],true);
+					for( $i =0; $i < sizeof($gendersList); $i++ ){
+						$gender = selectDB("genders","`id` = '{$gendersList[$i]}'");
+						echo "<option value='{$gender[0]["id"]}'>".direction("{$gender[0]["enTitle"]}","{$gender[0]["arTitle"]}")."</option>";
 					}
 				}
 				?>
