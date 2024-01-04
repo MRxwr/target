@@ -261,15 +261,13 @@
 			$("#logoImg").attr("src","../logos/"+logo);
 			$("#images").attr("style","margin-top:10px;display:block");
 			//$("select[name=genders]").val(gender);
-			var genderArray = JSON.parse(gender); 
+			//var genderArray = JSON.parse(gender); 
 			var sportArray = JSON.parse(sport);
 			$('#mySelect').val(null).trigger('change');
 			$('#mySelect3').val(null).trigger('change');
-			setSelectedOptions(genderArray, "mySelect");
+			//setSelectedOptions(genderArray, "mySelect");
 			setSelectedOptions(sportArray, "mySelect3");
 			//$("select[name=sport]").val(sport).trigger('change');
-			console.log("genderArray:", genderArray);
-			console.log("sportArray:", sportArray);
 		})
 		/*
 		function setSelectedOptions(ids, selectId) {
