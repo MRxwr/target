@@ -10,6 +10,22 @@
 <div class="panel-body">
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
+
+			<div class="col-md-12">
+			<label><?php echo direction("Sports","الرياضات") ?></label>
+			<select id="mySelect3" name="sportId" class="form-control" required>
+				<?php
+				if( $academySport = selectDB("academies","`id` = '{$_GET["code"]}'") ){
+					$academySport = json_decode($academySport[0]["sport"],true);
+					for( $i =0; $i < sizeof($academySport); $i++ ){
+						$sport = selectDB("sports","`id` = '{$academySport[$i]}'");
+						echo "<option value='{$sport[0]["id"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}")."</option>";
+					}
+				}
+				?>
+			</select>
+			</div>
+
 			<div class="col-md-4">
 			<label><?php echo direction("English Title","العنوان بالإنجليزي") ?></label>
 			<input type="text" name="enTitle" class="form-control" required>
