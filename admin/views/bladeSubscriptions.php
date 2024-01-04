@@ -19,7 +19,7 @@
 					$academySport = json_decode($academySport[0]["sport"],true);
 					for( $i =0; $i < sizeof($academySport); $i++ ){
 						$sport = selectDB("sports","`id` = '{$academySport[$i]}'");
-						echo "<option value='{$sport[0]["id"]}'>".direction("{$sport[0]["enTitle"]} {$sport[0]["enSubTitle"]}","{$sport[0]["arTitle"]} {$sport[0]["arSubTitle"]}")."</option>";
+						echo "<option value='{$sport[0]["id"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}")."</option>";
 					}
 				}
 				?>
@@ -35,7 +35,7 @@
 					$gendersList = json_decode($gendersList[0]["gender"],true);
 					for( $i =0; $i < sizeof($gendersList); $i++ ){
 						$gender = selectDB("genders","`id` = '{$gendersList[$i]}'");
-						echo "<option value='{$gender[0]["id"]}'>".direction("{$gender[0]["enTitle"]}","{$gender[0]["arTitle"]}")."</option>";
+						echo "<option value='{$gender[0]["id"]}'>".direction("{$gender[0]["enTitle"]} {$gender[0]["enSubTitle"]}","{$gender[0]["arTitle"]} {$gender[0]["arSubTitle"]}")."</option>";
 					}
 				}
 				?>
