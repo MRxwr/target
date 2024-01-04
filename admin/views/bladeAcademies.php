@@ -157,7 +157,8 @@
 		
 		<tbody>
 		<?php 
-		if( $academies = selectDB("academies","`status` = '0'") ){
+		$where = ( empty($empAcademy) ) ? "" : " AND `id` = '{$empAcademy}'";
+		if( $academies = selectDB("academies","`status` = '0' {$where}") ){
 			for( $i = 0; $i < sizeof($academies); $i++ ){
 				$academyTitle = direction($academies[$i]["enTitle"],$academies[$i]["arTitle"]);
 				if ( $academies[$i]["hidden"] == 1 ){
