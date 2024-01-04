@@ -162,8 +162,8 @@
 				<tr>
 				<td><?php echo $counter = $i + 1 ?></td>
 				<td><?php echo $sportTitle ?><label style="display:none" id="sport<?php echo $subscriptions[$i]["id"] ?>"><?php echo $subscriptions[$i]["sportId"] ?></label></td>
-				<td id="enTitle<?php echo $subscriptions[$i]["id"]?>" ><?php echo "{$subscriptions[$i]["enTitle"]} - {$gender[0]["enTitle"]} {$gender[0]["enSubTitle"]}" ?></td>
-				<td id="arTitle<?php echo $subscriptions[$i]["id"]?>" ><?php echo "{$subscriptions[$i]["arTitle"]} - {$gender[0]["arTitle"]} {$gender[0]["arSubTitle"]}" ?></td>
+				<td><?php echo "{$subscriptions[$i]["enTitle"]} - {$gender[0]["enTitle"]} {$gender[0]["enSubTitle"]}" ?></td>
+				<td><?php echo "{$subscriptions[$i]["arTitle"]} - {$gender[0]["arTitle"]} {$gender[0]["arSubTitle"]}" ?></td>
 				<td id="numberOfDays<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["numberOfDays"] ?></td>
 				<td id="price<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["price"] ?></td>
 				<td id="priceAfterDiscount<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["priceAfterDiscount"] ?></td>
@@ -172,6 +172,8 @@
 					</a>
 					<a href="<?php echo $link . "&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>			
 					<a href="<?php echo "?delId={$subscriptions[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>
+					<label id="enTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["enTitle"] ?></label>
+					<label id="arTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arTitle"] ?></label>
 					<label id="enDetails<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["enDetails"] ?></label>
 					<label id="arDetails<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["arDetails"] ?></label>
 					<label id="enSubTitle<?php echo $subscriptions[$i]["id"] ?>" style="display:none"><?php echo $subscriptions[$i]["enSubTitle"] ?></label>
