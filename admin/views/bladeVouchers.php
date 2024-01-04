@@ -42,10 +42,12 @@
 			<div class="col-md-4">
 			<label><?php echo direction("Academy","الأكادمية") ?></label>
 			<select name="academyId" class="form-control" id="mySelect">
-                <option value='0'><?php echo direction("All","الكل") ?></option>
 				<?php
 				$where = ( empty($empAcademy) ) ? "" : " AND `id` = '{$empAcademy}'";
 				if( $academy = selectDB("academies","`status` = '0' {$where}") ){
+					if( empty($empAcademy) ){
+						echo "<option value='0'>".direction("All","الكل")."</option>";
+					}
 					for( $i = 0; $i < sizeof($academy); $i++ ){
 						$academyTitle = direction($academy[$i]["enTitle"],$academy[$i]["arTitle"]);
 						$selected = ( $i == 0 ) ? "selected" : "" ;
