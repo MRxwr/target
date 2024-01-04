@@ -17,7 +17,10 @@
 				<?php
 				if( $academyBranches = selectDB("branches","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyBranches); $i++ ){
-						echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]}","{$academyBranches[$i]["arTitle"]}")."</option>";
+						for( $i =0; $i < sizeof($academyBranches); $i++ ){
+							$sport = selectDB("sports","`id` = '{$academyBranches[$i]["sportId"]}'");
+							echo "<option value='{$academyBranches[$i]["id"]}'>".direction("{$academyBranches[$i]["enTitle"]} ({$sport[0]["enTitle"]})","{$academyBranches[$i]["arTitle"]} ({$sport[0]["arTitle"]})")."</option>";
+						}
 					}
 				}
 				?>
