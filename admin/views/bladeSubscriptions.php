@@ -29,7 +29,7 @@
 			
 			<div class="col-md-12">
 			<label><?php echo direction("Gender","الجنس") ?></label>
-			<select id="mySelect" name="genders[]" multiple class="form-control" required>
+			<select id="mySelect" name="genders[]" class="form-control" required>
 				<?php
 				if( $academyGenders = selectDB("genders","`academyId` = '{$_GET["code"]}' AND `status` = '0' AND `hidden` = '0'") ){
 					for( $i =0; $i < sizeof($academyGenders); $i++ ){
