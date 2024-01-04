@@ -142,6 +142,8 @@
 		$orderBy = direction("enTitle","arTitle");
 		if( $subscriptions = selectDB("subscriptions","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($subscriptions); $i++ ){
+				$genders = json_decode($subscriptions[$i]["genders"],true);;
+				$gender = selectDB("genders","`id` = '{$genders[0]}'");
 				if ( $subscriptions[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
 					$link = "?show={$subscriptions[$i]["id"]}";
@@ -160,8 +162,8 @@
 				<tr>
 				<td><?php echo $counter = $i + 1 ?></td>
 				<td><?php echo $sportTitle ?><label style="display:none" id="sport<?php echo $subscriptions[$i]["id"] ?>"><?php echo $subscriptions[$i]["sportId"] ?></label></td>
-				<td id="enTitle<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["enTitle"] ?></td>
-				<td id="arTitle<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["arTitle"] ?></td>
+				<td id="enTitle<?php echo $subscriptions[$i]["id"]?>" ><?php echo "{$subscriptions[$i]["enTitle"]} - {$gender[0]["enTitle"]} {$gender[0]["enSubTitle"]}" ?></td>
+				<td id="arTitle<?php echo $subscriptions[$i]["id"]?>" ><?php echo "{$subscriptions[$i]["arTitle"]} - {$gender[0]["arTitle"]} {$gender[0]["arSubTitle"]}" ?></td>
 				<td id="numberOfDays<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["numberOfDays"] ?></td>
 				<td id="price<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["price"] ?></td>
 				<td id="priceAfterDiscount<?php echo $subscriptions[$i]["id"]?>" ><?php echo $subscriptions[$i]["priceAfterDiscount"] ?></td>
