@@ -65,6 +65,7 @@
 		<thead>
 		<tr>
 		<th>#</th>
+		<th><?php echo direction("Sport","الرياضة") ?></th>
 		<th><?php echo direction("English Title","العنوان بالإنجليزي") ?></th>
 		<th><?php echo direction("Arabic Title","العنوان بالعربي") ?></th>
 		<th class="text-nowrap"><?php echo direction("Actions","الخيارات") ?></th>
@@ -76,6 +77,7 @@
 		$orderBy = direction("enTitle","arTitle");
 		if( $branches = selectDB("branches","`status` = '0' AND `academyId` LIKE '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($branches); $i++ ){
+				$sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
 				if ( $branches[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
 					$link = "?show={$branches[$i]["id"]}";
@@ -88,6 +90,7 @@
 				?>
 				<tr>
 				<td><?php echo $counter = $i + 1 ?></td>
+				<td><?php echo direction($sport[0]["enTitle"],$sport[0]["arTitle"]) ?></td>
 				<td id="enTitle<?php echo $branches[$i]["id"]?>" ><?php echo $branches[$i]["enTitle"] ?></td>
 				<td id="arTitle<?php echo $branches[$i]["id"]?>" ><?php echo $branches[$i]["arTitle"] ?></td>
 				<td class="text-nowrap">
@@ -95,6 +98,7 @@
 					</a>
 					<a href="<?php echo $link . "&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>			
 					<a href="<?php echo "?delId={$branches[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>			
+					<label id="sportId<?php echo $branches[$i]["id"] ?>" style="display:none"><?php echo $branches[$i]["sportId"] ?></label>
 				</td>
 				</tr>
 				<?php
