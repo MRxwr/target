@@ -91,12 +91,12 @@
 			
 			<div class="col-md-6">
 			<label><?php echo direction("Alert English","التنبيه بالإنجليزي") ?></label>
-			<input type="text" name="enAlert" class="form-control" required>
+			<input type="text" name="enAlert" class="form-control" >
 			</div>
 
 			<div class="col-md-6">
 			<label><?php echo direction("Alert Arabic","التنبيه بالعربي") ?></label>
-			<input type="text" name="arAlert" class="form-control" required>
+			<input type="text" name="arAlert" class="form-control" >
 			</div>
 
 			<div class="col-md-12">
