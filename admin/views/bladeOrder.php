@@ -3,6 +3,16 @@
 if( $order = selectDB("orders","`id` = '{$_GET["id"]}'") ){
     $subscription = selectDB("subscriptions","`id` = {$order[0]["subscriptionId"]}");
     $sport = selectDB("sports","`id` = {$subscription[0]["sportId"]}");
+    if( !empty($empAcademy) && $order[0]["academyId"] != $empAcademy ){
+        ?>
+        <script>
+            window.onload = function() {
+                alert("<?php echo direction("Wrong order number","رقم طلب خاطئ") ?>");
+                window.location.href = "?v=Invoices";
+            }
+        </script>
+        <?php
+    }
 }else{
     ?>
     <script>
