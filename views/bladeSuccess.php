@@ -56,6 +56,7 @@
                     <div class="order_box">
                         <?php 
                         if( $order = selectDB("orders","`gatewayId` = {$_GET["OrderID"]}") ){
+                            updateDB("orders",array("status"=>1),"`gatewayId` = {$_GET["OrderID"]}");
                             $subscription = selectDB("subscriptions","`id` = {$order[0]["subscriptionId"]}");
                             $sport = selectDB("sports","`id` = {$subscription[0]["sportId"]}");
                         }else{
