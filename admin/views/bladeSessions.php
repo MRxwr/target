@@ -85,6 +85,7 @@
 		if( $sessions = selectDB("sessions","`status` = '0' AND `academyId` = '{$_GET["code"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($sessions); $i++ ){
 				$branch = selectDB("branches","`id` = '{$sessions[$i]["branchId"]}' AND `status` = '0' AND `hidden` = '0'");
+				$sport = selectDB("sports","`id` = '{$branch[0]["sportId"]}'");
 				if ( $sessions[$i]["hidden"] == 1 ){
 					$icon = "fa fa-eye";
 					$link = "?show={$sessions[$i]["id"]}";
@@ -100,7 +101,7 @@
 				<td id="enTitle<?php echo $sessions[$i]["id"]?>" ><?php echo $sessions[$i]["enTitle"] ?></td>
 				<td id="arTitle<?php echo $sessions[$i]["id"]?>" ><?php echo $sessions[$i]["arTitle"] ?></td>
 				<td id="quantity<?php echo $sessions[$i]["id"]?>" ><?php echo $sessions[$i]["quantity"] ?></td>
-				<td><?php echo direction("{$branch[0]["enTitle"]}","{$branch[0]["arTitle"]}") ?><label style='display:none' id="branch<?php echo $sessions[$i]["id"]?>"><?php echo $sessions[$i]["branchId"]?></label></td>
+				<td><?php echo direction("{$branch[0]["enTitle"]} ({$sport[0]["enTitle"]})","{$branch[0]["arTitle"]} ({$sport[0]["arTitle"]})") ?><label style='display:none' id="branch<?php echo $sessions[$i]["id"]?>"><?php echo $sessions[$i]["branchId"]?></label></td>
 				<td class="text-nowrap">
 					<a id="<?php echo $sessions[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
