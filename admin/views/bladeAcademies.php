@@ -1,7 +1,7 @@
 <?php
 if( empty($empAcademy) ){
 }elseif( isset($_GET["code"]) && $_GET["code"] != $empAcademy ){
-	echo "<script>window.location.replace('?v=academies&code={$empAcademy}')</script>";
+	echo "<script>window.location.replace('?v=Home')</script>";
 }
 ?>
 <div class="col-sm-12">
