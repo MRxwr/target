@@ -49,6 +49,7 @@
 			<select name="academyId" class="form-control">
 				<?php
 				if( $academy = selectDB("academies","`status` = '0'") ){
+					echo "<option value='0'>".direction("All","الكل")."</option>";
 					for( $i = 0; $i < sizeof($academy); $i++ ){
 						$academyTitle = direction($academy[$i]["enTitle"],$academy[$i]["arTitle"]);
 						echo "<option value='{$academy[$i]["id"]}'>{$academyTitle}</option>";
