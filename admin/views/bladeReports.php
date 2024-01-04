@@ -33,10 +33,10 @@
 		<?php
 			$where = ( empty($empAcademy) ) ? "" : " AND `id` = '{$empAcademy}'";
 			if( $academies = selectDB("academies","`status` = '0' {$where}")){
+				if( empty($empAcademy) ){
+					echo "<option value='0'>".direction("All","الكل")."</option>";
+				}
 				for( $i = 0; $i < sizeof($academies); $i++ ){
-					if( empty($empAcademy) ){
-						echo "<option value='0'>".direction("All","الكل")."</option>";
-					}
 					echo "<option value='{$academies[$i]["id"]}'>".direction($academies[$i]["enTitle"],$academies[$i]["arTitle"])."</option>";
 				}
 			}
@@ -77,7 +77,8 @@
 	<select class="form-control" name="voucher">
 		<option value="0" selected><?php echo direction("None","لا يوجد") ?></option>
 		<?php
-			if( $vouchers = selectDB("vouchers","`id` != '0' AND `status` = '0'")){
+			$where = ( empty($empAcademy) ) ? "" : " AND `academyId` = '{$empAcademy}'";
+			if( $vouchers = selectDB("vouchers","`id` != '0' AND `status` = '0' {$where}")){
 				for( $i = 0; $i < sizeof($vouchers); $i++ ){
 					echo "<option value='{$vouchers[$i]["code"]}'>{$vouchers[$i]["code"]}</option>";
 				}
