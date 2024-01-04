@@ -75,7 +75,7 @@
 		
 		<tbody>
 		<?php 
-		if( $genders = selectDB("genders","`status` = '0' ORDER BY `order` ASC") ){
+		if( $genders = selectDB("genders","`status` = '0' AND `academyId` = '{$_GET["code"]}' ORDER BY `order` ASC") ){
 			for( $i = 0; $i < sizeof($genders); $i++ ){
 			$counter = $i + 1;
 			if ( $genders[$i]["hidden"] == 1 ){
