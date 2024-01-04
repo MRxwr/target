@@ -103,7 +103,7 @@ for( $i = 0; $i < sizeof($sports); $i++){
                     echo "<h3>" . direction("We also have saving plans","لدينا إشتراكات خاصه") . "</h3>";
                 }
                     for( $y = 0; $y < sizeof($subscription); $y++ ){
-                        $genders = json_decode($subscription[$i]["genders"],true);;
+                        $genders = json_decode($subscription[$y]["genders"],true);;
 				        $gender = selectDB("genders","`id` = '{$genders[0]}'");
                 ?>
                 <div class="month_wap" onclick="submitForm('<?php echo $subscription[$y]["id"]; ?>')">
