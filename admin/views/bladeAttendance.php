@@ -21,7 +21,8 @@
                         $sessions = selectDB("sessions","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0'");
                         $days = selectDB("days","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0' AND `hidden` = '0'");
                         $sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
-                        echo "<option value='{$sessions[0]["id"]}'>".direction("{$branches[$i]["enTitle"]} ({$sport[0]["enTitle"]}) ({$days[0]["enTitle"]}) ({$sessions[0]["enTitle"]})","{$branches[$i]["arTitle"]} ({$sport[0]["arTitle"]}) ({$days[0]["arTitle"]}) ({$sessions[0]["arTitle"]})")."</option>";
+                        $academy = selectDB("academies","`id` = '{$branches[$i]["academyId"]}'");
+                        echo "<option value='{$sessions[0]["id"]}'>".direction("{$academy[0]["enTitle"]} - {$branches[$i]["enTitle"]} {$sport[0]["enTitle"]} {$days[0]["enTitle"]} {$sessions[0]["enTitle"]}","{$academy[0]["arTitle"]} - {$branches[$i]["arTitle"]} {$sport[0]["arTitle"]} {$days[0]["arTitle"]} {$sessions[0]["arTitle"]}")."</option>";
 					}
 				}
 				?>
