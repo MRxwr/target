@@ -15,14 +15,13 @@
 			<label><?php echo direction("Sports","الرياضات") ?></label>
 			<select id="mySelect3" name="sportId" class="form-control"required>
 				<?php
-                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
-				if( $academySport = selectDB("academies","{$where}") ){
-					for( $i =0; $i < sizeof($academySport); $i++ ){
-                        $academySport = json_decode($academySport[$i]["sport"],true);
-                        for( $y = 0; $y < sizeof($academySport); $y++ ){
-                            $sport = selectDB("sports","`id` = '{$academySport[$y]}'");
-                            echo "<option value='{$sport[0]["id"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}")."</option>";
-                        }
+                $where = ( empty($empAcademy) ) ? "": " AND `id` = '{$empAcademy}'";
+				if( $branches = selectDB("branches","{$where}") ){
+					for( $i =0; $i < sizeof($branches); $i++ ){
+                        $sessions = selectDB("sessions","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0'");
+                        $days = selectDB("days","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0' AND `hidden` = '0'");
+                        $sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
+                        echo "<option value='{$sessions[0]["id"]}'>".direction("{$branches[$i]["enTitle"]} ({$sport[0]["enTitle"]}) ({$days[0]["enTitle"]}) ({$sessions[0]["enTitle"]})","{$branches[$i]["arTitle"]} ({$sport[0]["arTitle"]}) ({$days[0]["arTitle"]}) ({$sessions[0]["arTitle"]})")."</option>";
 					}
 				}
 				?>
