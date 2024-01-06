@@ -193,13 +193,12 @@
 	<script>
 		$(document).ready(function() {
             // Initialize select2 for all your select elements
-            $('#mySelect1, #mySelect2, #mySelect3, #mySelect4, #mySelect5').select2();
+           //$('#mySelect1, #mySelect2, #mySelect3, #mySelect4, #mySelect5').select2();
         });
         $(document).on("change", "#mySelect1", function() {
             var academyId = $(this).val();
             var sports = $("#hiddenSport").find("option[id='academy" + academyId + "']").clone();
             var $mySelect2 = $("#mySelect2");
-            // Update mySelect2 options and reinitialize select2
             $mySelect2.empty().append(sports).trigger('change');
         });
 
@@ -207,7 +206,6 @@
             var sportId = $(this).val();
             var branches = $("#hiddenBranch").find("option[id='sport" + sportId + "']").clone();
             var $mySelect3 = $("#mySelect3");
-            // Update mySelect3 options and reinitialize select2
             $mySelect3.empty().append(branches).trigger('change');
         });
 	</script>
