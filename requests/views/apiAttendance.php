@@ -6,6 +6,8 @@ if( isset($_POST["studentId"]) && !empty($_POST["studentId"]) ){
     }else{
         insertDB("attendance",$_POST);
     }
+}else{
+    echo "error";
 }
 
 ?>
