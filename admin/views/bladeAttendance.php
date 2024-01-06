@@ -41,7 +41,7 @@
 
             <div class="col-md-4">
 			<label><?php echo direction("Branches","الفروع") ?></label>
-			<select id="mySelect3" name="bracnhId" class="form-control" required >
+			<select id="mySelect3" name="branchId" class="form-control" required >
 				
 			</select>
 			</div>
@@ -155,7 +155,6 @@ if ( isset($_POST["date"] )){
 		<tbody>
 		<?php 
 		$orderBy = direction("id","id");
-        var_dump($students = selectDB("students","`status` = '0' AND `academyId` = '{$_POST["academyId"]}' AND `sportId` = '{$_POST["sportId"]}' AND `branchId` = '{$_POST["branchId"]}' "));
 		if( $students = selectDB("students","`status` = '0' AND `academyId` = '{$_POST["academyId"]}' AND `sportId` = '{$_POST["sportId"]}' AND `branchId` = '{$_POST["branchId"]}' AND `sessionId` = '{$_POST["sessionId"]}' AND `dayId` = '{$_POST["dayId"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($students); $i++ ){
 				?>
