@@ -161,9 +161,10 @@ if ( isset($_POST["date"] )){
 				<td><?php echo "{$students[$i]["fName"]} {$students[$i]["mName"]} {$students[$i]["lName"]}" ?></td>
 				<td><?php echo "{$students[$i]["mobile"]}" ?></td>
 				<td class="text-nowrap">
-					<a id="<?php echo $subscriptions[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
+					<a id="<?php echo $students[$i]["id"] ?>" class="edit btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>"> <i class="fa fa-check text-inverse m-r-10"></i>
 					</a>
-					<a href="<?php echo "?delId={$subscriptions[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>
+					<a id="<?php echo $students[$i]["id"] ?>" class="edit btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Absent","غائب") ?>"> <i class="fa fa-close text-inverse m-r-10"></i>
+					</a>
 				</td>
 				</tr>
 				<?php
