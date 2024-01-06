@@ -215,7 +215,7 @@ if ( isset($_POST["date"]) ){
         });
         $(document).on("change", "#mySelect1", function() {
             var academyId = $(this).val();
-			console.log(academyId);
+			alert(academyId);
             var sports = $("#hiddenSport").find("option[id='academy" + academyId + "']").clone();
             var $mySelect2 = $("#mySelect2");
             $mySelect2.empty().append("<?php echo "<option value='0' selected >".direction("Please select sport","يرجى تحديد الرياضة")."</option>"; ?>").append(sports).trigger('change');
