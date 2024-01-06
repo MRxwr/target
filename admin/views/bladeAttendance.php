@@ -76,7 +76,7 @@
             <?php 
                 $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
-				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC GROUP BY `sportId`") ){
+				if( $branches = selectDB("branches","{$where} AND `status` = '0' GROUP BY `sportId` ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
                         $sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
                         echo "<option value='{$sport[0]["id"]}' id='academy{$branches[$i]["academyId"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
