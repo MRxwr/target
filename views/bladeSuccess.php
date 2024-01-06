@@ -66,6 +66,7 @@
                                     "mobile" => $order[0]["phone"],
                                     "academyId" => $order[0]["academyId"],
                                     "branchId" => $order[0]["branchId"],
+                                    "sportId" => $subscription[0]["sportId"],
                                     "sessionId" => $order[0]["sessionId"],
                                     "dayId" => $order[0]["dayId"],
                                     "totalClasses" => $subscription[0]["numberOfDays"],
