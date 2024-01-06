@@ -232,6 +232,9 @@ if ( isset($_POST["date"] )){
 			$.ajax({
 				type: "POST",
 				url: "../requests/index.php?a=Attendance",
+				headers: {
+					'targetheader': "targetCreate"
+				},
 				data: {
 					studentId: id,
 					type: 1,
@@ -255,6 +258,9 @@ if ( isset($_POST["date"] )){
 			$.ajax({
 				type: "POST",
 				url: "../requests/index.php?a=Attendance",
+				headers: {
+					'targetheader': "targetCreate"
+				},
 				data: {
 					studentId: id,
 					type: 2,
