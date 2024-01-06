@@ -184,11 +184,11 @@
 	
 	<script>
 		$(document).ready(function() {
-			$('#mySelect1').select2();
+			/*$('#mySelect1').select2();
             $('#mySelect2').select2();
             $('#mySelect3').select2();
             $('#mySelect4').select2();
-            $('#mySelect5').select2();
+            $('#mySelect5').select2();*/
 		});
 
         $(document).on("change","#mySelect1",function(){
@@ -198,6 +198,6 @@
             var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']");
             console.log(sports);
             $("#mySelect2").html(sports);
-            $("#mySelect2").trigger("change");
+           // $("#mySelect2").trigger("change");
         })
 	</script>
