@@ -76,7 +76,7 @@
             <?php 
                 $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
-				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC GROUP BY `sportId`") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
                         $sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
                         echo "<option value='{$sport[0]["id"]}' id='academy{$branches[$i]["academyId"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
@@ -85,7 +85,15 @@
             ?>
         </div>
         <div id="hiddenBranch">
-
+            <?php 
+                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $orderBy = direction("enTitle","arTitle");
+				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+					for( $i =0; $i < sizeof($branches); $i++ ){
+                        echo "<option value='{$sport[0]["id"]}' id='sport{$branches[$i]["sportId"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
+					}
+				}
+            ?>
         </div>
         <div id="hiddenDay">
 
@@ -198,6 +206,15 @@
             var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']");
             console.log(sports);
             $("#mySelect2").html(sports);
+           // $("#mySelect2").trigger("change");
+        })
+        $(document).on("change","#mySelect2",function(){
+            var sportId = $(this).val();
+            console.log(sportId);
+            // get all sports from hiddenSport dive where option id = academyId
+            var branches = $("#hiddenBranch").find("option[id='sport"+sportId+"']");
+            console.log(branches);
+            $("#mySelect3").html(branches);
            // $("#mySelect2").trigger("change");
         })
 	</script>
