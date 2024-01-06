@@ -160,14 +160,14 @@ if ( isset($_POST["date"] )){
 				?>
 				<tr>
 				<td><?php echo str_pad(($counter = 1+$i), 5, "0", STR_PAD_LEFT) ?></td>
-				<td><?php echo "{$students[$i]["fName"]} {$students[$i]["mName"]} {$students[$i]["lName"]}" ?></td>
+				<td id="studentName<?php echo $students[$i]["id"] ?>"><?php echo "{$students[$i]["fName"]} {$students[$i]["mName"]} {$students[$i]["lName"]}" ?></td>
 				<td><?php echo "{$students[$i]["mobile"]}" ?></td>
 				<td><?php echo "{$students[$i]["totalClasses"]}" ?></td>
 				<td><?php echo "{$students[$i]["attendedClasses"]}" ?></td>
 				<td class="text-nowrap">
-					<a id="<?php echo $students[$i]["id"] ?>" class="edit btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>"> <i class="fa fa-check text-inverse m-r-10"></i>
+					<a id="<?php echo $students[$i]["id"] ?>" class="attended btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>"> <i class="fa fa-check text-inverse m-r-10"></i>
 					</a>
-					<a id="<?php echo $students[$i]["id"] ?>" class="edit btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Absent","غائب") ?>"> <i class="fa fa-close text-inverse m-r-10"></i>
+					<a id="<?php echo $students[$i]["id"] ?>" class="absent btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Absent","غائب") ?>"> <i class="fa fa-close text-inverse m-r-10"></i>
 					</a>
 				</td>
 				</tr>
@@ -225,4 +225,46 @@ if ( isset($_POST["date"] )){
             var $mySelect5 = $("#mySelect5");
             $mySelect5.empty().append("<?php echo "<option value='0' selected >".direction("Please select session","يرجى تحديد الجلسه")."</option>"; ?>").append(sessions).trigger('change');
         });
+
+		$(document).on("click", ".attended", function() {
+			var id = $(this).attr("id");
+			var studentName = $("#studentName" + id).html();
+			$.ajax({
+				type: "POST",
+				url: "../requests?a=Attendance",
+				data: {
+					studentId: id,
+					type: 1,
+					attendanceDate: <?php echo $_POST["date"] ?>,
+					academyId: <?php echo $_POST["academyId"] ?>,
+					sportId: <?php echo $_POST["sportId"] ?>,
+					branchId: <?php echo $_POST["branchId"] ?>,
+					dayId: <?php echo $_POST["dayId"] ?>,
+					sessionId: <?php echo $_POST["sessionId"] ?>,
+				}
+			}).done(function(data) {
+				alert( studentName + "<?php echo direction("Attended","حاضر") ?>");
+			})
+		})
+
+		$(document).on("click", ".absent", function() {
+			var id = $(this).attr("id");
+			var studentName = $("#studentName" + id).html();
+			$.ajax({
+				type: "POST",
+				url: "../requests?a=Attendance",
+				data: {
+					studentId: id,
+					type: 2,
+					attendanceDate: <?php echo $_POST["date"] ?>,
+					academyId: <?php echo $_POST["academyId"] ?>,
+					sportId: <?php echo $_POST["sportId"] ?>,
+					branchId: <?php echo $_POST["branchId"] ?>,
+					dayId: <?php echo $_POST["dayId"] ?>,
+					sessionId: <?php echo $_POST["sessionId"] ?>,
+				}
+			}).done(function(data) {
+				alert( studentName + "<?php echo direction("Absent","غائب") ?>");
+			})
+		})
 	</script>
