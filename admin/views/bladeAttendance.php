@@ -155,7 +155,8 @@ if ( isset($_POST["date"] )){
 		<tbody>
 		<?php 
 		$orderBy = direction("id","id");
-		if( $students = selectDB("students","`status` = '0' AND `academyId` LIKE '{$_POST["academyId"]}' AND `sportId` LIKE '{$_POST["sportId"]}' AND `branchId` LIKE '{$_POST["branchId"]}' AND `sessionId` LIKE '{$_POST["sessionId"]}' AND `dayId` LIKE '{$_POST["dayId"]}' ORDER BY `{$orderBy}` ASC") ){
+        var_dump($students = selectDB("students","`status` = '0' AND `academyId` = '{$_POST["academyId"]}' AND `sportId` = '{$_POST["sportId"]}' AND `branchId` = '{$_POST["branchId"]}' AND `sessionId` = '{$_POST["sessionId"]}' AND `dayId` = '{$_POST["dayId"]}' ORDER BY `{$orderBy}` ASC"));
+		if( $students = selectDB("students","`status` = '0' AND `academyId` = '{$_POST["academyId"]}' AND `sportId` = '{$_POST["sportId"]}' AND `branchId` = '{$_POST["branchId"]}' AND `sessionId` = '{$_POST["sessionId"]}' AND `dayId` = '{$_POST["dayId"]}' ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($students); $i++ ){
 				?>
 				<tr>
