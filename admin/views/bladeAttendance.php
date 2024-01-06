@@ -179,11 +179,13 @@ if ( isset($_POST["date"] )){
 					<?php
 					}elseif( $type == 1){
 						?>
+						<a id="<?php echo $students[$i]["id"] ?>" class="attended btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>" style="display:none"> <i class="fa fa-check text-inverse m-r-10"></i></a>
 						<a id="<?php echo $students[$i]["id"] ?>" class="absent btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Absent","غائب") ?>"> <i class="fa fa-close text-inverse m-r-10"></i></a>
 						<?php
 					}else{
 						?>
 						<a id="<?php echo $students[$i]["id"] ?>" class="attended btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>"> <i class="fa fa-check text-inverse m-r-10"></i></a>
+						<a id="<?php echo $students[$i]["id"] ?>" class="absent btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Absent","غائب") ?>" style="display:none"> <i class="fa fa-close text-inverse m-r-10"></i></a>
 						<?php
 					}
 					?>
@@ -267,6 +269,7 @@ if ( isset($_POST["date"] )){
 				success: function(data){
 					alert( studentName + " <?php echo direction("Attended","حاضر") ?>");
 					$this.hide();
+					$this.parent().find(".absent").show();
 				},
 			})
 		})
@@ -294,6 +297,7 @@ if ( isset($_POST["date"] )){
 				success: function(data){
 					alert( studentName + " <?php echo direction("Absent","غائب") ?>");
 					$this.hide();
+					$this.parent().find(".attended").show();
 				},
 			})
 		})
