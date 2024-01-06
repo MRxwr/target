@@ -85,7 +85,7 @@
         </div>
         <div id="hiddenBranch">
             <?php 
-                $where = ( empty($empAcademy) ) ? "AND `id` != '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "AND `academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
 				if( $branches = selectDB("branches","`status` = '0' {$where} ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
@@ -96,7 +96,7 @@
         </div>
         <div id="hiddenDay">
             <?php 
-                $where = ( empty($empAcademy) ) ? "AND `id` != '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "AND `academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
 				if( $branches = selectDB("branches","`status` = '0' {$where} ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
@@ -110,7 +110,7 @@
         </div>
         <div id="hiddenSession">
             <?php 
-                $where = ( empty($empAcademy) ) ? "AND `id` != '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "AND `academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
 				if( $branches = selectDB("branches","`status` = '0' {$where} ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
