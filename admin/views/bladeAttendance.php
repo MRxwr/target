@@ -201,14 +201,12 @@
 
         $(document).on("change","#mySelect1",function(){
             var academyId = $(this).val();
-            var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']");
-            $("#mySelect2").html(sports);
-            //$("#hiddenSport").append(sports);
+            var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']").clone();
+            $("#mySelect2").empty().append(sports);
         })
         $(document).on("change","#mySelect2",function(){
             var sportId = $(this).val();
-            var branches = $("#hiddenBranch").find("option[id='sport"+sportId+"']");
-            $("#mySelect3").html(branches);
-            //$("#hiddenBranch").append(branches);
+            var branches = $("#hiddenBranch").find("option[id='sport"+sportId+"']").clone();
+            $("#mySelect3").empty().append(branches);
         })
 	</script>
