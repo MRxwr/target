@@ -159,13 +159,12 @@ if ( isset($_POST["date"] )){
 			for( $i = 0; $i < sizeof($students); $i++ ){
 				?>
 				<tr>
-				<td><?php echo str_pad($i, 5, "0", STR_PAD_LEFT) ?></td>
+				<td><?php echo str_pad(($counter = 1+$i), 5, "0", STR_PAD_LEFT) ?></td>
 				<td><?php echo "{$students[$i]["fName"]} {$students[$i]["mName"]} {$students[$i]["lName"]}" ?></td>
 				<td><?php echo "{$students[$i]["mobile"]}" ?></td>
 				<td class="text-nowrap">
 					<a id="<?php echo $subscriptions[$i]["id"] ?>" class="edit btn btn-warning" data-toggle="tooltip" data-original-title="<?php echo direction("Edit","تعديل") ?>"> <i class="fa fa-pencil text-inverse m-r-10"></i>
 					</a>
-					<a href="<?php echo $link . "&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-default" data-toggle="tooltip" data-original-title="<?php echo $hide ?>"> <i class="<?php echo $icon ?> text-inverse m-r-10"></i></a>			
 					<a href="<?php echo "?delId={$subscriptions[$i]["id"]}&v={$_GET["v"]}&code={$_GET["code"]}" ?>" class="btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Delete","حذف") ?>"> <i class="fa fa-times text-inverse m-r-10"></i></a>
 				</td>
 				</tr>
