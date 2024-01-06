@@ -10,6 +10,11 @@
 <div class="panel-body">
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
+
+            <div class="col-md-4">
+			<label><?php echo direction("Date","التاريخ") ?></label>
+			<input type="date" name="date" class="form-control" required >
+			</div>
 			
 			<div class="col-md-4">
 			<label><?php echo direction("Academy","الأكادمية") ?></label>
@@ -43,14 +48,21 @@
             <div class="col-md-4">
 			<label><?php echo direction("Branches","الفروع") ?></label>
 			<select id="mySelect3" name="bracnhId" class="form-control" required >
-				<?php
-                $where = ( empty($empAcademy) ) ? "`academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
-				if( $branches = selectDB("branches","{$where}") ){
-					for( $i =0; $i < sizeof($branches); $i++ ){
-                        echo "<option value='{$branches[$i]["id"]}'>".direction("{$branches[$i]["enTitle"]}","{$branches[$i]["arTitle"]}");
-					}
-				}
-				?>
+				
+			</select>
+			</div>
+
+            <div class="col-md-4">
+			<label><?php echo direction("Days","الأيام") ?></label>
+			<select id="mySelect4" name="dayId" class="form-control" required >
+				
+			</select>
+			</div>
+
+            <div class="col-md-4">
+			<label><?php echo direction("Session","الجلسة") ?></label>
+			<select id="mySelect5" name="sessionId" class="form-control" required >
+				
 			</select>
 			</div>
 			
@@ -157,5 +169,7 @@
 			$('#mySelect1').select2();
             $('#mySelect2').select2();
             $('#mySelect3').select2();
+            $('#mySelect4').select2();
+            $('#mySelect5').select2();
 		});
 	</script>
