@@ -73,7 +73,7 @@
 <div id="hidden" style="display: none;">
         <div id="hiddenSport">
             <?php 
-                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "`academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
 				if( $branches = selectDB("branches","{$where} AND `status` = '0' GROUP BY `sportId` ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
