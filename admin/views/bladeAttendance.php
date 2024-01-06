@@ -146,6 +146,8 @@ if ( isset($_POST["date"] )){
 		<th>#</th>
 		<th><?php echo direction("Name","الإسم") ?></th>
 		<th><?php echo direction("Mobile","الهاتف") ?></th>
+		<th><?php echo direction("Total Sessions","مجموع الجلسات") ?></th>
+		<th><?php echo direction("Attended","حاضر") ?></th>
 		<th class="text-nowrap"><?php echo direction("Actions","الخيارات") ?></th>
 		</tr>
 		</thead>
@@ -153,13 +155,15 @@ if ( isset($_POST["date"] )){
 		<tbody>
 		<?php 
 		$orderBy = direction("id","id");
-		if( $students = selectDB("students","`status` = '0' AND `academyId` = '{$_POST["academyId"]}' AND `sportId` = '{$_POST["sportId"]}' AND `branchId` = '{$_POST["branchId"]}' AND `sessionId` = '{$_POST["sessionId"]}' AND `dayId` = '{$_POST["dayId"]}' ORDER BY `{$orderBy}` ASC") ){
+		if( $students = selectDB("students","`status` = '0' AND `academyId` = '{$_POST["academyId"]}' AND `sportId` = '{$_POST["sportId"]}' AND `branchId` = '{$_POST["branchId"]}' AND `sessionId` = '{$_POST["sessionId"]}' AND `dayId` = '{$_POST["dayId"]}' AND ( `attendedClasses` < `totalClasses` ) ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($students); $i++ ){
 				?>
 				<tr>
 				<td><?php echo str_pad(($counter = 1+$i), 5, "0", STR_PAD_LEFT) ?></td>
 				<td><?php echo "{$students[$i]["fName"]} {$students[$i]["mName"]} {$students[$i]["lName"]}" ?></td>
 				<td><?php echo "{$students[$i]["mobile"]}" ?></td>
+				<td><?php echo "{$students[$i]["totalClasses"]}" ?></td>
+				<td><?php echo "{$students[$i]["attendedClasses"]}" ?></td>
 				<td class="text-nowrap">
 					<a id="<?php echo $students[$i]["id"] ?>" class="edit btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>"> <i class="fa fa-check text-inverse m-r-10"></i>
 					</a>
