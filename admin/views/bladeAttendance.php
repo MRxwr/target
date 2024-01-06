@@ -229,6 +229,7 @@ if ( isset($_POST["date"] )){
 		$(document).on("click", ".attended", function() {
 			var id = $(this).attr("id");
 			var studentName = $("#studentName" + id).html();
+			var $this = $(this)
 			$.ajax({
 				type: "POST",
 				url: "../requests/index.php?a=Attendance",
@@ -247,7 +248,7 @@ if ( isset($_POST["date"] )){
 				},
 				success: function(data){
 					alert( studentName + " <?php echo direction("Attended","حاضر") ?>");
-					$(this).hide();
+					$this.hide();
 				},
 			})
 		})
@@ -255,6 +256,7 @@ if ( isset($_POST["date"] )){
 		$(document).on("click", ".absent", function() {
 			var id = $(this).attr("id");
 			var studentName = $("#studentName" + id).html();
+			var $this = $(this)
 			$.ajax({
 				type: "POST",
 				url: "../requests/index.php?a=Attendance",
@@ -273,7 +275,7 @@ if ( isset($_POST["date"] )){
 				},
 				success: function(data){
 					alert( studentName + " <?php echo direction("Absent","غائب") ?>");
-					$(this).hide();
+					$this.hide();
 				},
 			})
 		})
