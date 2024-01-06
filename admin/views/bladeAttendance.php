@@ -231,7 +231,7 @@ if ( isset($_POST["date"] )){
 			var studentName = $("#studentName" + id).html();
 			$.ajax({
 				type: "POST",
-				url: "../requests?a=Attendance",
+				url: "../requests/index.php?a=Attendance",
 				data: {
 					studentId: id,
 					type: 1,
@@ -254,7 +254,7 @@ if ( isset($_POST["date"] )){
 			var studentName = $("#studentName" + id).html();
 			$.ajax({
 				type: "POST",
-				url: "../requests?a=Attendance",
+				url: "../requests/index.php?a=Attendance",
 				data: {
 					studentId: id,
 					type: 2,
