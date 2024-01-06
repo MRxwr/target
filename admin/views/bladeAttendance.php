@@ -195,6 +195,7 @@
             var academyId = $(this).val();
             // get all sports from hiddenSport dive where option id = academyId
             var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']");
+            console.log(sports);
             $("#mySelect2").html(sports);
             $("#mySelect2").trigger("change");
         })
