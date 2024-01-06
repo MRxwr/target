@@ -203,13 +203,14 @@
             $("#mySelect2").html();
             var academyId = $(this).val();
             var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']");
-            $("#mySelect2").append(sports);
+            $("#mySelect2").html(sports);
+            $("#hiddenSport").html(sports);
         })
         $(document).on("change","#mySelect2",function(){
             $("#mySelect3").html()
             var sportId = $(this).val();
             var branches = $("#hiddenBranch").find("option[id='sport"+sportId+"']");
-            // find them without remonving them from the div
-            $("#mySelect3").append(branches);
+            $("#mySelect3").html(branches);
+            $("#hiddenBranch").html(branches);
         })
 	</script>
