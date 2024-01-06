@@ -266,7 +266,7 @@ if ( isset($_POST["date"] )){
 				data: {
 					studentId: id,
 					type: 2,
-					attendanceDate: <?php echo $_POST["date"] ?>,
+					attendanceDate: "<?php echo $_POST["date"] ?>",
 					academyId: <?php echo $_POST["academyId"] ?>,
 					sportId: <?php echo $_POST["sportId"] ?>,
 					branchId: <?php echo $_POST["branchId"] ?>,
