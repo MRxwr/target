@@ -148,6 +148,7 @@ if ( isset($_POST["date"]) ){
 		<th><?php echo direction("Mobile","الهاتف") ?></th>
 		<th><?php echo direction("Total Sessions","مجموع الجلسات") ?></th>
 		<th><?php echo direction("Attended","حاضر") ?></th>
+		<th><?php echo direction("Status","الحالة") ?></th>
 		<th class="text-nowrap"><?php echo direction("Actions","الخيارات") ?></th>
 		</tr>
 		</thead>
@@ -159,8 +160,10 @@ if ( isset($_POST["date"]) ){
 			for( $i = 0; $i < sizeof($students); $i++ ){
 				if( $attendance = selectDB("attendance","`studentId` = '{$students[$i]["id"]}' AND `attendanceDate` = '{$_POST["date"]}' AND `sessionId` = '{$_POST["sessionId"]}'") ){
 					$type = $attendance[0]["type"];
+					$typeText = ($type == 2) ? direction("Absent","غائب") : direction("Attended","حاضر");
 				}else{
 					$type = 0;
+					$typeText = "";
 				}
 				?>
 				<tr>
@@ -169,6 +172,7 @@ if ( isset($_POST["date"]) ){
 				<td><?php echo "{$students[$i]["mobile"]}" ?></td>
 				<td><?php echo "{$students[$i]["totalClasses"]}" ?></td>
 				<td><?php echo "{$students[$i]["attendedClasses"]}" ?></td>
+				<td id="typeText<?php echo $students[$i]["id"] ?>" ><?php echo $typeText ?></td>
 				<td class="text-nowrap">
 					<?php
 					if( $type == 0 ){
@@ -269,6 +273,7 @@ if ( isset($_POST["date"]) ){
 				},
 				success: function(data){
 					alert( studentName + " <?php echo direction("Attended","حاضر") ?>");
+					$("#typeText" + id).html("<?php echo direction("Attended","حاضر") ?>");
 					$this.hide();
 					$this.parent().find(".absent").show();
 				},
@@ -297,6 +302,7 @@ if ( isset($_POST["date"]) ){
 				},
 				success: function(data){
 					alert( studentName + " <?php echo direction("Absent","غائب") ?>");
+					$("#typeText" + id).html("<?php echo direction("Absent","غائب") ?>");
 					$this.hide();
 					$this.parent().find(".attended").show();
 				},
