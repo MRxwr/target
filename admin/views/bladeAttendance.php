@@ -12,17 +12,13 @@
 		<div class="row m-0">
 			
 			<div class="col-md-12">
-			<label><?php echo direction("Sports","الرياضات") ?></label>
-			<select id="mySelect3" name="class" class="form-control" required >
+			<label><?php echo direction("Academy","الأكادمية") ?></label>
+			<select id="mySelect3" name="academyId" class="form-control" required >
 				<?php
                 $where = ( empty($empAcademy) ) ? "": " AND `id` = '{$empAcademy}'";
-				if( $branches = selectDB("branches","{$where}") ){
-					for( $i =0; $i < sizeof($branches); $i++ ){
-                        $sessions = selectDB("sessions","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0'");
-                        $days = selectDB("days","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0' AND `hidden` = '0'");
-                        $sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
-                        $academy = selectDB("academies","`id` = '{$branches[$i]["academyId"]}'");
-                        echo "<option value='{$sessions[0]["id"]}-{$days[0]["id"]}'>".direction("{$academy[0]["enTitle"]} - {$branches[$i]["enTitle"]} {$sport[0]["enTitle"]} {$days[0]["enTitle"]} {$sessions[0]["enTitle"]}","{$academy[0]["arTitle"]} - {$branches[$i]["arTitle"]} {$sport[0]["arTitle"]} {$days[0]["arTitle"]} {$sessions[0]["arTitle"]}")."</option>";
+				if( $academies = selectDB("academies","{$where}") ){
+					for( $i =0; $i < sizeof($academies); $i++ ){
+                        echo "<option value='{$academy[$i]["id"]}'>".direction("{$academy[$i]["enTitle"]}","{$academy[$i]["arTitle"]}");
 					}
 				}
 				?>
