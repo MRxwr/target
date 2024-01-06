@@ -15,10 +15,10 @@
 			<label><?php echo direction("Academy","الأكادمية") ?></label>
 			<select id="mySelect3" name="academyId" class="form-control" required >
 				<?php
-                echo $where = ( empty($empAcademy) ) ? "`id` NOT LIKE '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "`id` NOT LIKE '0'": " AND `id` = '{$empAcademy}'";
 				if( $academies = selectDB("academies","{$where}") ){
 					for( $i =0; $i < sizeof($academies); $i++ ){
-                        echo "<option value='{$academy[$i]["id"]}'>".direction("{$academy[$i]["enTitle"]}","{$academy[$i]["arTitle"]}");
+                        echo "<option value='{$academies[$i]["id"]}'>".direction("{$academies[$i]["enTitle"]}","{$academies[$i]["arTitle"]}");
 					}
 				}
 				?>
