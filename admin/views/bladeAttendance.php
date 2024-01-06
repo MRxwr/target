@@ -90,7 +90,7 @@
                 $orderBy = direction("enTitle","arTitle");
 				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
-                        echo "<option value='{$sport[0]["id"]}' id='sport{$branches[$i]["sportId"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
+                        echo "<option value='{$branches[$i]["id"]}' id='sport{$branches[$i]["sportId"]}'>".direction("{$branches[$i]["enTitle"]}","{$branches[$i]["arTitle"]}");
 					}
 				}
             ?>
@@ -200,21 +200,15 @@
 		});
 
         $(document).on("change","#mySelect1",function(){
+            $("#mySelect2").html();
             var academyId = $(this).val();
-            console.log(academyId);
-            // get all sports from hiddenSport dive where option id = academyId
             var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']");
-            console.log(sports);
             $("#mySelect2").html(sports);
-           // $("#mySelect2").trigger("change");
         })
         $(document).on("change","#mySelect2",function(){
+            $("#mySelect3").html()
             var sportId = $(this).val();
-            console.log(sportId);
-            // get all sports from hiddenSport dive where option id = academyId
             var branches = $("#hiddenBranch").find("option[id='sport"+sportId+"']");
-            console.log(branches);
             $("#mySelect3").html(branches);
-           // $("#mySelect2").trigger("change");
         })
 	</script>
