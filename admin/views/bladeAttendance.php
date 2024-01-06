@@ -241,9 +241,10 @@ if ( isset($_POST["date"] )){
 					branchId: <?php echo $_POST["branchId"] ?>,
 					dayId: <?php echo $_POST["dayId"] ?>,
 					sessionId: <?php echo $_POST["sessionId"] ?>,
-				}
-			}).done(function(data) {
-				alert( studentName + "<?php echo direction("Attended","حاضر") ?>");
+				},
+				success: function(data){
+					alert( studentName + " <?php echo direction("Attended","حاضر") ?>");
+				},
 			})
 		})
 
@@ -262,9 +263,10 @@ if ( isset($_POST["date"] )){
 					branchId: <?php echo $_POST["branchId"] ?>,
 					dayId: <?php echo $_POST["dayId"] ?>,
 					sessionId: <?php echo $_POST["sessionId"] ?>,
-				}
-			}).done(function(data) {
-				alert( studentName + "<?php echo direction("Absent","غائب") ?>");
+				},
+				success: function(data){
+					alert( studentName + " <?php echo direction("Absent","غائب") ?>");
+				},
 			})
 		})
 	</script>
