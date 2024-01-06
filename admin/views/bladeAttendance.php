@@ -192,21 +192,23 @@
 	
 	<script>
 		$(document).ready(function() {
-			/*$('#mySelect1').select2();
+			$('#mySelect1').select2();
             $('#mySelect2').select2();
             $('#mySelect3').select2();
             $('#mySelect4').select2();
-            $('#mySelect5').select2();*/
+            $('#mySelect5').select2();
 		});
 
         $(document).on("change","#mySelect1",function(){
             var academyId = $(this).val();
             var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']").clone();
-            $("#mySelect2").empty().append(sports);
+            $("#mySelect2").empty().append(sports).trigger('change');
+            $('#mySelect2').select2();
         })
         $(document).on("change","#mySelect2",function(){
             var sportId = $(this).val();
             var branches = $("#hiddenBranch").find("option[id='sport"+sportId+"']").clone();
-            $("#mySelect3").empty().append(branches);
+            $("#mySelect3").empty().append(branches).trigger('change');
+            $('#mySelect3').select2();
         })
 	</script>
