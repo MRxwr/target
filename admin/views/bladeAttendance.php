@@ -13,12 +13,26 @@
 			
 			<div class="col-md-4">
 			<label><?php echo direction("Academy","الأكادمية") ?></label>
-			<select id="mySelect3" name="academyId" class="form-control" required >
+			<select id="mySelect1" name="academyId" class="form-control" required >
 				<?php
-                $where = ( empty($empAcademy) ) ? "`id` NOT LIKE '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
 				if( $academies = selectDB("academies","{$where}") ){
 					for( $i =0; $i < sizeof($academies); $i++ ){
                         echo "<option value='{$academies[$i]["id"]}'>".direction("{$academies[$i]["enTitle"]}","{$academies[$i]["arTitle"]}");
+					}
+				}
+				?>
+			</select>
+			</div>
+
+            <div class="col-md-4">
+			<label><?php echo direction("Branches","الفروع") ?></label>
+			<select id="mySelect2" name="bracnhId" class="form-control" required >
+				<?php
+                $where = ( empty($empAcademy) ) ? "`academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
+				if( $branches = selectDB("branches","{$where}") ){
+					for( $i =0; $i < sizeof($branches); $i++ ){
+                        echo "<option value='{$branches[$i]["id"]}'>".direction("{$branches[$i]["enTitle"]}","{$branches[$i]["arTitle"]}");
 					}
 				}
 				?>
@@ -125,6 +139,7 @@
 	
 	<script>
 		$(document).ready(function() {
-			$('#mySelect3').select2();
+			$('#mySelect1').select2();
+            $('#mySelect2').select2();
 		});
 	</script>
