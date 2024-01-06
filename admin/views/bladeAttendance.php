@@ -96,10 +96,32 @@
             ?>
         </div>
         <div id="hiddenDay">
-
+            <?php 
+                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $orderBy = direction("enTitle","arTitle");
+				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+					for( $i =0; $i < sizeof($branches); $i++ ){
+                        $days = selectDB("days","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0' AND `hidden` = '0'");
+                        for( $y = 0; $y < sizeof($days); $y++){
+                            echo "<option value='{$days[$y]["id"]}' id='sport{$branches[$i]["sportId"]}branch{$branches[$i]["id"]}'>".direction("{$days[$y]["enTitle"]}","{$days[$y]["arTitle"]}");
+                        }
+					}
+				}
+            ?>
         </div>
         <div id="hiddenSession">
-
+            <?php 
+                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $orderBy = direction("enTitle","arTitle");
+				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+					for( $i =0; $i < sizeof($branches); $i++ ){
+                        $sessions = selectDB("sessions","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0' AND `hidden` = '0'");
+                        for( $y = 0; $y < sizeof($sessions); $y++){
+                            echo "<option value='{$sessions[$y]["id"]}' id='sport{$branches[$i]["sportId"]}branch{$branches[$i]["id"]}'>".direction("{$sessions[$y]["enTitle"]}","{$sessions[$y]["arTitle"]}");
+                        }
+					}
+				}
+            ?>
         </div>
 </div>
 				
@@ -207,5 +229,21 @@
             var branches = $("#hiddenBranch").find("option[id='sport" + sportId + "']").clone();
             var $mySelect3 = $("#mySelect3");
             $mySelect3.empty().append(branches).trigger('change');
+        });
+
+        $(document).on("change", "#mySelect3", function() {
+            var branchId = $(this).val();
+            var sportId = $("#mySelect2").val();
+            var days = $("#hiddenDay").find("option[id='sport" + sportId + "branch" + branchId + "']").clone();
+            var $mySelect4 = $("#mySelect4");
+            $mySelect4.empty().append(days).trigger('change');
+        });
+
+        $(document).on("change", "#mySelect3", function() {
+            var branchId = $(this).val();
+            var sportId = $("#mySelect2").val();
+            var sessions = $("#hiddenSession").find("option[id='sport" + sportId + "branch" + branchId + "']").clone();
+            var $mySelect5 = $("#mySelect5");
+            $mySelect5.empty().append(sessions).trigger('change');
         });
 	</script>
