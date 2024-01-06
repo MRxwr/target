@@ -126,13 +126,13 @@
 				
 				<!-- Bordered Table -->
 <?php 
-if ( isset($_POST["date"] )){
+if ( isset($_POST["date"]) ){
 ?>
 <div class="col-sm-12">
 <div class="panel panel-default card-view">
 <div class="panel-heading">
 <div class="pull-left">
-<h6 class="panel-title txt-dark"><?php echo direction("List of students","قائمة الطلاب") ?></h6>
+<h6 class="panel-title txt-dark"><?php echo direction("List of students","قائمة الطلاب") . " - {$_POST["date"]}" ?></h6>
 </div>
 <div class="clearfix"></div>
 </div>
@@ -162,7 +162,6 @@ if ( isset($_POST["date"] )){
 				}else{
 					$type = 0;
 				}
-				var_dump($type);
 				?>
 				<tr>
 				<td><?php echo str_pad(($counter = 1+$i), 5, "0", STR_PAD_LEFT) ?></td>
