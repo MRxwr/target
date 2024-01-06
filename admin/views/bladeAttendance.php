@@ -127,7 +127,6 @@
 				<!-- Bordered Table -->
 <?php 
 if ( isset($_POST["date"] )){
-    var_dump($_POST);
 ?>
 <div class="col-sm-12">
 <div class="panel panel-default card-view">
