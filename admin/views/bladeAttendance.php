@@ -157,6 +157,11 @@ if ( isset($_POST["date"] )){
 		$orderBy = direction("id","id");
 		if( $students = selectDB("students","`status` = '0' AND `academyId` = '{$_POST["academyId"]}' AND `sportId` = '{$_POST["sportId"]}' AND `branchId` = '{$_POST["branchId"]}' AND `sessionId` = '{$_POST["sessionId"]}' AND `dayId` = '{$_POST["dayId"]}' AND ( `attendedClasses` < `totalClasses` ) ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($students); $i++ ){
+				if( $student = selectDB("attendances","`studentId` = '{$students[$i]["id"]}' AND `attendanceDate` = '{$_POST["date"]}' AND `sessionId` = '{$_POST["sessionId"]}'") ){
+					$type = $student[0]["type"];
+				}else{
+					$type = 0;
+				}
 				?>
 				<tr>
 				<td><?php echo str_pad(($counter = 1+$i), 5, "0", STR_PAD_LEFT) ?></td>
@@ -165,10 +170,22 @@ if ( isset($_POST["date"] )){
 				<td><?php echo "{$students[$i]["totalClasses"]}" ?></td>
 				<td><?php echo "{$students[$i]["attendedClasses"]}" ?></td>
 				<td class="text-nowrap">
-					<a id="<?php echo $students[$i]["id"] ?>" class="attended btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>"> <i class="fa fa-check text-inverse m-r-10"></i>
-					</a>
-					<a id="<?php echo $students[$i]["id"] ?>" class="absent btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Absent","غائب") ?>"> <i class="fa fa-close text-inverse m-r-10"></i>
-					</a>
+					<?php
+					if( $type == 0 ){
+					?>
+						<a id="<?php echo $students[$i]["id"] ?>" class="attended btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>"> <i class="fa fa-check text-inverse m-r-10"></i></a>
+						<a id="<?php echo $students[$i]["id"] ?>" class="absent btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Absent","غائب") ?>"> <i class="fa fa-close text-inverse m-r-10"></i></a>
+					<?php
+					}elseif( $type == 1){
+						?>
+						<a id="<?php echo $students[$i]["id"] ?>" class="absent btn btn-danger" data-toggle="tooltip" data-original-title="<?php echo direction("Absent","غائب") ?>"> <i class="fa fa-close text-inverse m-r-10"></i></a>
+						<?php
+					}else{
+						?>
+						<a id="<?php echo $students[$i]["id"] ?>" class="attended btn btn-success" data-toggle="tooltip" data-original-title="<?php echo direction("Attended","حاضر") ?>"> <i class="fa fa-check text-inverse m-r-10"></i></a>
+						<?php
+					}
+					?>
 				</td>
 				</tr>
 				<?php
