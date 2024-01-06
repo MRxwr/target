@@ -21,7 +21,8 @@
 			<select id="mySelect1" name="academyId" class="form-control" required >
 				<?php
                 $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
-				if( $academies = selectDB("academies","{$where}") ){
+                $orderBy = direction("enTitle","arTitle");
+				if( $academies = selectDB("academies","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($academies); $i++ ){
                         echo "<option value='{$academies[$i]["id"]}'>".direction("{$academies[$i]["enTitle"]}","{$academies[$i]["arTitle"]}");
 					}
@@ -33,15 +34,7 @@
             <div class="col-md-4">
 			<label><?php echo direction("Sport","الرياضة") ?></label>
 			<select id="mySelect2" name="sportId" class="form-control" required >
-				<?php
-                $where = ( empty($empAcademy) ) ? "`academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
-				if( $branches = selectDB("branches","{$where}") ){
-					for( $i =0; $i < sizeof($branches); $i++ ){
-                        $sport = selectDB("sports","`id` = {$branches[$i]["sportId"]}");
-                        echo "<option value='{$sport[0]["id"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
-					}
-				}
-				?>
+				
 			</select>
 			</div>
 
