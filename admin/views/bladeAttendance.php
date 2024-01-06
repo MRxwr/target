@@ -26,8 +26,23 @@
 			</div>
 
             <div class="col-md-4">
+			<label><?php echo direction("Sport","الرياضة") ?></label>
+			<select id="mySelect2" name="sportId" class="form-control" required >
+				<?php
+                $where = ( empty($empAcademy) ) ? "`academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
+				if( $branches = selectDB("branches","{$where}") ){
+					for( $i =0; $i < sizeof($branches); $i++ ){
+                        $sport = selectDB("sports","`id` = {$branches[$i]["sportId"]}");
+                        echo "<option value='{$sport[0]["id"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
+					}
+				}
+				?>
+			</select>
+			</div>
+
+            <div class="col-md-4">
 			<label><?php echo direction("Branches","الفروع") ?></label>
-			<select id="mySelect2" name="bracnhId" class="form-control" required >
+			<select id="mySelect3" name="bracnhId" class="form-control" required >
 				<?php
                 $where = ( empty($empAcademy) ) ? "`academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
 				if( $branches = selectDB("branches","{$where}") ){
@@ -141,5 +156,6 @@
 		$(document).ready(function() {
 			$('#mySelect1').select2();
             $('#mySelect2').select2();
+            $('#mySelect3').select2();
 		});
 	</script>
