@@ -11,7 +11,7 @@
 	<form class="" method="POST" action="" enctype="multipart/form-data">
 		<div class="row m-0">
 			
-			<div class="col-md-12">
+			<div class="col-md-4">
 			<label><?php echo direction("Academy","الأكادمية") ?></label>
 			<select id="mySelect3" name="academyId" class="form-control" required >
 				<?php
