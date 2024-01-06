@@ -203,12 +203,12 @@
             var academyId = $(this).val();
             var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']");
             $("#mySelect2").html(sports);
-            $("#hiddenSport").append(sports);
+            //$("#hiddenSport").append(sports);
         })
         $(document).on("change","#mySelect2",function(){
             var sportId = $(this).val();
             var branches = $("#hiddenBranch").find("option[id='sport"+sportId+"']");
             $("#mySelect3").html(branches);
-            $("#hiddenBranch").append(branches);
+            //$("#hiddenBranch").append(branches);
         })
 	</script>
