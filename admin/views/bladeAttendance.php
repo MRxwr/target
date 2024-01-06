@@ -70,6 +70,30 @@
 </div>
 </div>
 </div>
+
+<div id="hidden" style="display: none;">
+        <div id="hiddenSport">
+            <?php 
+                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $orderBy = direction("enTitle","arTitle");
+				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+					for( $i =0; $i < sizeof($branches); $i++ ){
+                        $sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
+                        echo "<option value='{$sport[$i]["id"]}' id='academy{$branches[$i]["academyId"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
+					}
+				}
+            ?>
+        </div>
+        <div id="hiddenBranch">
+
+        </div>
+        <div id="hiddenDay">
+
+        </div>
+        <div id="hiddenSession">
+
+        </div>
+</div>
 				
 				<!-- Bordered Table -->
 <div class="col-sm-12">
@@ -166,4 +190,12 @@
             $('#mySelect4').select2();
             $('#mySelect5').select2();
 		});
+
+        $(document).on("change","#mySelect1",function(){
+            var academyId = $(this).val();
+            // get all sports from hiddenSport dive where option id = academyId
+            var sports = $("#hiddenSport").find("option[id='"+academyId+"']");
+            $("#mySelect2").html(sports);
+            $("#mySelect2").trigger("change");
+        })
 	</script>
