@@ -22,6 +22,7 @@
 				<?php
                 $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
+                echo "<option value='0' selected >".direction("Please select academy","يرجى تحديد الأكادمية")."</option>";
 				if( $academies = selectDB("academies","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($academies); $i++ ){
                         echo "<option value='{$academies[$i]["id"]}'>".direction("{$academies[$i]["enTitle"]}","{$academies[$i]["arTitle"]}");
