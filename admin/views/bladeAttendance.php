@@ -276,7 +276,7 @@ if ( isset($_POST["date"]) ){
 					$("#typeText" + id).html("<?php echo direction("Attended","حاضر") ?>");
 					$this.hide();
 					$this.parent().find(".absent").show();
-					example.draw();
+					example.fnDraw();
 				},
 			})
 		})
@@ -306,7 +306,7 @@ if ( isset($_POST["date"]) ){
 					$("#typeText" + id).html("<?php echo direction("Absent","غائب") ?>");
 					$this.hide();
 					$this.parent().find(".attended").show();
-					example.draw();
+					example.fnDraw();
 				},
 			})
 		})
