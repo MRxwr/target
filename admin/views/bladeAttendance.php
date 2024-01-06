@@ -162,6 +162,7 @@ if ( isset($_POST["date"] )){
 				}else{
 					$type = 0;
 				}
+				var_dump($type);
 				?>
 				<tr>
 				<td><?php echo str_pad(($counter = 1+$i), 5, "0", STR_PAD_LEFT) ?></td>
