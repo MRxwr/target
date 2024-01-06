@@ -2,7 +2,7 @@
 <div class="panel panel-default card-view">
 <div class="panel-heading">
 <div class="pull-left">
-	<h6 class="panel-title txt-dark"><?php echo direction("Subscription Details","تفاصيل الإشتراك") ?></h6>
+	<h6 class="panel-title txt-dark"><?php echo direction("Attendance Details","تفاصيل الحضور") ?></h6>
 </div>
 	<div class="clearfix"></div>
 </div>
@@ -15,7 +15,7 @@
 			<label><?php echo direction("Academy","الأكادمية") ?></label>
 			<select id="mySelect3" name="academyId" class="form-control" required >
 				<?php
-                $where = ( empty($empAcademy) ) ? "`id` NOT LIKE '0'": " AND `id` = '{$empAcademy}'";
+                echo $where = ( empty($empAcademy) ) ? "`id` NOT LIKE '0'": " AND `id` = '{$empAcademy}'";
 				if( $academies = selectDB("academies","{$where}") ){
 					for( $i =0; $i < sizeof($academies); $i++ ){
                         echo "<option value='{$academy[$i]["id"]}'>".direction("{$academy[$i]["enTitle"]}","{$academy[$i]["arTitle"]}");
@@ -24,7 +24,6 @@
 				?>
 			</select>
 			</div>
-			<hr>
 			
 			<div class="col-md-12" style="margin-top:10px">
 			<input type="submit" class="btn btn-primary" value="<?php echo direction("Submit","أرسل") ?>">
