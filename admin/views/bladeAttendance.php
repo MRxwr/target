@@ -20,10 +20,10 @@
 			<label><?php echo direction("Academy","الأكادمية") ?></label>
 			<select id="mySelect1" name="academyId" class="form-control" required >
 				<?php
-                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "AND `id` != '0'": " AND `id` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
                 echo "<option value='0' selected >".direction("Please select academy","يرجى تحديد الأكادمية")."</option>";
-				if( $academies = selectDB("academies","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+				if( $academies = selectDB("academies","`status` = '0' {$where} ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($academies); $i++ ){
                         echo "<option value='{$academies[$i]["id"]}'>".direction("{$academies[$i]["enTitle"]}","{$academies[$i]["arTitle"]}");
 					}
@@ -73,9 +73,9 @@
 <div id="hidden" style="display: none;">
         <div id="hiddenSport">
             <?php 
-                $where = ( empty($empAcademy) ) ? "`academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "AND `academyId` != '0'": " AND `academyId` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
-				if( $branches = selectDB("branches","{$where} AND `status` = '0' GROUP BY `sportId` ORDER BY `{$orderBy}` ASC") ){
+				if( $branches = selectDB("branches","`status` = '0' {$where} GROUP BY `sportId` ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
                         $sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
                         echo "<option value='{$sport[0]["id"]}' id='academy{$branches[$i]["academyId"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
@@ -85,9 +85,9 @@
         </div>
         <div id="hiddenBranch">
             <?php 
-                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "AND `id` != '0'": " AND `id` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
-				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+				if( $branches = selectDB("branches","`status` = '0' {$where} ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
                         echo "<option value='{$branches[$i]["id"]}' id='sport{$branches[$i]["sportId"]}'>".direction("{$branches[$i]["enTitle"]}","{$branches[$i]["arTitle"]}");
 					}
@@ -96,9 +96,9 @@
         </div>
         <div id="hiddenDay">
             <?php 
-                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "AND `id` != '0'": " AND `id` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
-				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+				if( $branches = selectDB("branches","`status` = '0' {$where} ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
                         $days = selectDB("days","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0' AND `hidden` = '0'");
                         for( $y = 0; $y < sizeof($days); $y++){
@@ -110,9 +110,9 @@
         </div>
         <div id="hiddenSession">
             <?php 
-                $where = ( empty($empAcademy) ) ? "`id` != '0'": " AND `id` = '{$empAcademy}'";
+                $where = ( empty($empAcademy) ) ? "AND `id` != '0'": " AND `id` = '{$empAcademy}'";
                 $orderBy = direction("enTitle","arTitle");
-				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
+				if( $branches = selectDB("branches","`status` = '0' {$where} ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
                         $sessions = selectDB("sessions","`branchId` = '{$branches[$i]["id"]}' AND `status` = '0' AND `hidden` = '0'");
                         for( $y = 0; $y < sizeof($sessions); $y++){
