@@ -248,8 +248,8 @@ if ( isset($_POST["date"] )){
 				success: function(data){
 					alert( studentName + " <?php echo direction("Attended","حاضر") ?>");
 				},
-				error: function(data){
-					console.log(data);
+				error: function(jqXHR, textStatus, errorThrown){
+					console.log("AJAX error: ", textStatus, ", Details: ", errorThrown);
 				}
 			})
 		})
@@ -276,8 +276,8 @@ if ( isset($_POST["date"] )){
 				success: function(data){
 					alert( studentName + " <?php echo direction("Absent","غائب") ?>");
 				},
-				error: function(data){
-					console.log(data);
+				error: function(jqXHR, textStatus, errorThrown){
+					console.log("AJAX error: ", textStatus, ", Details: ", errorThrown);
 				}
 			})
 		})
