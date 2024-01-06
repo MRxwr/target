@@ -144,7 +144,6 @@ if ( isset($_POST["date"] )){
 		<thead>
 		<tr>
 		<th>#</th>
-		<th><?php echo direction("#","#") ?></th>
 		<th><?php echo direction("Name","الإسم") ?></th>
 		<th><?php echo direction("Mobile","الهاتف") ?></th>
 		<th class="text-nowrap"><?php echo direction("Actions","الخيارات") ?></th>
