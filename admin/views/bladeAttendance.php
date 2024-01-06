@@ -246,9 +246,11 @@ if ( isset($_POST["date"] )){
 					sessionId: <?php echo $_POST["sessionId"] ?>,
 				},
 				success: function(data){
-					console.log(data);
 					alert( studentName + " <?php echo direction("Attended","حاضر") ?>");
 				},
+				error: function(data){
+					console.log(data);
+				}
 			})
 		})
 
@@ -272,9 +274,11 @@ if ( isset($_POST["date"] )){
 					sessionId: <?php echo $_POST["sessionId"] ?>,
 				},
 				success: function(data){
-					console.log(data);
 					alert( studentName + " <?php echo direction("Absent","غائب") ?>");
 				},
+				error: function(data){
+					console.log(data);
+				}
 			})
 		})
 	</script>
