@@ -157,7 +157,7 @@ if ( isset($_POST["date"] )){
 		$orderBy = direction("id","id");
 		if( $students = selectDB("students","`status` = '0' AND `academyId` = '{$_POST["academyId"]}' AND `sportId` = '{$_POST["sportId"]}' AND `branchId` = '{$_POST["branchId"]}' AND `sessionId` = '{$_POST["sessionId"]}' AND `dayId` = '{$_POST["dayId"]}' AND ( `attendedClasses` < `totalClasses` ) ORDER BY `{$orderBy}` ASC") ){
 			for( $i = 0; $i < sizeof($students); $i++ ){
-				if( $attendance = selectDB("attendances","`studentId` = '{$students[$i]["id"]}' AND `attendanceDate` = '{$_POST["date"]}' AND `sessionId` = '{$_POST["sessionId"]}'") ){
+				if( $attendance = selectDB("attendance","`studentId` = '{$students[$i]["id"]}' AND `attendanceDate` = '{$_POST["date"]}' AND `sessionId` = '{$_POST["sessionId"]}'") ){
 					$type = $attendance[0]["type"];
 				}else{
 					$type = 0;
