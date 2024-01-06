@@ -215,7 +215,6 @@ if ( isset($_POST["date"]) ){
         });
         $(document).on("change", "#mySelect1", function() {
             var academyId = $(this).val();
-			alert(academyId);
             var sports = $("#hiddenSport").find("option[id='academy" + academyId + "']").clone();
             var $mySelect2 = $("#mySelect2");
             $mySelect2.empty().append("<?php echo "<option value='0' selected >".direction("Please select sport","يرجى تحديد الرياضة")."</option>"; ?>").append(sports).trigger('change');
@@ -245,7 +244,9 @@ if ( isset($_POST["date"]) ){
             var $mySelect5 = $("#mySelect5");
             $mySelect5.empty().append("<?php echo "<option value='0' selected >".direction("Please select session","يرجى تحديد الجلسه")."</option>"; ?>").append(sessions).trigger('change');
         });
-
+<?php
+if ( isset($_POST["date"]) ){
+	?>
 		$(document).on("click", ".attended", function() {
 			var id = $(this).attr("id");
 			var studentName = $("#studentName" + id).html();
@@ -301,4 +302,7 @@ if ( isset($_POST["date"]) ){
 				},
 			})
 		})
+<?php
+}
+?>
 	</script>
