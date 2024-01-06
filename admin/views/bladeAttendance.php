@@ -276,6 +276,7 @@ if ( isset($_POST["date"]) ){
 					$("#typeText" + id).html("<?php echo direction("Attended","حاضر") ?>");
 					$this.hide();
 					$this.parent().find(".absent").show();
+					example.draw();
 				},
 			})
 		})
