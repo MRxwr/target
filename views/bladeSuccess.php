@@ -58,6 +58,19 @@
                         if( $order = selectDB("orders","`gatewayId` = {$_GET["OrderID"]}") ){
                             if( $order[0]["status"] == '0' ){
                                 updateDB("orders",array("status"=>1, "gatewayLink" => json_encode($_GET)),"`gatewayId` = {$_GET["OrderID"]}");
+                                $subscription = selectDB("subscriptions","`id` = {$order[0]["subscriptionId"]}");
+                                $dataInsert = array(
+                                    "fName" => $order[0]["fName"],
+                                    "mName" => $order[0]["mName"],
+                                    "lName" => $order[0]["lName"],
+                                    "mobile" => $order[0]["phone"],
+                                    "academyId" => $order[0]["academyId"],
+                                    "branchId" => $order[0]["branchId"],
+                                    "sessionId" => $order[0]["sessionId"],
+                                    "dayId" => $order[0]["dayId"],
+                                    "totalClasses" => $subscription[0]["numberOfDays"],
+                                );
+                                insertDB("students",$dataInsert);
                             }
                             $subscription = selectDB("subscriptions","`id` = {$order[0]["subscriptionId"]}");
                             $sport = selectDB("sports","`id` = {$subscription[0]["sportId"]}");
