@@ -229,7 +229,7 @@
             var sportId = $(this).val();
             var branches = $("#hiddenBranch").find("option[id='sport" + sportId + "']").clone();
             var $mySelect3 = $("#mySelect3");
-            $mySelect3.empty().append("<?php echo "<option value='0' selected >".direction("Please select branch","يرجى تحديد الفرع")."</option>"; ?>")append(branches).trigger('change');
+            $mySelect3.empty().append("<?php echo "<option value='0' selected >".direction("Please select branch","يرجى تحديد الفرع")."</option>"; ?>").append(branches).trigger('change');
             $("#mySelect4, #mySelect5").empty();
         });
 
@@ -238,7 +238,7 @@
             var sportId = $("#mySelect2").val();
             var days = $("#hiddenDay").find("option[id='sport" + sportId + "branch" + branchId + "']").clone();
             var $mySelect4 = $("#mySelect4");
-            $mySelect4.empty().append("<?php echo "<option value='0' selected >".direction("Please select day","يرجى تحديد اليوم")."</option>"; ?>")append(days).trigger('change');
+            $mySelect4.empty().append("<?php echo "<option value='0' selected >".direction("Please select day","يرجى تحديد اليوم")."</option>"; ?>").append(days).trigger('change');
         });
 
         $(document).on("change", "#mySelect3", function() {
@@ -246,6 +246,6 @@
             var sportId = $("#mySelect2").val();
             var sessions = $("#hiddenSession").find("option[id='sport" + sportId + "branch" + branchId + "']").clone();
             var $mySelect5 = $("#mySelect5");
-            $mySelect5.empty().append("<?php echo "<option value='0' selected >".direction("Please select session","يرجى تحديد الجلسه")."</option>"; ?>")append(sessions).trigger('change');
+            $mySelect5.empty().append("<?php echo "<option value='0' selected >".direction("Please select session","يرجى تحديد الجلسه")."</option>"; ?>").append(sessions).trigger('change');
         });
 	</script>
