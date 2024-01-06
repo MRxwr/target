@@ -140,7 +140,7 @@ if ( isset($_POST["date"]) ){
 <div class="panel-body">
 <div class="table-wrap mt-40">
 <div class="table-responsive">
-	<table class="table display responsive product-overview mb-30" id="example">
+	<table class="table display responsive product-overview mb-30" id="myTable">
 		<thead>
 		<tr>
 		<th>#</th>
