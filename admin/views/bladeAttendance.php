@@ -243,6 +243,7 @@ if ( isset($_POST["date"] )){
 					sessionId: <?php echo $_POST["sessionId"] ?>,
 				},
 				success: function(data){
+					alert( data )
 					alert( studentName + " <?php echo direction("Attended","حاضر") ?>");
 				},
 			})
@@ -265,6 +266,7 @@ if ( isset($_POST["date"] )){
 					sessionId: <?php echo $_POST["sessionId"] ?>,
 				},
 				success: function(data){
+					alert( data )
 					alert( studentName + " <?php echo direction("Absent","غائب") ?>");
 				},
 			})
