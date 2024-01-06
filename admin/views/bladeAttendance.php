@@ -79,7 +79,7 @@
 				if( $branches = selectDB("branches","{$where} AND `status` = '0' ORDER BY `{$orderBy}` ASC") ){
 					for( $i =0; $i < sizeof($branches); $i++ ){
                         $sport = selectDB("sports","`id` = '{$branches[$i]["sportId"]}'");
-                        echo "<option value='{$sport[$i]["id"]}' id='academy{$branches[$i]["academyId"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
+                        echo "<option value='{$sport[0]["id"]}' id='academy{$branches[$i]["academyId"]}'>".direction("{$sport[0]["enTitle"]}","{$sport[0]["arTitle"]}");
 					}
 				}
             ?>
@@ -194,7 +194,7 @@
         $(document).on("change","#mySelect1",function(){
             var academyId = $(this).val();
             // get all sports from hiddenSport dive where option id = academyId
-            var sports = $("#hiddenSport").find("option[id='"+academyId+"']");
+            var sports = $("#hiddenSport").find("option[id='academy"+academyId+"']");
             $("#mySelect2").html(sports);
             $("#mySelect2").trigger("change");
         })
