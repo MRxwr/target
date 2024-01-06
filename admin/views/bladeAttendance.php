@@ -222,6 +222,7 @@
             var sports = $("#hiddenSport").find("option[id='academy" + academyId + "']").clone();
             var $mySelect2 = $("#mySelect2");
             $mySelect2.empty().append(sports).trigger('change');
+            $("#mySelect3").empty();
         });
 
         $(document).on("change", "#mySelect2", function() {
@@ -229,6 +230,7 @@
             var branches = $("#hiddenBranch").find("option[id='sport" + sportId + "']").clone();
             var $mySelect3 = $("#mySelect3");
             $mySelect3.empty().append(branches).trigger('change');
+            $("#mySelect4, #mySelect5").empty();
         });
 
         $(document).on("change", "#mySelect3", function() {
