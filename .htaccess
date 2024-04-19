@@ -1,7 +1,17 @@
 RewriteEngine On
+
+# Rewrite requests to index.html if query string doesn't contain v=Academy
 RewriteCond %{QUERY_STRING} !v=Academy [NC]
 RewriteRule ^$ index.html [L]
+
+# Rewrite requests to index.php if query string doesn't contain academyURL
 RewriteCond %{QUERY_STRING} !academyURL [NC]
 RewriteRule ^([^/]+)/?$ index.php?academyURL=$1&v=Academy [QSA,L]
+
+# If the request is for index.html, stop rewriting
 RewriteRule ^index.html$ - [L]
+
+# Rewrite other requests to index.php with academyURL parameter
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/?$ index.php?academyURL=$1 [QSA,L]
